@@ -6,40 +6,43 @@ import json
 import numpy as np
 import regex as re
 import random
+import os
 
 def main(argv):
 
-    with open(argv[1]) as f1:
-        data = f1.read()
+    data_new = dict()    
+
+    data_dir = str(os.getcwd()) + '/data'
+    for file in os.listdir(data_dir):
+        with open(os.path.join(data_dir, file)) as f1:
+            data = f1.read()
+        
+        data_json = json.loads(data)
+
+        for item in data_json:
+            title = item['Title'] # Title
+            data_new[title] = dict()
+        
+            # Pattern for subsection()
+            pattern = r"%subsection\{(.*?)\}%"
+
+            section_text = ' '.join(item['Sentences']) # Sentences
+            section_text = section_text.replace('%cite{', '')
+            section_text = section_text.replace('%{', '')
+            section_text = section_text.replace('<par>', '')
+            section_text = re.sub(pattern, r"subsection(\1)", section_text)
+            section_text = section_text.replace('}%', '')
+            data_new[title]['Sentences'] = section_text
+
+        # ['Title', 'Author', 'Url', 'Sentences', 
+        # 'AnswersCitationWorthiness', 'CitedNumberList',
+        # 'CollectedCitedNumberList', 'CitationAnchorList',
+        # 'CitedPaperIndexList', 'CitedPaperTitle', 'CitedPaperText']
+
+    samples = random.sample(data_new.items(), 25)
+    with open('aclDataset_short.json', 'w') as fp:
+        json.dump(samples, fp, indent=2)
     
-    data_json = json.loads(data)
-
-    data_new = dict()
-
-    for item in data_json:
-        title = item['Title'] # Title
-        data_new[title] = dict()
-    
-        # Pattern for subsection()
-        pattern = r"%subsection\{(.*?)\}%"
-
-        section_text = ' '.join(item['Sentences']) # Sentences
-        section_text = section_text.replace('%cite{', '')
-        section_text = section_text.replace('%{', '')
-        section_text = section_text.replace('<par>', '')
-        section_text = re.sub(pattern, r"subsection(\1)", section_text)
-        section_text = section_text.replace('}%', '')
-        data_new[title]['Sentences'] = section_text
-
-    # ['Title', 'Author', 'Url', 'Sentences', 
-    # 'AnswersCitationWorthiness', 'CitedNumberList',
-    # 'CollectedCitedNumberList', 'CitationAnchorList',
-    # 'CitedPaperIndexList', 'CitedPaperTitle', 'CitedPaperText']
-
-    with open('aclDataset_1_short.json', 'w') as fp:
-        json.dump(data_new, fp)
-    
-    samples = random.sample(data_new.items(), 5)
     for i in samples:
         print(i)
 
