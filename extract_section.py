@@ -39,9 +39,26 @@ def main(argv):
         # 'CollectedCitedNumberList', 'CitationAnchorList',
         # 'CitedPaperIndexList', 'CitedPaperTitle', 'CitedPaperText']
 
+    output_path = str(os.getcwd()) + '/aclDataset_short.json'
+    if not os.path.isfile(output_path):
+        # Creating data for closed-source LLMs
+        samples = random.sample(data_new.items(), 25)
+        with open('aclDataset_short.json', 'w') as fp:
+            json.dump(samples, fp, indent=2)
+    else:
+        # Loading data if exsists
+        with open('aclDataset_short.json') as fr:
+            samples = json.load(fr)
+
+    # Removing samples from the dataset to avoid dublicates in the test data
+    for text in samples:
+        del data_new[text[0]]
+
+    # Creating data for open-source LLMs
     samples = random.sample(data_new.items(), 25)
-    with open('aclDataset_short.json', 'w') as fp:
+    with open('aclDataset_short_test.json', 'w') as fp:
         json.dump(samples, fp, indent=2)
+
     
     for i in samples:
         print(i)
