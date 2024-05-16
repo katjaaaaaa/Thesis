@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=00:30:00
+#SBATCH --time=00:50:00
 #SBATCH --partition=gpu
 #SBATCH --gpus-per-node=a100:1
 #SBATCH --job-name=phi3_llm
@@ -11,4 +11,6 @@ source $HOME/venvs/thesis_venv/bin/activate
 
 python3 -m pip install transformers tensorflow torch
 
-python3 phi3_model_prompting.py
+python3 phi3_model_prompting.py oneshot_phi3_v8.txt fewshot_rank_phi3_v8.txt fewshot_expl_phi3_v8.txt
+
+
