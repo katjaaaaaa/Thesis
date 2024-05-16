@@ -1,5 +1,6 @@
 import json
 import sys
+import os
 from transformers import (AutoTokenizer,
                           AutoModelForCausalLM,
                           # BitsAndBytesConfig,
@@ -34,11 +35,11 @@ def main(argv):
     }
 
     # loading the prompts
-    with open(argv[1]) as f1, open(argv[2]) as f2, open(argv[3]) as f3, open(argv[4]) as f4:
-        prompt_dict = {'zeroshot': f1.read(),
-                   'oneshot' : f2.read(),
-                   'fewshot_rankings' : f3.read(),
-                   'fewshot_explanation' : f4.read()
+    with open(argv[1]) as f1, open(argv[2]) as f2, open(argv[3]) as f3:
+        prompt_dict = {
+                   'oneshot' : f1.read(),
+                   'fewshot_rankings' : f2.read(),
+                   'fewshot_explanation' : f3.read()
                    }
 
     results_dict = dict()
@@ -49,8 +50,13 @@ def main(argv):
         results_dict[key] = output[0]['generated_text']
 
     # store the outputs in a json file
-    with open('phi3_results.json', 'w') as fp:
-        json.dump(results_dict, fp, indent=1)
+    output_path = str(os.getcwd()) + '/results_v8.json'
+    if not os.path.isfile(output_path):
+        with open('results_v8.json', 'w') as fp:
+            json.dump(results_dict, fp, indent=1)
+    else:
+        with open('phi3_results_xml_v4.json', 'w') as fp:
+            json.dump(results_dict, fp, indent=1)
 
 if __name__ == "__main__":
     main(sys.argv)
