@@ -1,0 +1,73 @@
+**Key Concepts:**
+
+**1. Pre-trained Language Models**
+   - Vaswani et al. (2017): Introduced Transformer architecture for machine translation, facilitating faster learning of complex text representations.
+   - Radford et al. (2018), Devlin et al. (2018), Liu et al. (2019), Yang et al. (2019): Developed GPT, BERT, RoBERTa, and XLNet respectively, leveraging Transformer architecture with statistical tokenizers for pre-trained language models.
+   - Clark et al. (2020): Presented ELECTRA, a generator-discriminator-based pre-training approach, offering competitive performance with lower computational requirements.
+   - Vaidhya and Kaushal (2020), Lee et al. (2019), Beltagy et al. (2019): Explored domain-specific language models, leading to significant performance gains.
+
+**2. Emotion Recognition**
+   - Tarnowski et al. (2017): Proposed a method for recognizing seven emotional states based on facial expressions.
+   - Yoon et al. (2018): Utilized a deep dual recurrent encoder model to understand speech data using text data and audio signals simultaneously.
+   - Deshmukh and Kirange (2012): Introduced an SVM-based approach for predicting opinions on news headlines.
+   - Acheampong et al. (2020): Analyzed the effectiveness of transformer encoders for detecting emotions.
+   - Kant et al. (2018): Demonstrated the practical efficiency of large pre-trained language models for Multi-Emotion sentiment classification.
+
+**3. Computation of Empathy**
+   - Lin et al. (2018), Loveys et al. (2018): Investigated variations of empathy and distress across different demographics.
+   - Guda et al. (2021): Proposed a demographic-aware empathy modeling framework utilizing BERT and demographic features.
+   - Sharma et al. (2020): Explored language models for identifying empathetic conversations in mental health support systems.
+<split>
+**Summary:**
+
+1. **Pre-trained Language Models (LLMs)**:
+	- **Contributions**:
+    	- Over the past few years, pre-trained language models have made significant progress in learning contextualized representations.
+    	- Transformer (Vaswani et al., 2017) was originally proposed for machine translation and has facilitated faster learning of complex text representations.
+    	- GPT (Radford et al., 2018), BERT (Devlin et al., 2018), RoBERTa (Liu et al., 2019), and XLNet (Yang et al., 2019) leverage transformer architecture along with statistical tokenizers.
+    	- ELECTRA (Clark et al., 2020), a recent generator-discriminator-based pre-training approach, offers competitive performance with reduced computational requirements.
+    	- Domain-specific language models also lead to significant performance gains (Vaidhya and Kaushal, 2020; Lee et al., 2019; Beltagy et al., 2019).
+
+2. **Emotion Recognition**:
+	- **Contributions**:
+    	- Emotion recognition from facial expressions and speech data has been extensively studied.
+    	- Tarnowski et al. (2017) present an approach for recognizing seven emotional states based on facial expressions.
+    	- Yoon et al. (2018) utilize a novel deep dual recurrent encoder model to understand speech data using text and audio signals simultaneously.
+    	- Deshmukh and Kirange (2012) propose an SVM-based approach for predicting opinions on news headlines.
+    	- Acheampong et al. (2020) analyze the efficacy of using transformer encoders for detecting emotions.
+    	- Kant et al. (2018) demonstrate the practical efficiency of large pre-trained language models for multi-emotion sentiment classification.
+
+3. **Computation of Empathy**:
+	- **Contributions**:
+    	- Empathy and distress are core components of a person's emotional state.
+    	- Language variations across different regions impact empathy and distress.
+    	- Guda et al. (2021) propose a demographic-aware empathy modeling framework using BERT and demographic features.
+    	- Understanding empathy and distress is crucial for mental health analysis and support.
+    	- Sharma et al. (2020) explore language models for identifying empathetic conversations in mental health support systems.
+
+Please note that this summary is based on the information provided in the text and should not be used for clinical practice.
+<split>
+## Scientific Paper Summary: Analyzing Emotional State with Language Models
+
+This paper explores the use of language models for analyzing a person's emotional state.
+
+### Key Concepts
+
+1. **Pre-trained Language Models (Section 2.1):**
+	- Transformer architecture (Vaswani et al., 2017) enables learning complex textual representations.
+	- GPT (Radford et al., 2018), BERT (Devlin et al., 2018), RoBERTa (Liu et al., 2019), XLNet (Yang et al., 2019) leverage transformers for this purpose.
+	- ELECTRA (Clark et al., 2020) offers competitive performance with lower compute requirements.
+	- Domain-specific models can further improve performance (Vaidhya and Kaushal, 2020; Lee et al., 2019; Beltagy et al., 2019).
+
+2. **Emotion Recognition (Section 2.2):**
+	- Traditionally studied through facial expressions (Tarnowski et al., 2017) and speech data (Yoon et al., 2018).
+	- Text-based approaches include:
+    	- SVM for sentiment analysis (Deshmukh and Kirange, 2012)
+    	- Transformer encoders for emotion detection (Acheampong et al., 2020)
+    	- Large pre-trained models for multi-emotion sentiment analysis (Kant et al., 2018)
+
+3. **Computational Empathy (Section 2.3):**
+	- Empathy and distress modeling is gaining interest.
+	- Lin et al. (2018) and Loveys et al. (2018) consider demographic variations in empathy/distress.
+	- Guda et al. (2021) propose a demographic-aware BERT-based framework for empathy modelling.
+	- Sharma et al. (2020) explore language models for identifying empathetic conversations in mental health support.

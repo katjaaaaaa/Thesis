@@ -1,0 +1,71 @@
+**Key Concepts:**
+
+1. **Catastrophic Forgetting in Lifelong Learning:**
+   - French (1999), McCloskey and Cohen (1989), McClell and et al. (1995), Ratcliff (1990): Highlighted the issue of catastrophic forgetting in lifelong learning, where knowledge of previous tasks is abruptly lost when learning new tasks.
+   - LopezPaz and Ranzato (2017), Anonymous (2019): Proposed memory-based approaches to mitigate catastrophic forgetting by saving previous samples and optimizing new tasks with a forgetting cost.
+   - Kirkpatrick et al. (2016), Liu et al. (2018), Ritter et al. (2018), Zenke et al. (2017): Introduced parameter consolidation methods like Elastic Weight Consolidation (EWC) to slow down learning on weights important to previous tasks.
+
+2. **Dynamic Model Architecture in Lifelong Learning:**
+   - Xiao et al. (2014), Rusu et al. (2016), Fernando et al. (2017): Explored dynamically changing the model structure by adding new modules to learn new tasks without interfering with previously learned knowledge.
+
+3. **Limitations of Dynamic Model Architecture:**
+   - Does not facilitate positive transfer between tasks.
+   - Results in a dramatic increase in model size with the number of observed tasks, rendering it impractical for real-world problems.
+
+4. **Alternate Lifelong Learning Approaches:**
+   - Chen et al. (2015), Chen (2015), Shu et al. (2016, 2017): Focused on representing, preserving, and extracting knowledge from previous tasks, which differ from the goal of overcoming catastrophic forgetting.
+
+**Contributions:**
+
+- **French (1999), McCloskey and Cohen (1989), McClell and et al. (1995), Ratcliff (1990):** Recognized catastrophic forgetting as a challenge in lifelong learning.
+- **LopezPaz and Ranzato (2017), Anonymous (2019):** Introduced memory-based approaches to alleviate catastrophic forgetting by saving previous samples and optimizing new tasks.
+- **Kirkpatrick et al. (2016), Liu et al. (2018), Ritter et al. (2018), Zenke et al. (2017):** Proposed parameter consolidation methods such as Elastic Weight Consolidation (EWC) to preserve knowledge of previous tasks.
+- **Xiao et al. (2014), Rusu et al. (2016), Fernando et al. (2017):** Explored dynamic model architectures by adding new modules to prevent interference with previous knowledge during new task learning.
+- **Chen et al. (2015), Chen (2015), Shu et al. (2016, 2017):** Focused on representing, preserving, and extracting knowledge from previous tasks in lifelong learning scenarios.
+<split>
+1. **Catastrophic Forgetting Phenomenon**:
+	- Authors: French (1999), McCloskey and Cohen (1989), McClelland et al. (1995), Ratcliff (1990)
+	- Contribution: Catastrophic forgetting refers to the abrupt loss of knowledge from previous tasks when learning a new task. Existing research addresses this issue through memory-based approaches or parameter consolidation.
+
+2. **Memory-Based Approaches**:
+	- Authors: Lopez-Paz and Ranzato (2017), Anonymous (2019)
+	- Contribution: These methods save previous samples and optimize new tasks with a forgetting cost based on the saved samples. While effective in mitigating catastrophic forgetting, they become computationally expensive with more previous tasks.
+
+3. **Parameter Consolidation**:
+	- Authors: Kirkpatrick et al. (2016), Liu et al. (2018), Ritter et al. (2018), Zenke et al. (2017)
+	- Contribution: Methods like Elastic Weight Consolidation (EWC) slow down learning on weights important for previous tasks. They do not require saving previous data but have limitations in overcoming catastrophic forgetting.
+
+4. **Dynamic Model Architecture**:
+	- Authors: Xiao et al. (2014), Rusu et al. (2016), Fernando et al. (2017)
+	- Contribution: Dynamically changing the model structure (e.g., adding new modules) prevents forgetting while learning new tasks. However, this approach does not fully benefit from positive transfer between tasks and leads to model size growth.
+
+5. **Lifelong Learning in NLP**:
+	- Authors: Chen et al. (2015), Chen (2015), Shu et al. (2016, 2017)
+	- Contribution: These works focus on representing, reserving, and extracting knowledge from previous tasks. They differ from the research direction of lifelong learning without catastrophic forgetting.
+
+Overall, the paper discusses various strategies for lifelong learning, highlighting trade-offs between memory-based approaches, parameter consolidation, dynamic model architecture, and NLP-specific considerations.
+<split>
+## Lifelong Learning without Catastrophic Forgetting
+
+This scientific paper discusses two main approaches to lifelong learning, where a model learns new tasks without forgetting previously learned ones.
+
+* **Overcoming Catastrophic Forgetting**
+
+  Catastrophic forgetting occurs when a model learning a new task forgets how to perform previous tasks. Two main approaches address this problem:
+
+	* **Memory-Based Approach** (Lopez-Paz & Ranzato, 2017; Anonymous, 2019)
+    	* Stores samples from previous tasks and uses them to define a forgetting cost during new task training.
+    	* Effective but computationally expensive for many previous tasks.
+
+	* **Parameter Consolidation** (Kirkpatrick et al., 2016; Liu et al., 2018; Ritter et al., 2018; Zenke et al., 2017)
+    	* Protects parameters important to previous tasks by slowing down their updates during new task training (e.g., Elastic Weight Consolidation (EWC) by Kirkpatrick et al., 2016).
+    	* Requires only one pass through each task data but may not completely prevent forgetting.
+
+* **Dynamic Model Architecture** (Xiao et al., 2014; Rusu et al., 2016; Fernando et al., 2017)
+
+  * A separate line of research focuses on dynamically changing the model architecture to learn new tasks.
+  * Effective in preventing forgetting but:
+  	* Does not leverage positive transfer between tasks.
+  	* Model size grows significantly with the number of tasks, making it impractical for real-world scenarios with many tasks.
+
+**Note:** The paper differentiates lifelong learning from a related field that focuses on knowledge representation and extraction from previous tasks (Chen et al., 2015; Chen, 2015; Shu et al., 2016, 2017).

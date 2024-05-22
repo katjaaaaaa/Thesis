@@ -1,0 +1,54 @@
+**Concept 1: Extractive Summarization of Relationships**
+
+- Handler and O'Connor (2018): Propose a two-stage process for extractively summarizing relationships:
+  - Identify wellformed spans from a corpus that start with (t1) and end with (t2).
+  - Choose the best summary statement from among these wellformed candidates.
+- Show that this approach finds more readable candidates than traditional relation extraction techniques.
+
+**Concept 2: Choosing the Best Summary Statement**
+
+- This study focuses on the second step proposed by Handler and O'Connor (2018) - choosing the best summary statement from available candidates.
+- Unlike Handler and O'Connor (2018), this study offers a method for the second step of picking a summary statement.
+- No specific authors are mentioned for this contribution; therefore, it's attributed to the authors of the paper.
+
+**Concept 3: Tailored Supervision for Summarizing Relationships on Concept Maps**
+
+- This study collects new supervision tailored to the specific problem of summarizing relationships on concept maps.
+- The supervision differs from the existing dataset by Falke and Gurevych (2017).
+- Unlike Falke and Gurevych (2017), who aim for creating the best overall concept map for a topic, this work aims to find the best summary relationship for a given relationship query pair.
+- The dataset includes labels for the most readable and informative statement describing the relationship between a (t1) - (t2) query pair.
+
+**Contributions:**
+
+- Handler and O'Connor (2018): Propose a two-stage process for extractively summarizing relationships and demonstrate its effectiveness.
+- Falke and Gurevych (2017): Provide an existing dataset for concept maps but with a different focus than the tailored supervision in this study.
+- Authors of the paper: Introduce a method for choosing the best summary statement and collect new supervision tailored for summarizing relationships on concept maps.
+<split>
+**Summary of the Text**
+
+The text discusses a study that builds upon previous work by Handler and O'Connor (2018) and introduces a new approach to summarizing relationships on concept maps. The study focuses on choosing the best summary statement from available candidates, a step not covered by Handler and O'Connor (2018). The supervision for this task is different from the existing concept map dataset by Falke and Gurevych (2017). Unlike Falke and Gurevych (2017), the dataset in this study includes labels for the most readable and informative statement describing the relationship between a (t1) - (t2) query pair.
+
+**Key Concepts and Contributions**
+
+- **Handler and O'Connor (2018)**: Proposed a two-stage process for extractively summarizing relationships. The first stage identifies well-formed spans from a corpus that start and end with (t1) and (t2). The second stage, which is the focus of this study, involves choosing the best summary statement from these well-formed candidates. They demonstrated that extracting well-formed spans can find many more readable candidates than traditional relation extraction techniques[^Handler and O'Connor (2018)^].
+
+- **Falke and Gurevych (2017)**: Created a concept map dataset with the goal of creating the best overall concept map for a given topic. This work differs from the current study, which seeks to find the best summary relationship for a given relationship[^Falke and Gurevych (2017)^].
+
+- **Authors of the Current Study**: Introduced a new task of choosing the best summary statement from available candidates by collecting new supervision, tailored to the particular problem of summarizing relationships on concept maps. Their dataset includes labels for the most readable and informative statement describing the relationship between a (t1) - (t2) query pair[^Current Study^].
+<split>
+## Summary of Scientific Text: Relational Summarization for Corpus Analysis
+
+This text describes a novel approach to selecting the best summary statement for relationships between concepts in a corpus.
+
+**Key Concepts**
+
+* **Extractive Summarization of Relationships (Handler & O'Connor, 2018):**
+	* Proposes a two-stage process for summarizing relationships:
+    	1. Identify well-formed text spans mentioning the target concepts (t1 and t2).
+    	2. Choose the best summary statement from the identified spans.
+	* Advantage: Finds more readable summaries than traditional methods.
+	* Limitation: Does not address selecting the optimal summary statement (addressed in current study).
+* **Relational Summarization with Focused Supervision (This Study):**
+	* Introduces a new approach to select the best summary statement for relationships in concept maps.
+	* Develops a new dataset with labels for the most readable and informative statements describing the relationship between concept pairs (t1 and t2).
+	* Distinguishes itself from Falke & Gurevych (2017): Focuses on finding the best summary relation for a specific concept pair,  rather than creating the best overall concept map.

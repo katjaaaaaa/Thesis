@@ -1,0 +1,54 @@
+**Key Concepts and Contributions:**
+
+1. **NER (Named Entity Recognition) in Legal Domain:**
+   - **Dozier et al. (2010):** Described five classes for taggers development based on dictionary lookup, pattern-based rules, and statistical models. Classes include jurisdiction, court, title, doctype, and judge.
+   - **Cardellino et al. (2017):** Developed an ontology of legal concepts utilizing NERC, LKIF, and YAGO. Identified entities under abstraction, act, document, organization, person, non-entity, company, corporation, contract, statute, etc.
+   - **Glaser et al. (2018):** Utilized GermaNER and DBpedia Spotlight for recognizing person, location, and organization entities. Established an evaluation dataset of 20 court decisions.
+
+2. **Challenges and Gaps in NER in Legal Domain:**
+   - Fragmented approaches and inconsistency in methods, datasets, and typologies.
+   - Lack of agreement on selecting relevant semantic categories.
+   - Absence of annotated named entity corpora or datasets for legal documents, hindering data-driven NER classifier development.
+
+3. **Methodologies and Tools:**
+   - Dozier et al. (2010) used dictionary lookup, pattern-based rules, and statistical models.
+   - Glaser et al. (2018) employed GermaNER and DBpedia Spotlight alongside rules described by Landthaler et al. (2016).
+
+4. **Datasets and Evaluation:**
+   - Glaser et al. (2018) created an evaluation dataset of 20 court decisions for their study.
+
+Each contribution addresses different aspects of NER in the legal domain, ranging from methodology development to addressing challenges and evaluating performance.
+<split>
+1. **NER in the Legal Domain**
+	- **Authors**: The authors of the paper the text was taken from.
+	- **Contribution**: Highlighting the lack of attention to Named Entity Recognition (NER) in the legal domain. Existing approaches are fragmented, inconsistent, and lack annotated legal datasets for developing data-driven NER classifiers.
+
+2. **Semantic Categories in Legal Domain**
+	- **Authors**: Not explicitly mentioned.
+	- **Contribution**: Pointing out the absence of agreement on relevant semantic categories for legal NER.
+
+3. **Dozier et al. (2010)**
+	- **Authors**: Dozier et al.
+	- **Contribution**: Describing five classes (jurisdiction, court, title, doctype, judge) for which taggers are developed using dictionary lookup, pattern-based rules, and statistical models. Testing these taggers with legal documents such as US case law, depositions, and pleadings.
+
+4. **Cardellino et al. (2017)**
+	- **Authors**: Cardellino et al.
+	- **Contribution**: Developing an ontology of legal concepts using NERC (6 classes), LKIF (69 classes), and YAGO (358 classes). Categorizing entities into levels (abstraction, act, document, organization, person, non-entity) without providing details on correlations between levels. Working with Wikipedia articles and European Court of Human Rights decisions.
+
+5. **Glaser et al. (2018)**
+	- **Authors**: Glaser et al.
+	- **Contribution**: Using GermaNER and DBpedia Spotlight for recognizing person, location, and organization entities. Identifying references based on rules described by Landthaler et al. (2016). Creating an evaluation dataset of 20 court decisions.
+<split>
+## Key Concepts in Legal Named Entity Recognition (NER)
+
+This scientific paper explores the challenges and current state of Named Entity Recognition (NER) in the legal domain. Here's a breakdown of the key concepts along with the contributions from cited authors:
+
+* **Challenges in Legal NER** (Authors: not specified in this excerpt)
+	* Lack of standardized approaches: Different methods, datasets, and entity types are used across various legal NER systems.
+	* Missing agreement on entity selection: There's no consensus on the specific legal concepts that should be recognized as named entities.
+	* Absence of annotated corpora: The development of data-driven NER models is hindered by the lack of legal documents with labeled named entities.
+
+* **Existing Legal NER Approaches**
+	* Dozier et al. (2010): Proposed five entity classes for legal documents: jurisdiction, court, title, doctype, and judge. Their NER system relied on dictionary lookup, rule-based patterns, and statistical models.
+	* Cardellino et al. (2017): Developed a legal ontology using NERC (person, organization, location, abstraction, act, document, non-entity), LKIF (company, corporation, contract, statute, etc.), and YAGO classifications. However, details on entity categorization and correlation between the levels are missing in their work.
+	* Glaser et al. (2018): Leveraged existing NER tools (GermaNER, DBpedia Spotlight) to recognize people, locations, and organizations. They also defined rules for reference recognition and created a dataset of 20 annotated court decisions for evaluation.

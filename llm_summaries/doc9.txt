@@ -1,0 +1,90 @@
+**Key Concepts:**
+
+1. **Domain Adaptation Strategies:**
+   - Chu and Wang (2018): Introduced four categories of domain adaptation strategies: data selection, data generation, instance weighting, and model interpolation.
+   
+2. **Data-centric Methods:**
+   - Language Models (Moore and Lewis, 2010; Axelrod et al., 2011; Duh et al., 2013): Used to score corpora for data selection.
+   - Convolutional Neural Networks (CNN) (Chen et al., 2016): Applied for scoring corpora in data selection.
+   - Information Retrieval (Utiyama and Isahara, 2003): Used for generating pseudo-parallel sentences.
+   - Self-enhancing (Lambert et al., 2011): Technique for generating pseudo-parallel sentences.
+   - Parallel word embeddings (Marie and Fujita, 2017): Used for generating pseudo-parallel sentences.
+   - Wang et al. (2014): Generated monolingual n-grams.
+   - Chu (2015): Generated parallel phrase pairs.
+
+3. **Model-centric Methods:**
+   - Instance Weighting (Wang et al., 2017b): Introduced from SMT to NMT, where in-domain language models measure sentence similarity and weights are integrated into training.
+   - Wang et al. (2018): Proposed generating sentence embeddings for in-domain sentences and measuring distance to the in-domain core.
+   - Chen et al. (2017): Incorporated domain classifier into NMT system, using features from the encoder to distinguish between in-domain and out-of-domain data.
+
+4. **Comparison and Improvement:**
+   - Wang et al. (2017a): Stated that data-centric methods only lead to minor improvements in NMT due to not being directly related to NMT's training criterion.
+   - Wang et al. (2018): Showed improvement over previous instance weighting techniques by using state-of-the-art neural classifiers instead of cross-entropy.
+   - Chen et al. (2017): Developed a method to weight sentences based on similarity to in-domain data using a domain classifier, trained simultaneously with NMT.
+
+5. **Unique Approach:**
+   - Current Study: Utilizes pretrained neural classifiers trained on small amounts of monolingual data for weighting classifier probabilities, focusing on effective use in NMT for translation quality improvements.
+<split>
+## **Domain Adaptation Strategies in NLP**
+
+### **1. Data-Centric Methods**
+
+#### **1.1 Data Selection**
+- **Chu and Wang (2018)** introduced data selection strategies. Models are trained using both in-domain and out-of-domain data. A similarity score is computed for each sentence based on its evaluation against out-of-domain data. By setting a threshold on these scores, relevant training data can be selected.
+
+#### **1.2 Language Models for Data Scoring**
+- Traditional language models, such as **Moore and Lewis (2010)**, **Axelrod et al. (2011)**, and **Duh et al. (2013)**, have been used to score corpora.
+- More recently, **convolutional neural networks (CNNs)**, as demonstrated by **Chen et al. (2016)**, have also been employed for scoring.
+
+#### **1.3 Instance Weighting vs. Data Selection**
+- While data selection focuses on choosing relevant training examples, the current work emphasizes **instance weighting**. Instead of discarding data, instance weights are assigned based on similarity to in-domain data.
+
+### **2. Data Generation**
+
+#### **2.1 Pseudo-Parallel Sentences**
+- When parallel training corpora are insufficient, pseudo-parallel sentences can be generated.
+- Techniques include:
+	- **Information retrieval** (Utiyama and Isahara, 2003)
+	- **Self-enhancing methods** (Lambert et al., 2011)
+	- **Parallel word embeddings** (Marie and Fujita, 2017)
+
+### **3. Model-Centric Methods**
+
+#### **3.1 Instance Weighting in NMT**
+- **Wang et al. (2017b)** introduced instance weighting to NMT. An in-domain language model measures similarity between sentences and in-domain data using cross-entropy. These weights are integrated into the training objective.
+- The current work improves on this by using **state-of-the-art neural classifiers** instead of cross-entropy.
+
+#### **3.2 Related Approaches**
+- **Wang et al. (2018)** generate sentence embeddings for in-domain sentences and measure distance to the in-domain core. Assumes that the core of in-domain sentence embeddings is an atypical representative.
+- **Chen et al. (2017)** incorporate a domain classifier into NMT, distinguishing in-domain and out-of-domain data. Classifier probabilities are used to weight sentences during neural network training.
+- The current work differs by using pretrained neural classifiers trained on monolingual data without access to parallel in-domain data.
+<split>
+## Key Concepts in Domain Adaptation for Neural Machine Translation (NMT)
+
+This paper by the authors discusses domain adaptation strategies for NMT, focusing on data selection and instance weighting [authors].
+
+### Data-Centric Methods
+
+* **Goal:** Select or generate training data closer to the target domain.
+* **Selection Techniques:**
+	* Language Models (LM) [Moore et al., 2010; Axelrod et al., 2011; Duh et al., 2013] or joint models [Cuong and Sima'an, 2014; Durrani et al., 2015] can be used to score corpora for domain similarity.
+	* Convolutional Neural Networks (CNN) [Chen et al., 2016] offer a recent approach for data selection.
+* **Generation Techniques:**
+	* Pseudo-parallel sentences can be generated for training using information retrieval [Utiyama and Isahara, 2003], self-enhancing methods [Lambert et al., 2011], or parallel word embeddings [Marie and Fujita, 2017].
+	* Other approaches generate monolingual n-grams [Wang et al., 2014] or parallel phrase pairs [Chu, 2015].
+* **Limitations:**
+	* Generally applicable to various machine translation techniques (not NMT-specific) [authors].
+	* Lead to minor improvements in NMT due to indirect relation to NMT's training objective [Wang et al., 2017a].
+
+### Model-Centric Methods: Instance Weighting
+
+* **Technique:** Assigns weights to training sentences based on their similarity to the target domain [authors].
+* **Prior Work:**
+	* Introduced for NMT from Statistical Machine Translation (SMT) [Wang et al., 2017b].
+	* Used in-domain language models with cross-entropy for weighting [Wang et al., 2017b].
+	* Employed sentence embeddings to measure distance from an "in-domain core" [Wang et al., 2018]. (Requires in-domain parallel text, not considered here).
+	* Incorporated domain classifier with features from the encoder [Chen et al., 2017]. Used classifier probabilities for weighting.
+* **Our Improvement:**
+	* Utilizes pre-trained state-of-the-art neural classifiers (more effective than cross-entropy) for weighting, especially beneficial with limited monolingual data [authors].
+
+**Note:** The authors emphasize the importance of considering classifier probability weighting for effective use in NMT with neural classifiers [authors].

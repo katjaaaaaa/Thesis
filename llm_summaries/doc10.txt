@@ -1,0 +1,96 @@
+**Key Concepts and Subsections:**
+
+1. **Topic Labelling Methods:**
+   - Mei et al. (2007): Introduced the concept of using noun chunks from a reference corpus for generating candidate labels for topics.
+   - Lau et al. (2011), Aletras and Stevenson (2014), Bhatia et al. (2016): Employed Wikipedia article titles as textual labels for topics.
+   - Cano Basave et al. (2014), Wan and Wang (2016): Utilized short text summaries for generating candidate labels.
+   - Aletras and Stevenson (2013), Aletras and Mittal (2017): Selected images from Wikipedia or the web using topic word queries.
+
+2. **Improvements in Topic Labelling:**
+   - Bhatia et al. (2016): Used word2vec and doc2vec to represent topics and candidate textual labels in the same latent semantic space, then ranked them based on cosine similarity.
+   - Aletras and Mittal (2017): Employed pre-computed dependency-based word embeddings and image embeddings from VGG-net to predict relevance scores using a deep neural network.
+
+3. **Multimodal Topic Labelling:**
+   - The paper introduces the first attempt at joint multimodal topic labelling, predicting continuous-valued ratings for both textual and image labels.
+
+**Contributions:**
+
+1. **Mei et al. (2007):**
+   - Introduced the use of noun chunks from a reference corpus for generating candidate labels for topics.
+
+2. **Lau et al. (2011), Aletras and Stevenson (2014), Bhatia et al. (2016):**
+   - Utilized Wikipedia article titles as textual labels for topics.
+
+3. **Cano Basave et al. (2014), Wan and Wang (2016):**
+   - Employed short text summaries for generating candidate labels for topics.
+
+4. **Aletras and Stevenson (2013), Aletras and Mittal (2017):**
+   - Selected images from Wikipedia or the web using topic word queries.
+
+5. **Bhatia et al. (2016):**
+   - Introduced the use of word2vec and doc2vec to represent topics and candidate textual labels, followed by ranking based on cosine similarity. Also re-ranked top labels in a supervised fashion using various features.
+
+6. **Aletras and Mittal (2017):**
+   - Employed pre-computed dependency-based word embeddings and image embeddings from VGG-net to predict relevance scores using a deep neural network.
+
+7. **Joint Multimodal Topic Labelling (Authors of the paper):**
+   - Introduced the first attempt at joint multimodal topic labelling, predicting continuous-valued ratings for both textual and image labels.
+<split>
+**Key Concepts and Contributions in Multimodal Topic Labelling:**
+
+1. **Introduction to Topic Labelling**:
+	- **Contributions**:
+    	- **Ionut Sorodoc et al. (2017)**: Introduced the concept of **multimodal topic labelling**.
+    	- Traditional topic label systems focus on a single label modality (e.g., textual labels).
+    	- Proposed a **multimodal approach** using a simple feedforward neural network.
+    	- Automatically generates a rating for a candidate image or textual label relative to the topic.
+    	- Demonstrated that this multimodal approach outperforms single-modality topic labelling systems.
+
+2. **Automatic Topic Labelling Methods**:
+	- **Contributions**:
+    	- **Lau et al. (2011)**, **Bhatia et al. (2016)**: Proposed methods for topic interpretation based on **textual labels**.
+    	- **Aletras and Stevenson (2013)**, **Aletras and Mittal (2017)**: Explored topic labelling using **images**.
+    	- Recent work emphasized the use of **text or image embeddings** to improve candidate label generation and ranking.
+
+3. **Word Embeddings and Label Ranking**:
+	- **Contributions**:
+    	- **Bhatia et al. (2016)**: Used **word2vec** and **doc2vec** to represent topics and textual labels in a shared latent semantic space.
+    	- Selected relevant textual labels from Wikipedia article titles using **cosine similarity** between topic and article title embeddings.
+    	- Re-ranked top labels using features like **PageRank score**, **trigram letter ranking**, topic word overlap, and label length.
+
+4. **Image Representations and Neural Networks**:
+	- **Contributions**:
+    	- **Aletras and Mittal (2017)**: Utilized **dependency-based word embeddings** for topics and image captions.
+    	- Extracted image embeddings using the output layer of **VGG-net** pretrained on **ImageNet**.
+    	- Combined these vectors as input to a **deep neural network** for predicting relevance scores.
+
+5. **Joint Multimodal Topic Labelling**:
+	- **Contributions**:
+    	- **Ionut Sorodoc et al. (2017)**: Pioneered the first attempt at **joint multimodal topic labelling**.
+    	- Predicted continuous-valued ratings for both **textual and image labels** using a joint model.
+
+In summary, this work advances the field by integrating textual and visual modalities for topic labelling, providing a novel dataset, and proposing effective deep learning approaches for multimodal label rating.
+<split>
+## Key Concepts in Topic Labelling Methods
+
+This scientific paper discusses two main steps involved in topic labelling methods and reviews different techniques used for generating and ranking candidate labels.
+
+* **Two Main Steps in Topic Labelling**
+	* Generating candidate labels (text or images) for a given topic.
+	* Ranking candidate labels by their relevance to the topic.
+
+* **Textual Labels**
+	* Sourced from noun chunks in a reference corpus (Mei et al., 2007).
+	* Extracted from Wikipedia article titles (Lau et al., 2011; Aletras and Stevenson, 2014; Bhatia et al., 2016).
+	* Obtained from short text summaries (Cano Basave et al., 2014; Wan and Wang, 2016).
+
+* **Image Labels**
+	* Selected from Wikipedia or the web based on querying with topic words (Aletras and Stevenson, 2013; Aletras and Mittal, 2017).
+
+* **Recent Advancements**
+	* Text or image embeddings to improve candidate label generation and ranking (Bhatia et al., 2016; Aletras and Mittal, 2017).
+    	* Bhatia et al. (2016): Used word2vec and doc2vec to represent topics and candidate labels in the same latent semantic space. Selected the most relevant textual labels from Wikipedia article titles using cosine similarity. Re-ranked top labels using features like PageRank score, trigram letter ranking, topic word overlap, and word length.
+    	* Aletras and Mittal (2017): Used pre-computed dependency-based word embeddings to represent topics and image captions. Used image embeddings from the output layer of VGG-net pre-trained on ImageNet. Combined these three vectors as input to a deep neural network to predict the relevance score for both textual and image labels.
+
+* **Our Work's Novelty**
+	* This paper proposes a joint model to predict a continuous-valued rating for both textual and image labels, which is different from previous single-modality methods that focused on textual or visual labels independently.

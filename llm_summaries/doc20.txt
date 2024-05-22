@@ -1,0 +1,73 @@
+### Key Concepts and Contributions in Automatic Paraphrase Generation
+
+#### Early Approaches
+- **McKeown (1979)**: Developed rule-based approaches for paraphrase generation.
+- **Meteer and Shaked (1988)**: Further advanced rule-based methods for generating paraphrases.
+- **Madnani and Dorr (2010)**: Introduced data-driven methods to the task.
+
+#### Neural Network Advances
+- **Prakash et al. (2016)**: Proposed modifications to the network structure to enhance generation quality.
+- **Cao et al. (2017)**, **Wang et al. (2019)**, **Kazemnejad et al. (2020)**: Improved model performance by integrating external resources, such as:
+  - **Cao et al. (2017)**: Utilized a phrase dictionary.
+  - **Wang et al. (2019)**: Applied semantic annotations.
+  - **Kazemnejad et al. (2020)**: Used an off-the-shelf pre-trained neural retriever.
+
+#### Reinforcement and Unsupervised Learning Techniques
+- **Li et al. (2018)**: Applied reinforcement learning techniques to the paraphrase generation task.
+- **Roy and Grangier (2019)**: Employed unsupervised learning methods to improve paraphrase generation.
+
+#### Controllability in Generation Models
+- **Iyyer et al. (2018)**: Trained models to produce paraphrases with a given syntax.
+- **Li et al. (2019)**: Adopted an external word aligner to train models for generating paraphrases from different levels.
+- **Fu et al. (2019)**: Developed a model that generates paraphrases by planning the neighborhood of words and realizing the complete sentence.
+
+These contributions highlight the evolution of paraphrase generation methods, from rule-based and data-driven approaches to sophisticated neural network models incorporating various external resources and learning techniques to enhance performance and control.
+<split>
+**Summary of the Text**
+
+The text discusses the evolution of approaches to the automatic generation of paraphrases, an important aspect of many downstream NLP applications. The approaches are divided into three main categories: early researches, recent approaches with neural networks, and methods incorporating controllability into the generation model.
+
+**Contributions by Authors**
+
+**Early Researches**
+- **McKeown (1979)**: Contributed to the development of rule-based approaches for paraphrase generation.
+- **Meteer and Shaked (1988)**: Also contributed to rule-based approaches.
+- **Madnani and Dorr (2010)**: Introduced data-driven methods for paraphrase generation.
+
+**Recent Approaches with Neural Networks**
+- **Prakash et al. (2016)**: Proposed modifications to the network structure to improve the quality of generated paraphrases.
+- **Cao et al. (2017), Wang et al. (2019), Kazemnejad et al. (2020)**: Proposed improvements to model performance by leveraging external resources, including phrase dictionaries, semantic annotations, and pre-trained neural retrievers.
+- **Li et al. (2018)**: Proposed the adoption of reinforcement learning techniques for paraphrase generation.
+- **Roy and Grangier (2019)**: Proposed the use of unsupervised learning for this task.
+
+**Incorporating Controllability into the Generation Model**
+- **Iyyer et al. (2018)**: Trained the model to produce paraphrased sentences with a given syntax.
+- **Li et al. (2019)**: Proposed the adoption of an external word aligner to train the model to generate paraphrases from different levels.
+- **Fu et al. (2019)**: The model generates paraphrases by planning the neighbor of words and realizing the complete sentence.
+
+Each of these contributions has played a significant role in advancing the field of automatic paraphrase generation. The text emphasizes the need for fine-grained control in the generation process, a feature not offered by many existing methods. Various approaches have been proposed to incorporate this controllability into the generation model.
+<split>
+## Automatic Paraphrase Generation: Key Concepts
+
+This scientific paper summarizes various approaches to automatic paraphrase generation, a crucial task for many natural language processing (NLP) applications.
+
+### Approaches
+
+**Early Techniques (**McKeown, 1979; Meteer and Shaked, 1988; Madnani and Dorr, 2010)**
+
+* **Rule-based approaches:** These rely on hand-crafted rules to identify and replace phrases with synonyms or similar grammatical structures. (**McKeown, 1979; Meteer and Shaked, 1988**)
+* **Data-driven methods:**  These leverage statistical models trained on existing paraphrase data. (**Madnani and Dorr, 2010**)
+
+**Neural Network-based Approaches**
+
+* **Sequence-to-sequence learning:** This recent approach frames paraphrase generation as a machine translation problem, where the model learns to convert a sentence into a paraphrased version. (**Prakash et al., 2016)    
+* **Enhancing model performance with external resources:** Several studies propose incorporating external resources like dictionaries, semantic annotations, or pre-trained retrievers to improve the model's ability to generate paraphrases. (**Cao et al., 2017; Wang et al., 2019; Kazemnejad et al., 2020**)
+* **Alternative learning techniques:** Other works explore alternative training methods like reinforcement learning (**Li et al., 2018**) and unsupervised learning (**Roy and Grangier, 2019**) for paraphrase generation.
+
+### Controllable Paraphrase Generation
+
+While the aforementioned methods achieve good results, they lack fine-grained control over the generation process. To address this, recent research focuses on controllable paraphrase generation:
+
+* **Syntactic control:** Iyyer et al. (2018) propose training a model to generate paraphrases with a specific desired syntax. (**Iyyer et al., 2018)
+* **Multi-level control:** Li et al. (2019) introduce an external word aligner to enable paraphrase generation at different granularities. (**Li et al., 2019)
+* **Planning-based approach:** Fu et al. (2019) present a method where the model plans word substitutions and builds the complete paraphrased sentence incrementally. (**Fu et al., 2019)

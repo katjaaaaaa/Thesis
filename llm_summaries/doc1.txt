@@ -1,0 +1,78 @@
+1. **Importance of Named Entity Recognition (NER)**
+	- Gupta et al. (2017): Highlighted the importance of NER for entity linking.
+	- Mintz et al. (2009), Liu et al. (2017): Demonstrated the use of NER in relation extraction.
+	- Chang et al. (2013): Showed the role of NER in co-reference resolution.
+	- Ren et al. (2019): Discussed the reliance of conversation systems on NER.
+
+2. **Flat Named Entity Recognition**
+	- Lample et al. (2016), Ma and Hovy (2016), Strubell et al. (2017): Proposed several methods for flat named entity recognition.
+
+3. **Nested Entities**
+	- Zhang et al. (2004), Zhou et al. (2004), Zhou (2006): Early work on nested entities relied on hand-crafted features or rule-based postprocessing. They detected the innermost flat entities with a Hidden Markov Model and then used rule-based post-processing to extract the outer entities.
+
+4. **Entity Mention Detection**
+	- Lu and Roth (2015): Presented a novel hypergraph-based method to tackle the problem of entity mention detection. However, their method had the issue of the spurious structure of hyper-graphs.
+	- Muis and Lu (2017): Improved the method of Lu and Roth (2015) by incorporating mention separators along with features.
+
+5. **Stacking Sequence Model**
+	- Alex et al. (2007): Proposed several CRF-based methods for the GENIA dataset. However, their approach could not recognize nested entities of the same type.
+	- Finkel and Manning (2009): Presented a chart-based parsing method where each named entity is a constituent in the parsing tree. However, their method was not scalable to larger corpus with a cubic time complexity.
+	- Ju et al. (2018): Dynamically stacked flat NER layers to extract nested entities, each flat layer is based on a Bi-LSTM layer and then a cascaded CRF layer. Their model suffered error propagation from layer to layer, an inner entity could not be detected when an outer entity was identified first.
+
+6. **Nested Entities Extraction**
+	- Wang et al. (2018): Presented a transition-based model for nested mention detection using a forest representation. However, their model had the drawback of greedy training and decoding.
+	- Sohrab and Miwa (2018): Considered all possible regions in a sentence and classified them into their entity type or non-entity. However, their exhaustive method considered too many irrelevant regions (non-entity regions) into detecting entity types and the regions were classified individually, without considering the contextual information.
+
+7. **Boundary-Relevant Regions**
+	- Authors of the paper: Focused on the boundary-relevant regions which are much fewer and the explicit leveraging of boundary information helps to locate entities more precisely.
+<split>
+**Key Concepts:**
+
+1. **Significance of Named Entity Recognition (NER) in NLP:**
+   - Gupta et al. (2017), Mintz et al. (2009), Liu et al. (2017), Chang et al. (2013), Ren et al. (2019): Highlighted the importance of NER in various downstream tasks like entity linking, relation extraction, co-reference resolution, and conversation systems.
+
+2. **Approaches to Flat Named Entity Recognition (NER):**
+   - Lample et al. (2016), Ma and Hovy (2016), Strubell et al. (2017): Proposed methods for flat NER, with limited consideration for nested entities.
+
+3. **Early Work on Nested Entities:**
+   - Zhang et al. (2004), Zhou et al. (2004), Zhou (2006): Utilized hand-crafted features and rule-based postprocessing for nested entity detection, detecting innermost flat entities with a Hidden Markov Model.
+
+4. **Hypergraph-Based Method for Entity Mention Detection:**
+   - Lu and Roth (2015): Introduced a hypergraph-based method for entity mention detection, with an identified issue of spurious hypergraph structures.
+   - Muis and Lu (2017): Enhanced Lu and Roth's method by incorporating mention separators and features.
+
+5. **Sequential Models for Nested Mention Detection:**
+   - Alex et al. (2007): Proposed CRF-based methods for the GENIA dataset, unable to recognize nested entities of the same type.
+   - Finkel and Manning (2009): Presented a chart-based parsing method for NER, but scalability issues with larger corpora.
+   - Ju et al. (2018): Developed a dynamically stacked flat NER layers model based on Bi-LSTM and cascaded CRF layers, addressing error propagation challenges.
+   - Wang et al. (2018): Introduced a transition-based model for nested mention detection using a forest representation.
+   - Sohrab and Miwa (2018): Classified regions in sentences into entity types or non-entities, but faced challenges related to considering irrelevant regions.
+
+6. **Model Focus on Boundary-Relevant Regions:**
+   - The paper proposes a model focusing on boundary-relevant regions, leveraging explicit boundary information for precise entity detection.
+<split>
+## Key Concepts in Nested Named Entity Recognition (NER)
+
+This scientific paper discusses Nested Named Entity Recognition (NER), a subtask of NLP concerned with recognizing named entities within text, where some entities can be contained within others.
+
+* **Challenges of Nested NER:**
+	* Nested entities vs. Flat entities (Lample et al., 2016; Ma and Hovy, 2016; Strubell et al., 2017)
+	* Difficulty for sequence models (like CRF) to handle nested structures (Ju et al., 2018)
+
+* **Early Works on Nested NER:**
+	* Relied on hand-crafted features or rule-based postprocessing (Zhang et al., 2004; Zhou et al., 2004; Zhou, 2006)
+	* Used Hidden Markov Models (HMM) for flat entity detection followed by rule-based methods for outer entity extraction.
+
+* **Other Nested NER Approaches:**
+	* Hypergraph-based method (Lu and Roth, 2015) with limitations due to spurious hypergraph structures. (Muis and Lu, 2017) address this issue by incorporating mention separators.
+
+* **Stacking Sequence Models for Nested NER:**
+	* Conditional Random Field (CRF) based methods (Alex et al., 2007) - effective but cannot handle nested entities of the same type.
+	* Chart-based parsing methods (Finkel and Manning, 2009) - not scalable to larger datasets due to cubic time complexity.
+	* Dynamic stacking of flat NER layers with Bi-LSTM and CRF (Ju et al., 2018) - suffers from error propagation.
+
+* **Recent Developments in Nested NER:**
+	* Transition-based model using forest representation (Wang et al., 2018) - limitation is greedy training and decoding.
+	* Boundary classification approach (Sohrab and Miwa, 2018) - considers too many irrelevant regions and lacks contextual information in classification.
+
+* **The Authors' Approach:** Focuses on boundary-relevant regions and leverages boundary information for precise entity location.

@@ -1,0 +1,65 @@
+**Key Concepts:**
+
+1. Overview of Text Classification (TC) Tasks for Code-Mixed Texts
+2. OLI Shared Task on Code-Mixed Texts in Dravidian Languages
+3. Hope Speech Detection as a New Challenge
+4. Sentiment Analysis (SA) of Dravidian Languages in Code-Mixed Texts
+
+**1. Overview of Text Classification (TC) Tasks for Code-Mixed Texts**
+
+- Chakravarthi et al. (2020b): Provided an overview of the OLI shared task on code-mixed texts in Dravidian languages, consisting of subtasks A and B for classifying texts into "offensive" or "not-offensive" categories.
+- Renjit and Idicula (2020): Proposed two LSTM-based models for the OLI shared task, achieving a weighted F1-score of 0.53 for Romanized Malayalam text in Subtask B.
+
+**2. OLI Shared Task on Code-Mixed Texts in Dravidian Languages**
+
+- Chakravarthi et al. (2020b): Organized the OLI shared task on code-mixed texts in Dravidian languages, with Subtask A focusing on classifying code-mixed Ma-En YouTube comments, and Subtask B on classifying Romanized Malayalam and Romanized Tamil texts from YouTube or Twitter comments.
+- Arora (2020): Trained a Universal LM for Ma-En code-mixed texts and applied it to TC models, achieving weighted F1-scores of 0.91 and 0.74 for Subtask A and Romanized Malayalam text of Subtask B respectively.
+- Sun and Zhou (2020): Proposed the XLM-Roberta model, achieving a weighted F1-score of 0.65 and 0.74 for Ta-En and Ma-En language pairs respectively, using the extracted output of Convolutional Neural Networks (CNN).
+- Ou and Li (2020): Developed an XLM-Roberta model using pre-trained multi-language models and K-folding method, achieving weighted F1-scores of 0.63 and 0.74 for Ta-En and Ma-En language pairs respectively.
+
+**3. Hope Speech Detection as a New Challenge**
+
+- Not specifically attributed in the text.
+
+**4. Sentiment Analysis (SA) of Dravidian Languages in Code-Mixed Texts**
+
+- Chakravarthi et al. (2020d): Organized a shared task focusing on SA of code-mixed texts in Ta-En and Ma-En language pairs, using datasets with five categories for each language pair.
+- Sun and Zhou (2020): Achieved first rank in the shared task using the XLM-Roberta model with weighted F1-scores of 0.65 and 0.74 for
+<split>
+1. **OLI Shared Task on Code-Mixed Texts in Dravidian Languages**:
+	- **Authors**: Chakravarthi et al. (2020b)
+	- **Contribution**: Presented an overview of the OLI shared task, which involves classifying code-mixed texts in Dravidian languages into "offensive" or "not-offensive" categories. Subtask A focuses on Ma-En YouTube comments, while Subtask B deals with Romanized Malayalam and Romanized Tamil texts from YouTube or Twitter comments.
+	- **Results**: Two LSTM-based models achieved a weighted F1-score of 0.53 for Romanized Malayalam text in Subtask B.
+
+2. **Universal Language Model for Ma-En Code-Mixed Texts**:
+	- **Authors**: Arora (2020)
+	- **Contribution**: Trained a universal language model (LM) for Ma-En code-mixed texts using Wikipedia articles in native script combined with translated and transliterated versions. Transferred this LM to a text classification (TC) model from the fastai library, achieving 0.91 and 0.74 weighted F1-scores for Subtask A and Romanized Malayalam text in Subtask B, respectively.
+
+3. **Sentiment Analysis of Dravidian Languages in Code-Mixed Text**:
+	- **Authors**: Chakravarthi et al. (2020d)
+	- **Contribution**: Focused on sentiment analysis (SA) of code-mixed texts in Ta-En and Ma-En language pairs. Used datasets from (Chakravarthi et al., 2020c) and (Chakravarthi et al., 2020a), including five categories: "Positive," "Negative," "Unknown state," "Mixed-Feelings," and "Other languages."
+	- **Results**: The XLM-Roberta model proposed by Sun and Zhou (2020) achieved a weighted F1-score of 0.65 for Ta-En and 0.74 for Ma-En, obtaining first rank in both subtasks. Another XLM-Roberta model by Ou and Li (2020) achieved third and first ranks for Ta-En and Ma-En, respectively, using pre-trained multi-language models and K-folding.
+
+In summary, these studies address the challenges of code-mixed text classification and sentiment analysis in Dravidian languages, with various models achieving competitive results. The XLM-Roberta model stands out for its effective utilization of semantic information from texts. 
+<split>
+## Text Classification (TC) for Code-Mixed Texts
+
+**Key Concepts**
+
+* **Challenges in TC for code-mixed texts:** Less work has been done on classification of code-mixed texts compared to standard TC, and existing literature focuses on Sentiment Analysis (SA) and Offensive Language Identification (OLI) tasks for specific language pairs [The authors of the paper].
+* **Hope Speech Detection as a new challenge:** Hope Speech Detection is a new research area with limited exploration in code-mixed text classification [The authors of the paper].
+
+**Recent Studies on TC tasks for Code-Mixed Texts**
+
+* **OLI Shared Task on Code-Mixed Texts in Dravidian Languages** (Chakravarthi et al., 2020b)
+	* This task consists of two subtasks: classifying code-mixed Malayalam-English (Ma-En) YouTube comments and Romanized Malayalam/Tamil text from social media (Subtask A & B).
+	* Datasets used are described in (Chakravarthi et al., 2020a) and (Chakravarthi et al., 2020c).
+* **Approaches for OLI task:**
+	* Renjit and Idicula (2020) proposed LSTM based models achieving a weighted F1-score of 0.53 for Romanized Malayalam text (Subtask B).
+	* Arora (2020) used a Universal Language Model trained on Ma-En code-mixed text and achieved a weighted F1-score of 0.91 and 0.74 for Subtask A and Romanized Malayalam text (Subtask B) respectively.
+* **Sentiment Analysis of Dravidian Languages in Code-Mixed Text (SA task)** (Chakravarthi et al., 2020d)
+	* This shared task focuses on Sentiment Analysis (SA) of code-mixed Tamil-English (Ta-En) and Ma-En language pairs.
+	* It uses the same datasets as the OLI task (described in Chakravarthi et al., 2020a & 2020c). The task defines five sentiment categories.
+* **Approaches for SA task:**
+	* Sun and Zhou (2020) proposed an XLM-Roberta model with CNN features, achieving a weighted F1-score of 0.65 and 0.74 for Ta-En and Ma-En, respectively.
+	* Ou and Li (2020) proposed an ensemble model using pre-trained XLM-Roberta and K-folding, achieving a weighted F1-score of 0.63 and 0.74 for Ta-En and Ma-En, respectively.
