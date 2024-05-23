@@ -1,41 +1,60 @@
-# The code was adapted from https://haticeozbolat17.medium.com/text-summarization-how-to-calculate-bertscore-771a51022964
+# The code was adapted from https://medium.com/@abonia/bertscore-explained-in-5-minutes-0b98553bfb71
+#
+#
+#
 
-from transformers import BertTokenizer, BertModel
-import torch
-import numpy as np
+from bert_score import BERTScorer
+#import torch
 from sys import argv
 import json
+import os
+import re
+
+def preprocess(text):
+    text = re.sub(r'\*{2,}', '', text)
+    text = re.sub(r'#+', '', text)
+    text = re.sub(r'\n{2,}', '\n', text)
+
+    return text.split("\\n")
 
 def main(argv):
-    # Load the pre-trained BERT model and tokenizer
-    tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-    model = BertModel.from_pretrained("bert-base-uncased")
+    with open(f"doc{argv[1]}.txt") as file, open(f"results_eval_{argv[1]}.json") as file1:
+        data_list = file.read().split("<split>")
+        phi3_text = json.load(file1)
 
-    #phi3_text = json.load(f"results_eval_{[argv[2]]}.json")
+    phi3_list = preprocess(phi3_text['results'])
 
-    with open(argv[1]) as f, open(f"results_eval_{[argv[2]]}.json") as f1:
-        data_list = f.read().split("<split>")
-        phi3_text = json.load(f1)
+    # creating a list of LLMs in order they are set in the text file
+    llm_list = ["GPT3.5", "Copilot", "Gemini"]
+    llm_scores_dict = dict()
 
-    for example_text in data_list:
+    # loading the BERTscore
+    scorer = BERTScorer(model_type='bert-base-uncased')
 
-        # Step 4: Prepare the texts for BERT
-        inputs1 = tokenizer(phi3_text, return_tensors="pt", padding=True, truncation=True)
-        inputs2 = tokenizer(example_text, return_tensors="pt", padding=True, truncation=True)
+    # calculating scores per LLM
+    for i, example_text in enumerate(data_list):
+        sent_list = preprocess(example_text)
 
-        # Step 5: Feed the texts to the BERT model
-        outputs1 = model(**inputs1)
-        outputs2 = model(**inputs2)
+        #p, r, f1 = scorer.score([phi3_text['results']], [example_text])
+        p, r, f1 = scorer.score(phi3_list, sent_list)
 
-        # Step 6: Obtain the representation vectors
-        embeddings1 = outputs1.last_hidden_state.mean(dim=1).detach().numpy()
-        embeddings2 = outputs2.last_hidden_state.mean(dim=1).detach().numpy()
+        # adding scores to the dictionary
+        llm_scores_dict[llm_list[i]] = {"Precission" : f"{p.mean():.4f}",
+                                        "Recall" : f"{r.mean():.4f}",
+                                        "F1-score" : f"{f1.mean():.4f}"}
 
-        # Step 7: Calculate cosine similarity
-        similarity = np.dot(embeddings1, embeddings2.T) / (np.linalg.norm(embeddings1) * np.linalg.norm(embeddings2))
+    # adding scores to the json file
+    file_name = "bertscores.json"
+    if os.path.exists(file_name):
+        with open(file_name) as f:
+            data = json.load(f)
+    else:
+        data = dict()
 
-        # Step 8: Print the result
-        print("Similarity between the texts: {:.4f}".format(similarity[0][0]))
+    data[f"Doc {argv[1]}"] = llm_scores_dict
+
+    with open(file_name, 'w') as f:
+        json.dump(data, f, indent=3)
 
 if __name__ == "__main__":
     main(argv)
