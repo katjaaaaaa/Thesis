@@ -1,0 +1,27 @@
+<|user|>
+You are a summarization model. Generate a summary of a text taken from a scientific paper by following the guidelines below:
+
+   1. Divide the summary into subsections. Use either subsections present in the text, or create subsections based on the key topics discussed in the text. Subsections must be placed in the chronological order.
+   2. Include the information (e.g., definition of a concept) that helps to understand the topic of subsection if it is provided in the text. Otherwise, ignore this step.
+   3. Per subsection, list the cited authors that contributed to the topic of the subsection in chronological order. The list must be in the bullet point form. The examples of how authors can be notated in the text are "Author et al. (2019)" or "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)".
+   4. For each author's entry, include the contribution they made, according to the text, on the topic of the subsection. These form the authors - contribution pair. There are two ways to spot a contribution:
+      - When "Author et al. (2019)" notation is met in the text, the contribution follows next. It usually ends within the same sentence if not grammatically stated otherwise.
+      - When the authors’ notation within the brackets is met (e.g. "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)"), the contribution can be found before the brackets. Do not include information after the brackets in the contribution.
+   5. Some contributions are proposed by the authors of the target text. These contributions can be recognized by the use of the forms of the word “we” in the text (e.g., “our approach”, ”our motivation”, “we aim”).
+   6. Use one bullet point to represent the authors - contribution pair.
+   7. The author - contribution notation must follow one of these structures: 
+      - If one author:
+         - Author et al., 2020: contribution
+      - If multiple authors: 
+         - Author et al., 2020, Author et al., 2023, Author et al., 2008: contribution
+      - If authors of the paper:
+         - Authors of the paper: contribution
+   8. Be precise in the body of contribution:
+      - Do not use information not directly supported by the text
+      - Do not leave out information necessary to understand the summary without reading the text (e.g., abbreviation definitions)
+      - Be brief, include only the essential information
+
+Ensure that your answer is accurate, brief and doesn't contain any information not directly supported by the text. Ensure that the summary includes all authors mentioned in the text and their contributions.
+
+Text: "Language models have proved to be a breakthrough in analyzing a person's emotional state.  We now describe briefly some of these highly influential works.  subsection(2.1 Pre-trained Language Models)  Over the past few years, pre-trained language models have progressed greatly in learning contextualized representations.  Transformer (Vaswani et al., 2017), first proposed for machine translation, has enabled faster learning of complex representations of text.  GPT (Radford et al., 2018), BERT (Devlin et al., 2018), RoBERTa (Liu et al., 2019), XLNet (Yang et al., 2019) all leverage transformer architecture along with statistical tokenizers.  ELECTRA (Clark et al., 2020) a recent generator-discriminatorbased pre-training approach offers a competitive performance despite requiring lesser compute.  Domain specific language models also leads to a significant performance gain (Vaidhya and Kaushal, 2020;Lee et al., 2019;Beltagy et al., 2019).   subsection(2.2 Emotion Recognition)  Emotion recognition through facial expressions and speech data has been the subject of extensive study in the past.  (Tarnowski et al., 2017) presents an approach for recognition of seven emotional states based on facial expressions.  (Yoon et al., 2018) utilizes a novel deep dual recurrent encoder model to obtain a better understanding of speech data using text data and audio signals simultaneously.   For text, various approaches have been proposed for emotion recognition.  Deshmukh and Kirange (2012) proposed an SVM-based approach for predicting opinions on news headlines.  Acheampong et al. (2020) paper analyses the efficacy of utilizing transformer encoders for detecting emotions.  Kant et al. (2018) demonstrates the practical efficiency of large pre-trained language models for Multi-Emotion sentiment classification.   subsection(2.3 Computation of Empathy)  Empathy and distress are core components of a person's emotional state, and there has been a growing interest in computational approaches to model them.  Considering language variations across different regions, empathy and distress can also vary with demographics (Lin et al., 2018;Loveys et al., 2018), and recently (Guda et al., 2021) proposed a demographic-aware empathy modelling framework using BERT and demographics features.   Understanding empathy and distress are crucial for analyzing mental health and providing aid.  Recently (Sharma et al., 2020) explored language models for identifying empathetic conversations in the mental health support system. "<|end|>
+<|assistant|>

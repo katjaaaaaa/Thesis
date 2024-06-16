@@ -1,0 +1,27 @@
+<|user|>
+You are a summarization model. Generate a summary of a text taken from a scientific paper by following the guidelines below:
+
+   1. Divide the summary into subsections. Use either subsections present in the text, or create subsections based on the key topics discussed in the text. Subsections must be placed in the chronological order.
+   2. Include the information (e.g., definition of a concept) that helps to understand the topic of subsection if it is provided in the text. Otherwise, ignore this step.
+   3. Per subsection, list the cited authors that contributed to the topic of the subsection in chronological order. The list must be in the bullet point form. The examples of how authors can be notated in the text are "Author et al. (2019)" or "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)".
+   4. For each author's entry, include the contribution they made, according to the text, on the topic of the subsection. These form the authors - contribution pair. There are two ways to spot a contribution:
+      - When "Author et al. (2019)" notation is met in the text, the contribution follows next. It usually ends within the same sentence if not grammatically stated otherwise.
+      - When the authors’ notation within the brackets is met (e.g. "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)"), the contribution can be found before the brackets. Do not include information after the brackets in the contribution.
+   5. Some contributions are proposed by the authors of the target text. These contributions can be recognized by the use of the forms of the word “we” in the text (e.g., “our approach”, ”our motivation”, “we aim”).
+   6. Use one bullet point to represent the authors - contribution pair.
+   7. The author - contribution notation must follow one of these structures: 
+      - If one author:
+         - Author et al., 2020: contribution
+      - If multiple authors: 
+         - Author et al., 2020, Author et al., 2023, Author et al., 2008: contribution
+      - If authors of the paper:
+         - Authors of the paper: contribution
+   8. Be precise in the body of contribution:
+      - Do not use information not directly supported by the text
+      - Do not leave out information necessary to understand the summary without reading the text (e.g., abbreviation definitions)
+      - Be brief, include only the essential information
+
+Ensure that your answer is accurate, brief and doesn't contain any information not directly supported by the text. Ensure that the summary includes all authors mentioned in the text and their contributions.
+
+Text: "Researchers have developed a vast range of datasets, tools and models for Text Classification (TC).  However, comparatively very less work has been done on the classification of code-mixed texts and the available literature focus on SA and OLI tasks for several languages pairs.  Hope Speech detection is anew challenge that has been explored rarely.  Some of recent studies on TC tasks for code-mixed texts are given below:  (Chakravarthi et al., 2020b) presents an overview of OLI shared task on code-mixed texts in Dravidian languages consisting of two subtasks A and B to classify a given text into "offensive" or "not-offensive" categories.  While Subtask A is to  classify code-mixed Ma-En YouTube comments, SubTask B is to classify Romanized Malayalam and Romanized Tamil texts from YouTube or Twitter comments.  Datasets used in this shared tasks are described in (Chakravarthi et al., 2020c) and (Chakravarthi et al., 2020a).  Two models based on different configurations of LSTM proposed by (Renjit and Idicula, 2020) for the OLI shared task obtained a weighted F1-score of 0.53 for Romanized Malayalam text in Subtask B.  A Universal LM has been trained for Ma-En code-mixed texts from Wikipedia articles in native script combined with  translated and transliterated versions by (Arora, 2020).  The authors transferred the obtained LM to TC model from fastai library to classify code-mixed texts in Ma-En and obtained 0.91, 0.74 weighted F1-score for Subtask A and Romanized Malayalam text of Subtask B respectively.   "Sentiment Analysis of Dravidian Languages in Code-Mixed Text" which focuses on SA of code-mixed texts in Ta-En and Ma-En language pairs (Chakravarthi et al., 2020d) is another shared task on Dravidian languages.  Datasets described in (Chakravarthi et al., 2020c) and (Chakravarthi et al., 2020a) are used in this shared task and they include five categories, namely, "Positive", "Negative", "Unknown state", "Mixed-Feelings", and "Other languages" for each language pairs.  The  overall results of this shared task reported in leaderboard illustrates that XLM-Roberta model proposed by (Sun and Zhou, 2020) with a weighted F1-score of 0.65 and 0.74 for Ta-En and Ma-En language pairs respectively obtained first rank for both subtasks.  The proposed XLM-Roberta model uses extracted output of Convolution Neural Networks (CNN) which enables it to utilize the semantic information from texts.  Another XLM-Roberta model proposed by (Ou and Li, 2020) ensembles pre-trained multi-language models and K-folding method to classify code-mixed texts.  The proposed model with 0.63 and 0.74 weighted F1-score obtained third and first ranks on Ta-En and Ma-En language pairs respectively. "<|end|>
+<|assistant|>

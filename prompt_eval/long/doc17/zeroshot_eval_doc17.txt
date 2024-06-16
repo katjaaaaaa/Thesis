@@ -1,0 +1,27 @@
+<|user|>
+You are a summarization model. Generate a summary of a text taken from a scientific paper by following the guidelines below:
+
+   1. Divide the summary into subsections. Use either subsections present in the text, or create subsections based on the key topics discussed in the text. Subsections must be placed in the chronological order.
+   2. Include the information (e.g., definition of a concept) that helps to understand the topic of subsection if it is provided in the text. Otherwise, ignore this step.
+   3. Per subsection, list the cited authors that contributed to the topic of the subsection in chronological order. The list must be in the bullet point form. The examples of how authors can be notated in the text are "Author et al. (2019)" or "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)".
+   4. For each author's entry, include the contribution they made, according to the text, on the topic of the subsection. These form the authors - contribution pair. There are two ways to spot a contribution:
+      - When "Author et al. (2019)" notation is met in the text, the contribution follows next. It usually ends within the same sentence if not grammatically stated otherwise.
+      - When the authors’ notation within the brackets is met (e.g. "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)"), the contribution can be found before the brackets. Do not include information after the brackets in the contribution.
+   5. Some contributions are proposed by the authors of the target text. These contributions can be recognized by the use of the forms of the word “we” in the text (e.g., “our approach”, ”our motivation”, “we aim”).
+   6. Use one bullet point to represent the authors - contribution pair.
+   7. The author - contribution notation must follow one of these structures: 
+      - If one author:
+         - Author et al., 2020: contribution
+      - If multiple authors: 
+         - Author et al., 2020, Author et al., 2023, Author et al., 2008: contribution
+      - If authors of the paper:
+         - Authors of the paper: contribution
+   8. Be precise in the body of contribution:
+      - Do not use information not directly supported by the text
+      - Do not leave out information necessary to understand the summary without reading the text (e.g., abbreviation definitions)
+      - Be brief, include only the essential information
+
+Ensure that your answer is accurate, brief and doesn't contain any information not directly supported by the text. Ensure that the summary includes all authors mentioned in the text and their contributions.
+
+Text: "Lifelong Learning without Catastrophic Forgetting Recent lifelong learning research mainly focuses on overcoming the catastrophic forgetting phenomenon (French, 1999;McCloskey and Cohen, 1989;McClell and et al., 1995;Ratcliff, 1990), i.e., knowledge of previous tasks is abruptly forgotten when learning on anew task.   Existing research mainly follow two directions: the first one is memory-based approach (LopezPaz and Ranzato, 2017;Anonymous, 2019), which saves some previous samples and optimizes anew task with a forgetting cost defined on the saved samples.  These methods have shown strength in alleviating catastrophic forgetting, but the computational cost grows rapidly with the number of previous tasks.  The second direction is to consolidate parameters that are important to previous tasks (Kirkpatrick et al., 2016;Liu et al., 2018;Ritter et al., 2018;Zenke et al., 2017).  For example, Elastic Weight Consolidation (EWC) (Kirkpatrick et al., 2016) slows down learning on weights that are important to previous tasks.  These methods usually do not need to save any previous data and only train on each task once.  But their abilities to overcome catastrophic forgetting are limited.   Lifelong Learning with Dynamic Model Architecture There is another related direction on dynamically changing the model structure (i.e., adding new modules) in order to learn the new task without interfering learned knowledge for previous tasks, such as (Xiao et al., 2014;Rusu et al., 2016;Fernando et al., 2017).  These approaches could successfully prevent forgetting.  However, they do not suit many lifelong settings in NLP.  First, it cannot benefit from the positive transfer between tasks.  Second, the size of the model grows dramatically with the number of observed tasks, which makes it infeasible for real-world problems where there area lot of tasks.  Remark It is worth noting that the term lifelong learning is also widely used in (Chen et al., 2015;Chen, 2015;Shu et al., 2016, 2017), which mainly focus on how to represent, reserve and extract knowledge of previous tasks.  These works belong to a research direction different from lifelong learning without catastrophic forgetting. "<|end|>
+<|assistant|>

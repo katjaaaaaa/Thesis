@@ -1,0 +1,214 @@
+<|user|>
+You are a summarization model. Generate a summary of a text taken from a scientific paper by following the guidelines below:
+
+   1. Divide the summary into subsections. Use either subsections present in the text, or create subsections based on the key topics discussed in the text. Subsections must be placed in the chronological order.
+   2. Include the information (e.g., definition of a concept) that helps to understand the topic of subsection if it is provided in the text. Otherwise, ignore this step.
+   3. Per subsection, list the cited authors that contributed to the topic of the subsection in chronological order. The list must be in the bullet point form. The examples of how authors can be notated in the text are "Author et al. (2019)" or "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)".
+   4. For each author's entry, include the contribution they made, according to the text, on the topic of the subsection. These form the authors - contribution pair. There are two ways to spot a contribution:
+      - When "Author et al. (2019)" notation is met in the text, the contribution follows next. It usually ends within the same sentence if not grammatically stated otherwise.
+      - When the authors’ notation within the brackets is met (e.g. "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)"), the contribution can be found before the brackets. Do not include information after the brackets in the contribution.
+   5. Some contributions are proposed by the authors of the target text. These contributions can be recognized by the use of the forms of the word “we” in the text (e.g., “our approach”, ”our motivation”, “we aim”).
+   6. Use one bullet point to represent the authors - contribution pair.
+   7. The author - contribution notation must follow one of these structures: 
+      - If one author:
+         - Author et al., 2020: contribution
+      - If multiple authors: 
+         - Author et al., 2020, Author et al., 2023, Author et al., 2008: contribution
+      - If authors of the paper:
+         - Authors of the paper: contribution
+   8. Be precise in the body of contribution:
+      - Do not use information not directly supported by the text
+      - Do not leave out information necessary to understand the summary without reading the text (e.g., abbreviation definitions)
+      - Be brief, include only the essential information
+
+Ensure that your answer is accurate, brief and doesn't contain any information not directly supported by the text. Ensure that the summary includes all authors mentioned in the text and their contributions.
+
+Text: "Eye-tracking for NLP.  Eye-tracking data have proved to be associated with language comprehension activity in human brains by numerous research in neuroscience (Rayner, 1998;Henderson and Ferreira, 1993).  In cognitively motivated NLP, several studies have investigated the impact of eye-tracking data on NLP tasks.  In early works, these signals have been used in machine learning approaches to NLP tasks, such as part-of-speech tagging (Barrett et al., 2016), multiword expression extraction (Rohanian et al., 2017), syntactic category prediction (Barrett and Sgaard, 2015).  In neural models, eyetracking data are combined with word embeddings to improve various NLP tasks, such as sentiment analysis (Mishra et al., 2017) and NER (Hollenstein and Zhang, 2019).  Eye-tracking data have also been used to enhance or constrain neural attention in (Barrett et al., 2018;Sood et al., 2020b,a; Takmaz et al., 2020).   EEG for NLP.  Electroencephalography (EEG) measures potentials fluctuations caused by the activity of neurons in cerebral cortex.  The exploration of EEG data in NLP tasks is relatively limited.  Chen et al. (2012) improve the performance of automatic speech recognition (ASR) by using EEG signals to classify the speaker's mental state.  Hollenstein et al. (2019a) incorporate EEG signals into NLP tasks, including NER, relation extraction and sentiment analysis.  Additionally, Muttenthaler et al. (2020) leverage EEG features to regularize attention on relation extraction.   Adversarial Learning.  The concept of adversarial training originates from the Generative Adversarial Nets (GAN) (Goodfellow et al., 2014) in computer vision.  Since then, it has been also applied in NLP (Denton et al., 2015;Ganin et al., 2016).  Recently, a great variety of studies attempt to introduce adversarial training into multi-task learning in NLP tasks, such as Chinese NER (Cao et al., 2018), crowdsourcing learning (Yang et al., 2018), cross-lingual transfer learning (Chen et al., 2018;Kim et al., 2017), just name a few.  Different from these studies, we use adversarial learning to deeply align cognitive modality to textual modality at the sentence level. "<|end|>
+<|assistant|>
+## Scientific Paper Summary: Utilizing Cognitive Information in NLP Tasks
+
+This paper explores how incorporating cognitive information, specifically through eye-tracking and EEG data, can improve various NLP tasks.
+
+**Key Concepts**
+
+1. **Eye-tracking for NLP**
+	* **Contribution**: Eye-tracking data can be used to enhance NLP tasks through machine learning and neural network approaches.
+    	* Examples:
+        	* Part-of-speech tagging (Barrett et al., 2016)
+        	* Multiword expression extraction (Rohanian et al., 2017)
+        	* Syntactic category prediction (Barrett and Sgaard, 2015)
+        	* Sentiment analysis (Mishra et al., 2017)
+        	* Named Entity Recognition (NER) (Hollenstein and Zhang, 2019)
+	* **Contribution**: Eye-tracking data can improve neural attention mechanisms in NLP models (Barrett et al., 2018; Sood et al., 2020b, 2020a; Takmaz et al., 2020).
+
+2. **EEG for NLP**
+	* **Contribution**: EEG data holds promise for improving NLP tasks, though research is limited.
+    	* Examples:
+        	* Automatic speech recognition (ASR) (Chen et al., 2012)
+        	* NER, relation extraction, sentiment analysis (Hollenstein et al., 2019a)
+        	* Regularizing attention on relation extraction (Muttenthaler et al., 2020)
+
+3. **Adversarial Learning for NLP**
+	* **Background**: Adversarial training has been successfully applied in NLP tasks (Denton et al., 2015; Ganin et al., 2016).
+	* **This paper**: Proposes a novel application of adversarial learning to align cognitive and textual modalities at the sentence level (not mentioned in cited works).<|end|>
+<|user|>
+I rated this summary based on the following criteria:
+1. Quality of the summary's structure: The summary follows the paper's structure and contains necessary subsections if they were introduced in the paper. In other terms, if the text adds a concept and then provides the cited papers related to the concept, the model must structure the summary to highlight the relation between them.
+2. Quality of the summarization: The summary has no hallucinations, and all the information can be found in the source text.
+3. Quality of the sources' citations: Each cited paper mentioned in the target paper is introduced in the summary and contains a brief but clear description of what this source's contribution is.
+
+Based on these criteria I ranked the summary as follows:
+Quality structure: 1/5
+Quality translation: 4/5
+Quality citations: 2/5
+
+You are a summarization model. Generate a summary of a text taken from a scientific paper by following the guidelines below:
+
+   1. Divide the summary into subsections. Use either subsections present in the text, or create subsections based on the key topics discussed in the text. Subsections must be placed in the chronological order.
+   2. Include the information (e.g., definition of a concept) that helps to understand the topic of subsection if it is provided in the text. Otherwise, ignore this step.
+   3. Per subsection, list the cited authors that contributed to the topic of the subsection in chronological order. The list must be in the bullet point form. The examples of how authors can be notated in the text are "Author et al. (2019)" or "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)".
+   4. For each author's entry, include the contribution they made, according to the text, on the topic of the subsection. These form the authors - contribution pair. There are two ways to spot a contribution:
+      - When "Author et al. (2019)" notation is met in the text, the contribution follows next. It usually ends within the same sentence if not grammatically stated otherwise.
+      - When the authors’ notation within the brackets is met (e.g. "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)"), the contribution can be found before the brackets. Do not include information after the brackets in the contribution.
+   5. Some contributions are proposed by the authors of the target text. These contributions can be recognized by the use of the forms of the word “we” in the text (e.g., “our approach”, ”our motivation”, “we aim”).
+   6. Use one bullet point to represent the authors - contribution pair.
+   7. The author - contribution notation must follow one of these structures: 
+      - If one author:
+         - Author et al., 2020: contribution
+      - If multiple authors: 
+         - Author et al., 2020, Author et al., 2023, Author et al., 2008: contribution
+      - If authors of the paper:
+         - Authors of the paper: contribution
+   8. Be precise in the body of contribution:
+      - Do not use information not directly supported by the text
+      - Do not leave out information necessary to understand the summary without reading the text (e.g., abbreviation definitions)
+      - Be brief, include only the essential information
+
+Ensure that your answer is accurate, brief and doesn't contain any information not directly supported by the text. Ensure that the summary includes all authors mentioned in the text and their contributions.
+
+Text: "Eye-tracking for NLP.  Eye-tracking data have proved to be associated with language comprehension activity in human brains by numerous research in neuroscience (Rayner, 1998;Henderson and Ferreira, 1993).  In cognitively motivated NLP, several studies have investigated the impact of eye-tracking data on NLP tasks.  In early works, these signals have been used in machine learning approaches to NLP tasks, such as part-of-speech tagging (Barrett et al., 2016), multiword expression extraction (Rohanian et al., 2017), syntactic category prediction (Barrett and Sgaard, 2015).  In neural models, eyetracking data are combined with word embeddings to improve various NLP tasks, such as sentiment analysis (Mishra et al., 2017) and NER (Hollenstein and Zhang, 2019).  Eye-tracking data have also been used to enhance or constrain neural attention in (Barrett et al., 2018;Sood et al., 2020b,a; Takmaz et al., 2020).   EEG for NLP.  Electroencephalography (EEG) measures potentials fluctuations caused by the activity of neurons in cerebral cortex.  The exploration of EEG data in NLP tasks is relatively limited.  Chen et al. (2012) improve the performance of automatic speech recognition (ASR) by using EEG signals to classify the speaker's mental state.  Hollenstein et al. (2019a) incorporate EEG signals into NLP tasks, including NER, relation extraction and sentiment analysis.  Additionally, Muttenthaler et al. (2020) leverage EEG features to regularize attention on relation extraction.   Adversarial Learning.  The concept of adversarial training originates from the Generative Adversarial Nets (GAN) (Goodfellow et al., 2014) in computer vision.  Since then, it has been also applied in NLP (Denton et al., 2015;Ganin et al., 2016).  Recently, a great variety of studies attempt to introduce adversarial training into multi-task learning in NLP tasks, such as Chinese NER (Cao et al., 2018), crowdsourcing learning (Yang et al., 2018), cross-lingual transfer learning (Chen et al., 2018;Kim et al., 2017), just name a few.  Different from these studies, we use adversarial learning to deeply align cognitive modality to textual modality at the sentence level. "<|end|>
+<|assistant|>
+
+1. **Eye-tracking for NLP:**
+   - Rayner (1998), Henderson and Ferreira (1993): Associated eye-tracking data with language comprehension activity.
+   - Barrett et al. (2016): Used eye-tracking data in machine learning approaches for part-of-speech tagging.
+   - Rohanian et al. (2017): Applied eye-tracking data in multiword expression extraction.
+   - Barrett and Sgaard (2015): Utilized eye-tracking data for syntactic category prediction.
+   - Mishra et al. (2017): Combined eye-tracking data with word embeddings to enhance sentiment analysis.
+   - Hollenstein and Zhang (2019): Incorporated eye-tracking data into named entity recognition (NER).
+   - Barrett et al. (2018), Sood et al. (2020), Takmaz et al. (2020): Employed eye-tracking data to enhance or constrain neural attention.
+
+2. **EEG for NLP:**
+   - Chen et al. (2012): Improved automatic speech recognition (ASR) using EEG signals to classify the speaker's mental state.
+   - Hollenstein et al. (2019a): Integrated EEG signals into various NLP tasks including NER, relation extraction, and sentiment analysis.
+   - Muttenthaler et al. (2020): Leveraged EEG features to regulate attention in relation extraction.
+
+3. **Adversarial Learning in NLP:**
+   - Goodfellow et al. (2014): Originated the concept of adversarial training in Generative Adversarial Nets (GAN) in computer vision.
+   - Denton et al. (2015), Ganin et al. (2016): Applied adversarial training in NLP tasks.
+   - Cao et al. (2018): Introduced adversarial training in multi-task learning for Chinese NER.
+   - Yang et al. (2018): Applied adversarial training in crowdsourcing learning.
+   - Chen et al. (2018), Kim et al. (2017): Employed adversarial training in cross-lingual transfer learning.
+   - Authors of the paper: Proposed the use of adversarial learning to align cognitive modality with textual modality at the sentence level.<|end|>
+<|user|>
+I rated this summary based on the following criteria:
+1. Quality of the summary's structure: The summary follows the paper's structure and contains necessary subsections if they were introduced in the paper. In other terms, if the text adds a concept and then provides the cited papers related to the concept, the model must structure the summary to highlight the relation between them.
+2. Quality of the summarization: The summary has no hallucinations, and all the information can be found in the source text.
+3. Quality of the sources' citations: Each cited paper mentioned in the target paper is introduced in the summary and contains a brief but clear description of what this source's contribution is.
+
+Based on these criteria I ranked the summary as follows:
+Quality structure: 5/5
+Quality summarization: 4/5
+Quality sources: 5/5
+
+You are a summarization model. Generate a summary of a text taken from a scientific paper by following the guidelines below:
+
+   1. Divide the summary into subsections. Use either subsections present in the text, or create subsections based on the key topics discussed in the text. Subsections must be placed in the chronological order.
+   2. Include the information (e.g., definition of a concept) that helps to understand the topic of subsection if it is provided in the text. Otherwise, ignore this step.
+   3. Per subsection, list the cited authors that contributed to the topic of the subsection in chronological order. The list must be in the bullet point form. The examples of how authors can be notated in the text are "Author et al. (2019)" or "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)".
+   4. For each author's entry, include the contribution they made, according to the text, on the topic of the subsection. These form the authors - contribution pair. There are two ways to spot a contribution:
+      - When "Author et al. (2019)" notation is met in the text, the contribution follows next. It usually ends within the same sentence if not grammatically stated otherwise.
+      - When the authors’ notation within the brackets is met (e.g. "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)"), the contribution can be found before the brackets. Do not include information after the brackets in the contribution.
+   5. Some contributions are proposed by the authors of the target text. These contributions can be recognized by the use of the forms of the word “we” in the text (e.g., “our approach”, ”our motivation”, “we aim”).
+   6. Use one bullet point to represent the authors - contribution pair.
+   7. The author - contribution notation must follow one of these structures: 
+      - If one author:
+         - Author et al., 2020: contribution
+      - If multiple authors: 
+         - Author et al., 2020, Author et al., 2023, Author et al., 2008: contribution
+      - If authors of the paper:
+         - Authors of the paper: contribution
+   8. Be precise in the body of contribution:
+      - Do not use information not directly supported by the text
+      - Do not leave out information necessary to understand the summary without reading the text (e.g., abbreviation definitions)
+      - Be brief, include only the essential information
+
+Ensure that your answer is accurate, brief and doesn't contain any information not directly supported by the text. Ensure that the summary includes all authors mentioned in the text and their contributions.
+
+Text: "Eye-tracking for NLP.  Eye-tracking data have proved to be associated with language comprehension activity in human brains by numerous research in neuroscience (Rayner, 1998;Henderson and Ferreira, 1993).  In cognitively motivated NLP, several studies have investigated the impact of eye-tracking data on NLP tasks.  In early works, these signals have been used in machine learning approaches to NLP tasks, such as part-of-speech tagging (Barrett et al., 2016), multiword expression extraction (Rohanian et al., 2017), syntactic category prediction (Barrett and Sgaard, 2015).  In neural models, eyetracking data are combined with word embeddings to improve various NLP tasks, such as sentiment analysis (Mishra et al., 2017) and NER (Hollenstein and Zhang, 2019).  Eye-tracking data have also been used to enhance or constrain neural attention in (Barrett et al., 2018;Sood et al., 2020b,a; Takmaz et al., 2020).   EEG for NLP.  Electroencephalography (EEG) measures potentials fluctuations caused by the activity of neurons in cerebral cortex.  The exploration of EEG data in NLP tasks is relatively limited.  Chen et al. (2012) improve the performance of automatic speech recognition (ASR) by using EEG signals to classify the speaker's mental state.  Hollenstein et al. (2019a) incorporate EEG signals into NLP tasks, including NER, relation extraction and sentiment analysis.  Additionally, Muttenthaler et al. (2020) leverage EEG features to regularize attention on relation extraction.   Adversarial Learning.  The concept of adversarial training originates from the Generative Adversarial Nets (GAN) (Goodfellow et al., 2014) in computer vision.  Since then, it has been also applied in NLP (Denton et al., 2015;Ganin et al., 2016).  Recently, a great variety of studies attempt to introduce adversarial training into multi-task learning in NLP tasks, such as Chinese NER (Cao et al., 2018), crowdsourcing learning (Yang et al., 2018), cross-lingual transfer learning (Chen et al., 2018;Kim et al., 2017), just name a few.  Different from these studies, we use adversarial learning to deeply align cognitive modality to textual modality at the sentence level. "<|end|>
+<|assistant|>
+1. **Eye-Tracking for NLP**:
+   - **Rayner (1998)** and **Henderson and Ferreira (1993)** associated eye-tracking data with language comprehension activity in human brains.
+   - In early works, eye-tracking signals were used in machine learning approaches for NLP tasks:
+ 	    - **Barrett et al. (2016)** applied eye-tracking data to part-of-speech tagging.
+ 	    - **Rohanian et al. (2017)** used eye-tracking data for multiword expression extraction.
+ 	    - **Barrett and Sgaard (2015)** explored eye-tracking data in syntactic category prediction.
+   - Neural models combined eye-tracking data with word embeddings to improve NLP tasks:
+ 	    - **Mishra et al. (2017)** used eye-tracking data for sentiment analysis.
+ 	    - **Hollenstein and Zhang (2019)** incorporated eye-tracking data into named entity recognition (NER).
+   - Eye-tracking data also influenced neural attention:
+ 	    - **Barrett et al. (2018)** and **Sood et al. (2020b,a)** explored enhancing or constraining neural attention using eye-tracking data.
+ 	    - **Takmaz et al. (2020)** investigated similar approaches.
+
+2. **EEG for NLP**:
+   - Electroencephalography (EEG) measures neuronal activity in the cerebral cortex.
+   - Limited exploration of EEG data in NLP tasks:
+ 	    - **Chen et al. (2012)** improved automatic speech recognition (ASR) by classifying speaker mental states using EEG signals.
+ 	    - **Hollenstein et al. (2019a)** incorporated EEG signals into NLP tasks, including NER, relation extraction, and sentiment analysis.
+ 	    - **Muttenthaler et al. (2020)** used EEG features to regularize attention in relation extraction.
+
+3. **Adversarial Learning in NLP**:
+   - Adversarial training, originating from Generative Adversarial Nets (GANs) in computer vision, has been applied in NLP:
+        - **Denton et al. (2015)** and **Ganin et al. (2016)** explored adversarial training.
+    - Recent studies introduced adversarial training into multi-task NLP learning:
+        - **Cao et al. (2018)** applied adversarial training to Chinese named entity recognition (NER).
+        - **Yang et al. (2018)** used adversarial training for crowdsourcing learning.
+        - **Chen et al. (2018)** and **Kim et al. (2017)** explored cross-lingual transfer learning using adversarial techniques.
+        - The current study focuses on using adversarial learning to align cognitive modality with textual modality at the sentence level.<|end|>
+<|user|>
+I rated this summary based on the following criteria:
+1. Quality of the summary's structure: The summary follows the paper's structure and contains necessary subsections if they were introduced in the paper. In other terms, if the text adds a concept and then provides the cited papers related to the concept, the model must structure the summary to highlight the relation between them.
+2. Quality of the summarization: The summary has no hallucinations, and all the information can be found in the source text.
+3. Quality of the sources' citations: Each cited paper mentioned in the target paper is introduced in the summary and contains a brief but clear description of what this source's contribution is.
+
+Based on these criteria I ranked the summary as follows:
+Quality structure: 5/5
+Quality summarization: 5/5
+Quality sources: 5/5
+
+You are a summarization model. Generate a summary of a text taken from a scientific paper by following the guidelines below:
+
+   1. Divide the summary into subsections. Use either subsections present in the text, or create subsections based on the key topics discussed in the text. Subsections must be placed in the chronological order.
+   2. Include the information (e.g., definition of a concept) that helps to understand the topic of subsection if it is provided in the text. Otherwise, ignore this step.
+   3. Per subsection, list the cited authors that contributed to the topic of the subsection in chronological order. The list must be in the bullet point form. The examples of how authors can be notated in the text are "Author et al. (2019)" or "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)".
+   4. For each author's entry, include the contribution they made, according to the text, on the topic of the subsection. These form the authors - contribution pair. There are two ways to spot a contribution:
+      - When "Author et al. (2019)" notation is met in the text, the contribution follows next. It usually ends within the same sentence if not grammatically stated otherwise.
+      - When the authors’ notation within the brackets is met (e.g. "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)"), the contribution can be found before the brackets. Do not include information after the brackets in the contribution.
+   5. Some contributions are proposed by the authors of the target text. These contributions can be recognized by the use of the forms of the word “we” in the text (e.g., “our approach”, ”our motivation”, “we aim”).
+   6. Use one bullet point to represent the authors - contribution pair.
+   7. The author - contribution notation must follow one of these structures: 
+      - If one author:
+         - Author et al., 2020: contribution
+      - If multiple authors: 
+         - Author et al., 2020, Author et al., 2023, Author et al., 2008: contribution
+      - If authors of the paper:
+         - Authors of the paper: contribution
+   8. Be precise in the body of contribution:
+      - Do not use information not directly supported by the text
+      - Do not leave out information necessary to understand the summary without reading the text (e.g., abbreviation definitions)
+      - Be brief, include only the essential information
+
+Ensure that your answer is accurate, brief and doesn't contain any information not directly supported by the text. Ensure that the summary includes all authors mentioned in the text and their contributions.
+
+Text: "NER has drawn the attention of NLP researchers because several downstream tasks such as entity linking (Gupta et al., 2017), relation extraction (Mintz et al., 2009;Liu et al., 2017), co-reference resolution (Chang et al., 2013) and conversation system (Ren et al., 2019) rely on it.  Several methods have been proposed on flat named entity recognition (Lample et al., 2016;Ma and Hovy, 2016;Strubell et al., 2017) while few of them address nested entities.  Early work on nested entities rely on hand-craft features or rule-based postprocessing (Zhang et al., 2004;Zhou et al., 2004;Zhou, 2006).  They detect the innermost flat entities with a Hidden Markov Model and then use rule-based post-processing to extract the outer entities.   While most work concerns about named entities, Lu and Roth (2015) present a novel hypergraph-based method to tackle the problem of entity mention detection.  One issue of their method is the spurious structure of hyper-graphs.  Muis and Lu (2017) improve the method of Lu and Roth (2015) by incorporating mention separators along with features.   Recent studies reveal that stacking sequence model like conditional random filed(CRF) layer can extract entities from inner to outer.  Alex et al. (2007) propose several CRF-based methods for the GENIA dataset.  However, their approach can not recognize nested entities of the same type.  Finkel and Manning (2009) present a chart-based parsing method where each named entity is a constituent in the parsing tree.  However, their method is not scalable to larger corpus with a cubic time complexity.  Ju et al. (2018) dynamically stack flat NER layers to extract nested entities, each flat layer is based on a Bi-LSTM layer and then a cascaded CRF layer.  Their model suffers error propagation from layer to layer, an inner entity can not be detected when a outer entity is identified first.   It is difficult for sequence model, like CRF, to extract nested entities where a token can be included in several entities.  Wang et al. (2018) present a transition-based model for nested mention detection using a forest representation.  One drawback of their model is the greedy training and decoding.  Sohrab and Miwa (2018) consider all possible regions in a sentence and classify them into their entity type or non-entity.  However, their exhaustive method considers too many irrelevant regions(non-entity regions) into detecting entity types and the regions are classified individually, without considering the contextual information.  Our model focuses on the boundary-relevant regions which is much fewer and the explicit leveraging of boundary information helps to locate entities more precisely."<|end|>
+<|assistant|>

@@ -1,0 +1,27 @@
+<|user|>
+You are a summarization model. Generate a summary of a text taken from a scientific paper by following the guidelines below:
+
+   1. Divide the summary into subsections. Use either subsections present in the text, or create subsections based on the key topics discussed in the text. Subsections must be placed in the chronological order.
+   2. Include the information (e.g., definition of a concept) that helps to understand the topic of subsection if it is provided in the text. Otherwise, ignore this step.
+   3. Per subsection, list the cited authors that contributed to the topic of the subsection in chronological order. The list must be in the bullet point form. The examples of how authors can be notated in the text are "Author et al. (2019)" or "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)".
+   4. For each author's entry, include the contribution they made, according to the text, on the topic of the subsection. These form the authors - contribution pair. There are two ways to spot a contribution:
+      - When "Author et al. (2019)" notation is met in the text, the contribution follows next. It usually ends within the same sentence if not grammatically stated otherwise.
+      - When the authors’ notation within the brackets is met (e.g. "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)"), the contribution can be found before the brackets. Do not include information after the brackets in the contribution.
+   5. Some contributions are proposed by the authors of the target text. These contributions can be recognized by the use of the forms of the word “we” in the text (e.g., “our approach”, ”our motivation”, “we aim”).
+   6. Use one bullet point to represent the authors - contribution pair.
+   7. The author - contribution notation must follow one of these structures: 
+      - If one author:
+         - Author et al., 2020: contribution
+      - If multiple authors: 
+         - Author et al., 2020, Author et al., 2023, Author et al., 2008: contribution
+      - If authors of the paper:
+         - Authors of the paper: contribution
+   8. Be precise in the body of contribution:
+      - Do not use information not directly supported by the text
+      - Do not leave out information necessary to understand the summary without reading the text (e.g., abbreviation definitions)
+      - Be brief, include only the essential information
+
+Ensure that your answer is accurate, brief and doesn't contain any information not directly supported by the text. Ensure that the summary includes all authors mentioned in the text and their contributions.
+
+Text: "Topic labelling methods usually involve two main steps: (1) the generation of candidate labels (e.g.  text or images) for a given topic; and (2) the ranking of candidate labels by relevance to the topic.  Textual labels have been sourced from in a number of different ways, including noun chunks from a reference corpus (Mei et al., 2007), Wikipedia ar ticle titles (Lau et al., 2011;Aletras and Stevenson, 2014;Bhatia et al., 2016), or short text summaries (Cano Basave et al., 2014;Wan and Wang, 2016).  Images are often selected from Wikipedia or the web based on querying with topic words (Aletras and Stevenson, 2013;Aletras and Mittal, 2017).  Recent work on topic labelling has shown that text or image embeddings can improve candidate label generation and ranking (Bhatia et al., 2016;Aletras and Mittal, 2017).   Bhatia et al. (2016) use word2vec (Mikolov et al., 2013) and doc2vec (Le and Mikolov, 2014) to represent topics and candidate textual labels in the same latent semantic space.  The most relevant textual labels for a topic are selected from Wikipedia article titles using the cosine similarity between the topic and article title embeddings.  Finally, top labels are re-ranked in a supervised fashion using various features such as the PageRank score of the article in Wikipedia (Brin and Page, 1998), trigram letter ranking (Kou et al., 2015), topic word overlap, and word length of the label.   Aletras and Mittal (2017) use pre-computed dependency-based word embeddings (Levy and Goldberg, 2014) to represent the topics and the caption of the images, as well as image embeddings using the output layer of VGG-net (Simonyan and Zisserman, 2014) pretrained on ImageNet (Deng et al., 2009).  A concatenation of these three vectors is the input to a simple deep neural network with four hidden layers and a sigmoid output layer to predict the relevance score.   Textual or visual modalities for labelling topics have been studied extensively, although independently from one another.  Our work differs from the single-modality methods described above in that it uses a joint model to predict the continuousvalued rating for both textual and image labels.  This is, to the best of our knowledge, the first attempt at joint multimodal topic labelling. "<|end|>
+<|assistant|>

@@ -1,0 +1,64 @@
+<|user|>
+You are a summarization model. Generate a summary of a text taken from a scientific paper. Divide the summary into key concepts and/or subsections. Divide the summary into subsections. Use either subsections present in the text, or create subsections based on the key topics discussed in the text. Subsections must be placed in the chronological order. Per subsection, list the cited authors that contributed to the topic of the subsection in chronological order. The list must be in the bullet point form. The examples of how authors can be notated in the text are "Author et al. (2019)" or "(Author et al., 2017)". If no authors are introduced, assign the contribution to the authors of the paper the text was taken from. The structure of each contribution must be as following:
+- Author at al. (2020): contribution
+To notate the authors of the paper the text was taken from, use the following structure:
+- Authors of the paper: contribution
+Ensure that your answer is accurate and doesn't contain any information not directly supported by the text.
+
+Text: "Eye-tracking for NLP.  Eye-tracking data have proved to be associated with language comprehension activity in human brains by numerous research in neuroscience (Rayner, 1998;Henderson and Ferreira, 1993).  In cognitively motivated NLP, several studies have investigated the impact of eye-tracking data on NLP tasks.  In early works, these signals have been used in machine learning approaches to NLP tasks, such as part-of-speech tagging (Barrett et al., 2016), multiword expression extraction (Rohanian et al., 2017), syntactic category prediction (Barrett and Sgaard, 2015).  In neural models, eyetracking data are combined with word embeddings to improve various NLP tasks, such as sentiment analysis (Mishra et al., 2017) and NER (Hollenstein and Zhang, 2019).  Eye-tracking data have also been used to enhance or constrain neural attention in (Barrett et al., 2018;Sood et al., 2020b,a; Takmaz et al., 2020).   EEG for NLP.  Electroencephalography (EEG) measures potentials fluctuations caused by the activity of neurons in cerebral cortex.  The exploration of EEG data in NLP tasks is relatively limited.  Chen et al. (2012) improve the performance of automatic speech recognition (ASR) by using EEG signals to classify the speaker's mental state.  Hollenstein et al. (2019a) incorporate EEG signals into NLP tasks, including NER, relation extraction and sentiment analysis.  Additionally, Muttenthaler et al. (2020) leverage EEG features to regularize attention on relation extraction.   Adversarial Learning.  The concept of adversarial training originates from the Generative Adversarial Nets (GAN) (Goodfellow et al., 2014) in computer vision.  Since then, it has been also applied in NLP (Denton et al., 2015;Ganin et al., 2016).  Recently, a great variety of studies attempt to introduce adversarial training into multi-task learning in NLP tasks, such as Chinese NER (Cao et al., 2018), crowdsourcing learning (Yang et al., 2018), cross-lingual transfer learning (Chen et al., 2018;Kim et al., 2017), just name a few.  Different from these studies, we use adversarial learning to deeply align cognitive modality to textual modality at the sentence level. "<|end|>
+<|assistant|>
+1. **Eye-Tracking for NLP**:
+   - **Rayner (1998)** and **Henderson and Ferreira (1993)** associated eye-tracking data with language comprehension activity in human brains.
+   - In early works, eye-tracking signals were used in machine learning approaches for NLP tasks:
+ 	    - **Barrett et al. (2016)** applied eye-tracking data to part-of-speech tagging.
+ 	    - **Rohanian et al. (2017)** used eye-tracking data for multiword expression extraction.
+ 	    - **Barrett and Sgaard (2015)** explored eye-tracking data in syntactic category prediction.
+   - Neural models combined eye-tracking data with word embeddings to improve NLP tasks:
+ 	    - **Mishra et al. (2017)** used eye-tracking data for sentiment analysis.
+ 	    - **Hollenstein and Zhang (2019)** incorporated eye-tracking data into named entity recognition (NER).
+   - Eye-tracking data also influenced neural attention:
+ 	    - **Barrett et al. (2018)** and **Sood et al. (2020b,a)** explored enhancing or constraining neural attention using eye-tracking data.
+ 	    - **Takmaz et al. (2020)** investigated similar approaches.
+
+2. **EEG for NLP**:
+   - Electroencephalography (EEG) measures neuronal activity in the cerebral cortex.
+   - Limited exploration of EEG data in NLP tasks:
+ 	    - **Chen et al. (2012)** improved automatic speech recognition (ASR) by classifying speaker mental states using EEG signals.
+ 	    - **Hollenstein et al. (2019a)** incorporated EEG signals into NLP tasks, including NER, relation extraction, and sentiment analysis.
+ 	    - **Muttenthaler et al. (2020)** used EEG features to regularize attention in relation extraction.
+
+3. **Adversarial Learning in NLP**:
+   - Adversarial training, originating from Generative Adversarial Nets (GANs) in computer vision, has been applied in NLP:
+        - **Denton et al. (2015)** and **Ganin et al. (2016)** explored adversarial training.
+    - Recent studies introduced adversarial training into multi-task NLP learning:
+        - **Cao et al. (2018)** applied adversarial training to Chinese named entity recognition (NER).
+        - **Yang et al. (2018)** used adversarial training for crowdsourcing learning.
+        - **Chen et al. (2018)** and **Kim et al. (2017)** explored cross-lingual transfer learning using adversarial techniques.
+        - The current study focuses on using adversarial learning to align cognitive modality with textual modality at the sentence level.<|end|>
+<|user|>
+You are a summarization model. Generate a summary of a text taken from a scientific paper by following the guidelines below:
+
+   1. Divide the summary into subsections. Use either subsections present in the text, or create subsections based on the key topics discussed in the text. Subsections must be placed in the chronological order.
+   2. Include the information (e.g., definition of a concept) that helps to understand the topic of subsection if it is provided in the text. Otherwise, ignore this step.
+   3. Per subsection, list the cited authors that contributed to the topic of the subsection in chronological order. The list must be in the bullet point form. The examples of how authors can be notated in the text are "Author et al. (2019)" or "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)".
+   4. For each author's entry, include the contribution they made, according to the text, on the topic of the subsection. These form the authors - contribution pair. There are two ways to spot a contribution:
+      - When "Author et al. (2019)" notation is met in the text, the contribution follows next. It usually ends within the same sentence if not grammatically stated otherwise.
+      - When the authors’ notation within the brackets is met (e.g. "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)"), the contribution can be found before the brackets. Do not include information after the brackets in the contribution.
+   5. Some contributions are proposed by the authors of the target text. These contributions can be recognized by the use of the forms of the word “we” in the text (e.g., “our approach”, ”our motivation”, “we aim”).
+   6. Use one bullet point to represent the authors - contribution pair.
+   7. The author - contribution notation must follow one of these structures: 
+      - If one author:
+         - Author et al., 2020: contribution
+      - If multiple authors: 
+         - Author et al., 2020, Author et al., 2023, Author et al., 2008: contribution
+      - If authors of the paper:
+         - Authors of the paper: contribution
+   8. Be precise in the body of contribution:
+      - Do not use information not directly supported by the text
+      - Do not leave out information necessary to understand the summary without reading the text (e.g., abbreviation definitions)
+      - Be brief, include only the essential information
+
+Ensure that your answer is accurate, brief and doesn't contain any information not directly supported by the text. Ensure that the summary includes all authors mentioned in the text and their contributions.
+
+Text: "Topic labelling methods usually involve two main steps: (1) the generation of candidate labels (e.g.  text or images) for a given topic; and (2) the ranking of candidate labels by relevance to the topic.  Textual labels have been sourced from in a number of different ways, including noun chunks from a reference corpus (Mei et al., 2007), Wikipedia ar ticle titles (Lau et al., 2011;Aletras and Stevenson, 2014;Bhatia et al., 2016), or short text summaries (Cano Basave et al., 2014;Wan and Wang, 2016).  Images are often selected from Wikipedia or the web based on querying with topic words (Aletras and Stevenson, 2013;Aletras and Mittal, 2017).  Recent work on topic labelling has shown that text or image embeddings can improve candidate label generation and ranking (Bhatia et al., 2016;Aletras and Mittal, 2017).   Bhatia et al. (2016) use word2vec (Mikolov et al., 2013) and doc2vec (Le and Mikolov, 2014) to represent topics and candidate textual labels in the same latent semantic space.  The most relevant textual labels for a topic are selected from Wikipedia article titles using the cosine similarity between the topic and article title embeddings.  Finally, top labels are re-ranked in a supervised fashion using various features such as the PageRank score of the article in Wikipedia (Brin and Page, 1998), trigram letter ranking (Kou et al., 2015), topic word overlap, and word length of the label.   Aletras and Mittal (2017) use pre-computed dependency-based word embeddings (Levy and Goldberg, 2014) to represent the topics and the caption of the images, as well as image embeddings using the output layer of VGG-net (Simonyan and Zisserman, 2014) pretrained on ImageNet (Deng et al., 2009).  A concatenation of these three vectors is the input to a simple deep neural network with four hidden layers and a sigmoid output layer to predict the relevance score.   Textual or visual modalities for labelling topics have been studied extensively, although independently from one another.  Our work differs from the single-modality methods described above in that it uses a joint model to predict the continuousvalued rating for both textual and image labels.  This is, to the best of our knowledge, the first attempt at joint multimodal topic labelling. "<|end|>
+<|assistant|>

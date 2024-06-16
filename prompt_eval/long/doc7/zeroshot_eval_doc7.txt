@@ -1,0 +1,27 @@
+<|user|>
+You are a summarization model. Generate a summary of a text taken from a scientific paper by following the guidelines below:
+
+   1. Divide the summary into subsections. Use either subsections present in the text, or create subsections based on the key topics discussed in the text. Subsections must be placed in the chronological order.
+   2. Include the information (e.g., definition of a concept) that helps to understand the topic of subsection if it is provided in the text. Otherwise, ignore this step.
+   3. Per subsection, list the cited authors that contributed to the topic of the subsection in chronological order. The list must be in the bullet point form. The examples of how authors can be notated in the text are "Author et al. (2019)" or "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)".
+   4. For each author's entry, include the contribution they made, according to the text, on the topic of the subsection. These form the authors - contribution pair. There are two ways to spot a contribution:
+      - When "Author et al. (2019)" notation is met in the text, the contribution follows next. It usually ends within the same sentence if not grammatically stated otherwise.
+      - When the authors’ notation within the brackets is met (e.g. "(Author et al., 2017)" or "(Author et al., 2017; Author et al., 1998; Author et al., 2022)"), the contribution can be found before the brackets. Do not include information after the brackets in the contribution.
+   5. Some contributions are proposed by the authors of the target text. These contributions can be recognized by the use of the forms of the word “we” in the text (e.g., “our approach”, ”our motivation”, “we aim”).
+   6. Use one bullet point to represent the authors - contribution pair.
+   7. The author - contribution notation must follow one of these structures: 
+      - If one author:
+         - Author et al., 2020: contribution
+      - If multiple authors: 
+         - Author et al., 2020, Author et al., 2023, Author et al., 2008: contribution
+      - If authors of the paper:
+         - Authors of the paper: contribution
+   8. Be precise in the body of contribution:
+      - Do not use information not directly supported by the text
+      - Do not leave out information necessary to understand the summary without reading the text (e.g., abbreviation definitions)
+      - Be brief, include only the essential information
+
+Ensure that your answer is accurate, brief and doesn't contain any information not directly supported by the text. Ensure that the summary includes all authors mentioned in the text and their contributions.
+
+Text: "This study builds on prior efforts from Handler and O'Connor (2018), who propose extractively summarizing relationships via a two-stage process that first (1) identifies wellformed spans from a corpus that start with (t) and end with (t) and then (2) chooses the best summary statement from among these wellformed candidates.  Handler and O'Connor (2018) show that extracting wellformed spans can find many more readable candidates than traditional relation extraction techniques.  But they do not offer a method for the second step of picking a summary statement, which is the focus of this study.   We approach this new task of choosing the best summary statement from available candidates by collecting new supervision, tailored to the particular problem of summarizing relationships on concept maps.  This form of supervision has a different focus from the existing Falke and Gurevych (2017) concept map dataset.  Where Falke and Gurevych (2017) seek to create the best overall concept map for a given topic, this work seeks to find the best summary relationship for a given relationship.  Therefore, unlike Falke and Gurevych (2017), our dataset includes labels for the most readable and informative statement describing the relationship between a (t) \u2212 (t) query pair. "<|end|>
+<|assistant|>
