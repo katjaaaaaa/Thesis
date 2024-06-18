@@ -1,0 +1,862 @@
+{
+   "1": {
+      "GPT-3.5": {
+         "Rank": 2,
+         "Text": "1. **Importance of Named Entity Recognition (NER)**\n\t- Gupta et al. (2017): Highlighted the importance of NER for entity linking.\n\t- Mintz et al. (2009), Liu et al. (2017): Demonstrated the use of NER in relation extraction.\n\t- Chang et al. (2013): Showed the role of NER in co-reference resolution.\n\t- Ren et al. (2019): Discussed the reliance of conversation systems on NER.\n\n2. **Flat Named Entity Recognition**\n\t- Lample et al. (2016), Ma and Hovy (2016), Strubell et al. (2017): Proposed several methods for flat named entity recognition.\n\n3. **Nested Entities**\n\t- Zhang et al. (2004), Zhou et al. (2004), Zhou (2006): Early work on nested entities relied on hand-crafted features or rule-based postprocessing. They detected the innermost flat entities with a Hidden Markov Model and then used rule-based post-processing to extract the outer entities.\n\n4. **Entity Mention Detection**\n\t- Lu and Roth (2015): Presented a novel hypergraph-based method to tackle the problem of entity mention detection. However, their method had the issue of the spurious structure of hyper-graphs.\n\t- Muis and Lu (2017): Improved the method of Lu and Roth (2015) by incorporating mention separators along with features.\n\n5. **Stacking Sequence Model**\n\t- Alex et al. (2007): Proposed several CRF-based methods for the GENIA dataset. However, their approach could not recognize nested entities of the same type.\n\t- Finkel and Manning (2009): Presented a chart-based parsing method where each named entity is a constituent in the parsing tree. However, their method was not scalable to larger corpus with a cubic time complexity.\n\t- Ju et al. (2018): Dynamically stacked flat NER layers to extract nested entities, each flat layer is based on a Bi-LSTM layer and then a cascaded CRF layer. Their model suffered error propagation from layer to layer, an inner entity could not be detected when an outer entity was identified first.\n\n6. **Nested Entities Extraction**\n\t- Wang et al. (2018): Presented a transition-based model for nested mention detection using a forest representation. However, their model had the drawback of greedy training and decoding.\n\t- Sohrab and Miwa (2018): Considered all possible regions in a sentence and classified them into their entity type or non-entity. However, their exhaustive method considered too many irrelevant regions (non-entity regions) into detecting entity types and the regions were classified individually, without considering the contextual information.\n\n7. **Boundary-Relevant Regions**\n\t- Authors of the paper: Focused on the boundary-relevant regions which are much fewer and the explicit leveraging of boundary information helps to locate entities more precisely.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7886",
+               "Recall": "0.7726",
+               "F1-score": "0.7805"
+            },
+            "One-shot": {
+               "Precission": "0.0000",
+               "Recall": "0.0000",
+               "F1-score": "0.0000"
+            },
+            "Few-shot rank": {
+               "Precission": "0.8030",
+               "Recall": "0.7568",
+               "F1-score": "0.7792"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8149",
+               "Recall": "0.7520",
+               "F1-score": "0.7822"
+            }
+         }
+      },
+      "Copilot": {
+         "Rank": 1,
+         "Text": "\n**Key Concepts:**\n\n1. **Significance of Named Entity Recognition (NER) in NLP:**\n   - Gupta et al. (2017), Mintz et al. (2009), Liu et al. (2017), Chang et al. (2013), Ren et al. (2019): Highlighted the importance of NER in various downstream tasks like entity linking, relation extraction, co-reference resolution, and conversation systems.\n\n2. **Approaches to Flat Named Entity Recognition (NER):**\n   - Lample et al. (2016), Ma and Hovy (2016), Strubell et al. (2017): Proposed methods for flat NER, with limited consideration for nested entities.\n\n3. **Early Work on Nested Entities:**\n   - Zhang et al. (2004), Zhou et al. (2004), Zhou (2006): Utilized hand-crafted features and rule-based postprocessing for nested entity detection, detecting innermost flat entities with a Hidden Markov Model.\n\n4. **Hypergraph-Based Method for Entity Mention Detection:**\n   - Lu and Roth (2015): Introduced a hypergraph-based method for entity mention detection, with an identified issue of spurious hypergraph structures.\n   - Muis and Lu (2017): Enhanced Lu and Roth's method by incorporating mention separators and features.\n\n5. **Sequential Models for Nested Mention Detection:**\n   - Alex et al. (2007): Proposed CRF-based methods for the GENIA dataset, unable to recognize nested entities of the same type.\n   - Finkel and Manning (2009): Presented a chart-based parsing method for NER, but scalability issues with larger corpora.\n   - Ju et al. (2018): Developed a dynamically stacked flat NER layers model based on Bi-LSTM and cascaded CRF layers, addressing error propagation challenges.\n   - Wang et al. (2018): Introduced a transition-based model for nested mention detection using a forest representation.\n   - Sohrab and Miwa (2018): Classified regions in sentences into entity types or non-entities, but faced challenges related to considering irrelevant regions.\n\n6. **Model Focus on Boundary-Relevant Regions:**\n   - The paper proposes a model focusing on boundary-relevant regions, leveraging explicit boundary information for precise entity detection.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.8071",
+               "Recall": "0.8020",
+               "F1-score": "0.8046"
+            },
+            "One-shot": {
+               "Precission": "0.0000",
+               "Recall": "0.0000",
+               "F1-score": "0.0000"
+            },
+            "Few-shot rank": {
+               "Precission": "0.8398",
+               "Recall": "0.8044",
+               "F1-score": "0.8217"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8409",
+               "Recall": "0.7964",
+               "F1-score": "0.8180"
+            }
+         }
+      },
+      "Gemini": {
+         "Rank": 3,
+         "Text": "\n## Key Concepts in Nested Named Entity Recognition (NER)\n\nThis scientific paper discusses Nested Named Entity Recognition (NER), a subtask of NLP concerned with recognizing named entities within text, where some entities can be contained within others.\n\n* **Challenges of Nested NER:**\n\t* Nested entities vs. Flat entities (Lample et al., 2016; Ma and Hovy, 2016; Strubell et al., 2017)\n\t* Difficulty for sequence models (like CRF) to handle nested structures (Ju et al., 2018)\n\n* **Early Works on Nested NER:**\n\t* Relied on hand-crafted features or rule-based postprocessing (Zhang et al., 2004; Zhou et al., 2004; Zhou, 2006)\n\t* Used Hidden Markov Models (HMM) for flat entity detection followed by rule-based methods for outer entity extraction.\n\n* **Other Nested NER Approaches:**\n\t* Hypergraph-based method (Lu and Roth, 2015) with limitations due to spurious hypergraph structures. (Muis and Lu, 2017) address this issue by incorporating mention separators.\n\n* **Stacking Sequence Models for Nested NER:**\n\t* Conditional Random Field (CRF) based methods (Alex et al., 2007) - effective but cannot handle nested entities of the same type.\n\t* Chart-based parsing methods (Finkel and Manning, 2009) - not scalable to larger datasets due to cubic time complexity.\n\t* Dynamic stacking of flat NER layers with Bi-LSTM and CRF (Ju et al., 2018) - suffers from error propagation.\n\n* **Recent Developments in Nested NER:**\n\t* Transition-based model using forest representation (Wang et al., 2018) - limitation is greedy training and decoding.\n\t* Boundary classification approach (Sohrab and Miwa, 2018) - considers too many irrelevant regions and lacks contextual information in classification.\n\n* **The Authors' Approach:** Focuses on boundary-relevant regions and leverages boundary information for precise entity location.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7373",
+               "Recall": "0.7235",
+               "F1-score": "0.7303"
+            },
+            "One-shot": {
+               "Precission": "0.0000",
+               "Recall": "0.0000",
+               "F1-score": "0.0000"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7613",
+               "Recall": "0.7276",
+               "F1-score": "0.7441"
+            },
+            "Few-shot expl": {
+               "Precission": "0.7639",
+               "Recall": "0.7215",
+               "F1-score": "0.7421"
+            }
+         }
+      },
+      "Phi-3": {
+         "Zero-shot": " ### Introduction\n- Named Entity Recognition (NER) is crucial for various downstream tasks in Natural Language Processing (NLP).\n\n### Importance of NER\n- Tasks such as entity linking, relation extraction, co-reference resolution, and conversation systems depend on NER.\n\n### Flat Named Entity Recognition\n- Several methods have been proposed for flat named entity recognition.\n\n#### Contributions to Flat NER\n- Lample et al. (2016)\n  - Contributed to flat named entity recognition methods.\n- Ma and Hovy (2016)\n  - Contributed to flat named entity recognition methods.\n- Strubell et al. (2017)\n  - Contributed to flat named entity recognition methods.\n\n### Nested Entity Recognition\n- Early methods for nested entities relied on hand-crafted features or rule-based post-processing.\n\n#### Contributions to Nested Entity Recognition\n- Zhang et al. (2004)\n  - Detected innermost flat entities using a Hidden Markov Model.\n- Zhou et al. (2004)\n  - Contributed to nested entity recognition methods.\n- Zhou (2006)\n  - Contributed to nested entity recognition methods.\n\n### Improvements in Nested Entity Recognition\n- Lu and Roth (2015) presented a hypergraph-based method for entity mention detection.\n\n#### Contributions to Nested Entity Recognition\n- Lu and Roth (2015)\n  - Introduced a novel hypergraph-based method for entity mention detection.\n- Muis and Lu (2017)\n  - Improved Lu and Roth's method by incorporating mention separators and features.\n\n### Entity Recognition with Sequence Models\n- Recent studies suggest stacking sequence models like CRF layers can extract entities from inner to outer.\n\n#### Contributions to Entity Recognition with Sequence Models\n- Alex et al. (2007)\n  - Proposed several CRF-based methods for the GENIA dataset.\n- Finkel and Manning (2009)\n  - Presented a chart-based parsing method for named entity recognition.\n- Ju et al. (2018)\n  - Dynamically stacked flat NER layers to extract nested entities using Bi-LSTM and cascaded CRF layers.\n\n### Challenges in NER\n- Sequence models like CRF struggle with nested entities where a token can belong to multiple entities.\n\n#### Contributions to NER Challenges\n- Sohrab and Miwa (2018)\n  - Considered all possible regions in a sentence for entity type classification.\n\n### Proposed Model for NER\n- The authors present a model focusing on boundary-relevant regions to locate entities more precisely.\n\n#### Contributions to NER Model\n- The authors\n  - Focused on boundary-relevant regions for more precise entity location.",
+         "One-shot": " 1. **Importance of NER**:\n   - Several downstream tasks rely on Named Entity Recognition (NER):\n     - **Gupta et al. (2017)**: Entity linking\n     - **Mintz et al. (2009); Liu et al. (2017)**: Relation extraction\n     - **Chang et al. (2013)**: Co-reference resolution\n     - **Ren et al. (2019)**: Conversation system\n\n2. **Methods for Flat NER**:\n   - Several methods have been proposed for flat Named Entity Recognition (NER):\n     - **Lample et al. (2016); Ma and Hovy (2016); Strubell et al. (2017)**: Flat NER\n\n3. **Hand-craft Features for Nested NER**:\n   - Early work on nested entities relied on hand-craft features or rule-based postprocessing:\n     - **Zhang et al. (2004); Zhou et al. (2004); Zhou (2006)**: Hand-craft features and rule-based post-processing\n\n4. **Hypergraph-based Method for Entity Mention Detection**:\n   - Lu and Roth (2015) presented a novel hypergraph-based method for entity mention detection:\n     - **Lu and Roth (2015)**: Hypergraph-based method\n\n5. **Improvement of Hypergraph-based Method**:\n   - Muis and Lu (2017) improved the method of Lu and Roth (2015) by incorporating mention separators:\n     - **Muis and Lu (2017)**: Incorporation of mention separators\n\n6. **Stacking Sequence Model for Nested NER**:\n   - Recent studies reveal that stacking sequence models like CRF can extract entities from inner to outer:\n     - **Alex et al. (2007)**: CRF-based methods for GENIA dataset\n     - **Finkel and Manning (2009)**: Chart-based parsing method\n     - **Ju et al. (2018)**: Stacking flat NER layers for nested entity extraction\n\n7. **Limitations of Sequence Models for Nested NER**:\n   - Sequence models like CRF struggle to recognize nested entities of the same type:\n     - **Alex et al. (2007); Finkel and Manning (2009)**: Limitations of sequence models\n\n8. **Our Model for Nested NER**:\n   - Our model focuses on boundary-relevant regions for nested entity extraction:\n     - **Our Model**: Focus on boundary-relevant regions and explicit leveraging of boundary, this         \n   \n   0000)\n)\n)0)   0)\n   0)\n   0enen0000000000er      00ia  0000000000000000.0,\n   \n   0   000000ewename the same [   \n          ",
+         "Few-shot rank": " 1. **Importance of NER in NLP**:\n   - Named Entity Recognition (NER) is crucial for various NLP tasks.\n   - **Gupta et al. (2017)**: Named entities are essential for tasks like entity linking.\n   - **Mintz et al. (2009); Liu et al. (2017); Chang et al. (2013); Ren et al. (2019)**: Named entities are used in relation extraction, co-reference resolution, and conversation systems.\n\n2. **Methods for Nested Entity Recognition**:\n   - Early methods for nested entities used hand-crafted features or rule-based post-processing (Zhang et al., 2004; Zhou et al., 2004; Zhou, 2006).\n   - **Lu and Roth (2015)**: Introduced a hypergraph-based method for entity mention detection.\n   - **Muis and Lu (2017)**: Improved upon Lu and Roth's method by adding mention separators and features.\n   - **Alex et al. (2007)**: Proposed CRF-based methods for the GENIA dataset, but could not recognize nested entities of the same type.\n   - **Finkel and Manning (2009)**: Chart-based parsing method for named entities, but not scalable.\n   - **Ju et al. (2018)**: Stacked flat NER layers to extract nested entities, but faced error propagation issues.\n   - **Wang et al. (2018)**: Transition-based model for nested mention detection, but had greedy training and decoding limitations.\n   - **Sohrab and Miwa (2018)**: Classified all sentence regions into entity types, but considered too many irrelevant regions.\n\n3. **Our Contribution**:\n   - We propose a model focusing on boundary-relevant regions to improve entity detection precision.",
+         "Few-shot expl": " 1. **Importance of NER in NLP**:\n   - Named Entity Recognition (NER) is crucial for various NLP tasks.\n   - Contributions:\n     - Gupta et al. (2017): Named entity linking.\n     - Mintz et al. (2009); Liu et al. (2017): Relation extraction.\n     - Chang et al. (2013): Co-reference resolution.\n     - Ren et al. (2019): Conversation system.\n\n2. **Methods for Nested Entity Recognition**:\n   - Early methods used hand-crafted features or rule-based post-processing.\n   - Lample et al. (2016), Ma and Hovy (2016), Strubell et al. (2017): Flat named entity recognition.\n   - Zhang et al. (2004); Zhou et al. (2004); Zhou (2006): Methods for nested entities.\n   - Lu and Roth (2015): Hypergraph-based method for entity mention detection.\n   - Muis and Lu (2017): Improved method with mention separators and features.\n   - Alex et al. (2007): CRF-based methods for the GENIA dataset (cannot recognize nested entities).\n   - Finkel and Manning (2009): Chart-based parsing method (not scalable).\n   - Ju et al. (2018): Stacking flat NER layers to extract nested entities (error propagation issue).\n   - Wang et al. (2018): Transition-based model for nested mention detection (greedy training and decoding).\n   - Sohrab and Miwa (2018): Considering all possible regions for entity classification (contextual information ignored).\n   - Authors of the paper: Propose a model focusing on boundary-relevant regions to improve entity detection precision.\n\n   - **Authors of the paper**: Developed a model that leverages boundary information to more accurately locate entities."
+      }
+   },
+   "5": {
+      "GPT-3.5": {
+         "Rank": 2,
+         "Text": "**Approaches to Compositional Generalization:**\n\n- **Guo et al. (2020), Das et al. (2021), and Herzig et al. (2021):** Explored various approaches to compositional generalization, particularly addressing challenges posed by the CFQ dataset. Their specific contributions are detailed in Section 4 of their respective works.\n\n- **Grammar Induction:**\n  - **Zettlemoyer and Collins (2005):** Introduced grammar induction methods which derive grammar rules directly from question-query pairs, assuming a limited set of grammar rules to bootstrap the model. They search grammar spaces to find grammars facilitating successful parsing of observed questions.\n  - **Nye et al. (2020) and Chen et al. (2020):** Applied grammar induction techniques to the SCAN dataset, demonstrating different extents of success in solving it.\n\n**Challenges and Advantages of Grammar Induction:**\n- Grammar induction methods have the potential to identify the complete set of transformation rules, enabling perfect compositional generalization. However, their search-based nature limits scalability to long sentences due to the vast size of search spaces.\n\n**Neural Network Architectures for Semantic Parsing:**\n- Various neural network architectures have been proposed to incorporate different query structures:\n  - **Tree Structures (Dong and Lapata, 2016):** Introduced architectures that incorporate tree structures.\n  - **Graph Structures (Buys and Blunsom, 2017; Damonte et al., 2017; Lyu and Titov, 2018; Fancellu et al., 2019):** Explored neural network architectures incorporating graph structures in semantic parsing.\n- However, architectures solely incorporating query structures without considering syntactic structures in questions may be insufficient for compositional generalization, as indicated by an ablation study.\n\n**Attention Mechanisms and Part-of-Speech Tags:**\n- **Russin et al. (2019):** Proposed improving compositional generalization of seq2seq models using attention mechanisms, focusing on token-level attention.\n- **Gordon et al. (2020):** Utilized part-of-speech (PoS) tags to achieve some level of invariance among words sharing the same PoS.\n\n**Dataset Splitting Strategies:**\n- **Keysers et al. (2020):** Introduced a strategy in semantic parsing to split datasets, ensuring training and test sets contain no common SQL patterns.\n- **Finegan-Dollak et al. (2018):** Proposed a similar strategy, increasing task difficulty by splitting datasets to prevent common SQL patterns. However, neural networks can still relatively easily solve tasks using the \"mix-and-match\" strategy, as discussed by Lake and Baroni (2018).\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7953",
+               "Recall": "0.7476",
+               "F1-score": "0.7707"
+            },
+            "One-shot": {
+               "Precission": "0.8265",
+               "Recall": "0.7519",
+               "F1-score": "0.7875"
+            },
+            "Few-shot rank": {
+               "Precission": "0.8152",
+               "Recall": "0.7648",
+               "F1-score": "0.7892"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8038",
+               "Recall": "0.7561",
+               "F1-score": "0.7792"
+            }
+         }
+      },
+      "Copilot": {
+         "Rank": 1,
+         "Text": "\n**1. Compositional Generalization Challenge:**\n- **Guo et al. (2020)**: Explored approaches to the compositional generalization challenge posted by the CFQ dataset.\n- **Das et al. (2021)**: Explored approaches to the compositional generalization challenge posted by the CFQ dataset.\n- **Herzig et al. (2021)**: Explored approaches to the compositional generalization challenge posted by the CFQ dataset.\n\n**2. Grammar Induction:**\n- **Zettlemoyer and Collins (2005)**: Proposed grammar induction methods that assume a limited set of grammar rules to bootstrap the model, and then search some grammar spaces to find grammars that can lead to successful parsing of observed questions.\n- **Nye et al. (2020)**: Inspired by the idea of grammar induction, they solved the SCAN dataset to some extent.\n- **Chen et al. (2020)**: Inspired by the idea of grammar induction, they solved the SCAN dataset to some extent.\n\n**3. Neural Network Architectures for Semantic Parsing:**\n- **Dong and Lapata (2016)**: Designed neural network architectures that incorporate tree query structures.\n- **Buys and Blunsom (2017)**: Designed neural network architectures that incorporate graph query structures.\n- **Damonte et al. (2017)**: Designed neural network architectures that incorporate graph query structures.\n- **Lyu and Titov (2018)**: Designed neural network architectures that incorporate graph query structures.\n- **Fancellu et al. (2019)**: Designed neural network architectures that incorporate graph query structures.\n\n**4. Improving Compositional Generalization of Seq2Seq Models:**\n- **Russin et al. (2019)**: Proposed to improve the compositional generalization of seq2seq models using attention, but only studied token-level attention without consideration of syntactic or semantic structures. They also used part-of-speech (PoS) tags to attain some level of invariance among words that share the same PoS.\n- **Gordon et al. (2020)**: Used part-of-speech (PoS) tags to attain some level of invariance among words that share the same PoS.\n\n**5. Semantic Parsing:**\n- **Keysers et al. (2020)**: Prior to their work, Finegan-Dollak et al. (2018) proposed to split datasets such that training and test sets contain no common SQL patterns.\n- **Finegan-Dollak et al. (2018)**: Proposed to split datasets such that training and test sets contain no common SQL patterns. Although this approach increases task difficulty, different SQL query patterns may still share similar substructures, which enables neural networks to solve the tasks relatively easily using the \"mix-and-match\" strategy.\n- **Lake and Baroni (2018)**: Discussed the \"mix-and-match\" strategy that enables neural networks to solve tasks relatively easily when different SQL query patterns share similar substructures.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7920",
+               "Recall": "0.7886",
+               "F1-score": "0.7903"
+            },
+            "One-shot": {
+               "Precission": "0.7929",
+               "Recall": "0.7553",
+               "F1-score": "0.7737"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7794",
+               "Recall": "0.7775",
+               "F1-score": "0.7785"
+            },
+            "Few-shot expl": {
+               "Precission": "0.7958",
+               "Recall": "0.7919",
+               "F1-score": "0.7938"
+            }
+         }
+      },
+      "Gemini": {
+         "Rank": 3,
+         "Text": "\n## Key Concepts in Compositional Generalization for Semantic Parsing\n\nThis summary explores various approaches to compositional generalization in semantic parsing, focusing on the CFQ dataset [1].\n\n**1. Existing Approaches (Section 4)**\n\n* Authors: Not mentioned in this excerpt, but assumed to be the authors of the original paper.\n* Contribution: The paper discusses various approaches to compositional generalization on the CFQ dataset but does not detail them here (refer to Section 4 for details).\n\n**2. Grammar Induction**\n\n* Authors: Zettlemoyer and Collins (2005)\n* Contribution: Proposed a grammar induction method that learns a limited set of grammar rules and searches for grammars that can parse observed questions.\n\n* Authors: Nye et al. (2020) and Chen et al. (2020)\n* Contribution: Built upon grammar induction and achieved success on the SCAN dataset.\n\n**3. Neural Network Architectures with Query Structures**\n\n* Authors: Dong and Lapata (2016)\n* Contribution: Proposed a tree-based neural network architecture that incorporates query structures for semantic parsing.\n\n* Authors: Buys and Blunsom (2017), Damonte et al. (2017), Lyu and Titov (2018), Fancellu et al. (2019)\n* Contribution: Proposed graph-based neural network architectures for semantic parsing that incorporate query structures.\n\n**4. Attention-based Approaches**\n\n* Authors: Russin et al. (2019)\n* Contribution: Proposed a seq2seq model with attention to improve compositional generalization but only studied token-level attention, not syntactic or semantic structures.\n\n* Authors: The authors of this paper (assumed)\n* Contribution: Show that incorporating query structures alone is insufficient through ablation studies (Table 3). Their graph decoder performs similar to T5 models.\n\n* Authors: Russin et al. (2019) and Gordon et al. (2020)\n* Contribution: Used part-of-speech (PoS) tags to achieve some level of invariance among words with the same PoS in their attention-based models.\n\n**5. Splitting Datasets by SQL Patterns**\n\n* Authors: Finegan-Dollak et al. (2018)\n* Contribution: Proposed splitting datasets such that training and test sets do not contain common SQL patterns to increase task difficulty. However, the paper argues that similar substructures might still allow neural networks to solve tasks using a \"mix-and-match\" strategy [2].",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7612",
+               "Recall": "0.7099",
+               "F1-score": "0.7347"
+            },
+            "One-shot": {
+               "Precission": "0.8002",
+               "Recall": "0.6924",
+               "F1-score": "0.7424"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7666",
+               "Recall": "0.7148",
+               "F1-score": "0.7398"
+            },
+            "Few-shot expl": {
+               "Precission": "0.7821",
+               "Recall": "0.7262",
+               "F1-score": "0.7531"
+            }
+         }
+      },
+      "Phi-3": {
+         "Zero-shot": " ### Introduction to Compositional Generalization Challenges\n\n- **Guo et al. (2020)**: Explored various approaches to the compositional generalization challenge.\n- **Das et al. (2021)**: Contributed to the discussion on approaches to the compositional generalization challenge.\n- **Herzig et al. (2021)**: Also explored different approaches to the compositional generalization challenge.\n\n### Grammar Induction as a Promising Approach\n\n- **Zettlemoyer and Collins (2005)**: Introduced grammar induction methods that assume a limited set of grammar rules.\n- **Nye et al. (2020)**: Applied grammar induction methods to the SCAN dataset.\n- **Chen et al. (2020)**: Contributed to the application of grammar induction methods to the SCAN dataset.\n\n### Limitations of Grammar Induction Methods\n\n- **Grammar induction methods**: Generally search-based, limiting scalability to long sentences.\n\n### Research in Semantic Parsing and Neural Network Architectures\n\n- **Dong and Lapata (2016)**: Proposed incorporating tree structures in neural network architectures.\n- **Buys and Blunsom (2017)**: Explored incorporating graph structures in neural network architectures.\n- **Damonte et al. (2017)**: Also contributed to the research on incorporating graph structures.\n- **Lyu and Titov (2018)**: Further explored incorporating graph structures in neural network architectures.\n- **Fancellu et al. (2019)**: Contributed to the research on incorporating graph structures.\n- **Our ablation study (Table 3)**: Indicated the insufficiency of incorporating query structure alone for compositional generalization.\n- **Russin et al. (2019)**: Proposed improving compositional generalization of seq2seq models using attention.\n- **Gordon et al. (2020)**: Used part-of-speech (PoS) tags to achieve some level of invariance among words.\n- **Finegan-Dollak et al. (2018)**: Proposed splitting datasets to increase task difficulty in semantic parsing.\n- **Lake and Baroni (2018)**: Discussed the \"mix-and-match\" strategy in the context of different SQL query patterns.\n\n### Conclusion\n\nThe text discusses various approaches to the compositional generalization challenge, highlighting the potential of grammar induction methods, research in semantic parsing, and neural network architectures. It also outlines the limitations of these methods and the contributions of different authors to the field.",
+         "One-shot": " 1. **Approaches to Compositional Generalization**:\n   - **Guo et al. (2020)**, **Das et al. (2021)**, and **Herzig et al. (2021)** explored various approaches to the compositional generalization challenge.\n\n2. **Grammar Induction**:\n   - **Zettlemoyer and Collins (2005)** proposed grammar induction methods that assume a limited set of grammar rules.\n   - **Nye et al. (2020)** and **Chen et al. (2020)** applied grammar induction methods to the SCAN dataset.\n   - Grammar induction methods can potentially identify the complete set of transformation rules for perfect compositional generalization.\n   - However, these methods are generally search-based, limiting scalability to long sentences.\n\n3. **Semantic Parsing Architectures**:\n   - **Dong and Lapata (2016)**, **Buys and Blunsom (2017)**, **Damonte et al. (2017)**, **Lyu and Titov (2018)**, and **Fancellu et al. (2019)** designed neural network architectures incorporating different query structures.\n   - These architectures only incorporate query structures without considering syntactic structures in questions.\n\n4. **Attention Mechanisms**:\n   - **Russin et al. (2019)** and **Gordon et al. (2020)** proposed using attention mechanisms to improve compositional generalization.\n   - They used part-of-speech (PoS) tags to achieve some level of invariance among words with the same PoS.\n\n5. **Dataset Splitting**:\n   - **Finegan-Dollak et al. (2018)** and **Keysers et al. (2020)** proposed splitting datasets to increase task difficulty.\n   - This approach allows neural networks to solve tasks using the \"mix-and-match\" strategy.",
+         "Few-shot rank": " 1. **Compositional Generalization in NLP**:\n   - **Guo et al. (2020)**: Explored various approaches to the compositional generalization challenge.\n   - **Das et al. (2021)**: Contributed to the discussion on compositional generalization.\n   - **Herzig et al. (2021)**: Explored different approaches to the compositional generalization challenge.\n   - **Zettlemoyer and Collins (2005)**: Introduced grammar induction methods for compositional generalization.\n   - **Nye et al. (2020)** and **Chen et al. (2020)**: Applied grammar induction to the SCAN dataset.\n   - **Grammar Induction**:\n      - Can derive grammar rules from question-query pairs.\n      - Assumes a limited set of grammar rules to bootstrap the model.\n      - Searches grammar spaces to find applicable grammars.\n      - Advantage: Potential to identify complete transformation rules for perfect compositional generalization.\n      - Limitation: Search-based methods limit scalability for long sentences.\n   - **Neural Network Architectures**:\n      - Incorporated different query structures (Dong and Lapata, 2016; Buys and Blunsom, 2017; Damonte et al., 2017; Lyu and Titov, 2018; Fancellu et al., 2019).\n      - Lacked incorporation of syntactic structures in questions.\n   - **Our Study**:\n      - Ablation study (Table 3) shows that only query structure incorporation is insufficient for compositional generalization.\n      - Our graph decoder's performance is comparable to T5 models.\n   - **Russin et al. (2019)**: Proposed to improve seq2seq models' compositional generalization using attention.\n   - **Gordon et al. (2020)**: Used PoS tags to achieve some word invariance.\n   - **Finegan-Dollak et al. (2018)**: Suggested splitting datasets to increase task difficulty and enable \"mix-and-match\" strategy.\n   - **Lake and Baroni (2018)**: Proposed a similar approach to Finegan-Dollak et al. (2018) for semantic parsing.\n\n2. **Our Contribution**:\n   - We propose a novel approach to address compositional generalization challenges by incorporating syntactic structures in addition to query structures.",
+         "Few-shot expl": " 1. **Compositional Generalization in NLP**:\n   - **Guo et al. (2020)**: Explored various approaches to the compositional generalization challenge.\n   - **Das et al. (2021)**: Contributed to the discussion on compositional generalization in Section 4.\n   - **Herzig et al. (2021)**: Explored different approaches to the compositional generalization challenge.\n   - **Zettlemoyer and Collins (2005)**: Introduced grammar induction methods for compositional generalization.\n   - **Nye et al. (2020)**: Applied grammar induction to the SCAN dataset.\n   - **Chen et al. (2020)**: Utilized grammar induction methods for compositional generalization.\n\n2. **Limitations of Grammar Induction**:\n   - Grammar induction methods are limited by scalability issues with long sentences and search space size.\n\n3. **Incorporating Query Structures in Neural Networks**:\n   - **Dong and Lapata (2016)**: Proposed tree structures in neural network architectures.\n   - **Buys and Blunsom (2017)**: Introduced graph structures in neural network architectures.\n   - **Damonte et al. (2017)**: Contributed to the development of graph-based neural network architectures.\n   - **Lyu and Titov (2018)**: Worked on neural network architectures with graph structures.\n   - **Fancellu et al. (2019)**: Further developed neural network architectures with graph structures.\n\n4. **Insufficiency of Query-Only Structures**:\n   - **Russin et al. (2019)**: Proposed to improve seq2seq models using attention, focusing on token-level without syntactic/semantic structures.\n   - **Gordon et al. (2020)**: Used PoS tags to achieve invariance among words with the same PoS.\n\n5. **Dataset Splitting for Semantic Parsing**:\n   - **Finegan-Dollak et al. (2018)**: Proposed splitting datasets to increase task difficulty and prevent easy task solving via \"mix-and-match\" strategy.\n   - **Lake and Baroni (2018)**: Demonstrated that different SQL patterns can share similar substructures, easing task solving.\n\n6. **Our Contribution**:\n   - Our ablation study indicates that incorporating only query structures is insufficient for compositional generalization, as shown in Table 3."
+      }
+   },
+   "7": {
+      "GPT-3.5": {
+         "Rank": 3,
+         "Text": "**Concept 1: Extractive Summarization of Relationships**\n\n- Handler and O'Connor (2018): Propose a two-stage process for extractively summarizing relationships:\n  - Identify wellformed spans from a corpus that start with (t1) and end with (t2).\n  - Choose the best summary statement from among these wellformed candidates.\n- Show that this approach finds more readable candidates than traditional relation extraction techniques.\n\n**Concept 2: Choosing the Best Summary Statement**\n\n- This study focuses on the second step proposed by Handler and O'Connor (2018) - choosing the best summary statement from available candidates.\n- Unlike Handler and O'Connor (2018), this study offers a method for the second step of picking a summary statement.\n- No specific authors are mentioned for this contribution; therefore, it's attributed to the authors of the paper.\n\n**Concept 3: Tailored Supervision for Summarizing Relationships on Concept Maps**\n\n- This study collects new supervision tailored to the specific problem of summarizing relationships on concept maps.\n- The supervision differs from the existing dataset by Falke and Gurevych (2017).\n- Unlike Falke and Gurevych (2017), who aim for creating the best overall concept map for a topic, this work aims to find the best summary relationship for a given relationship query pair.\n- The dataset includes labels for the most readable and informative statement describing the relationship between a (t1) - (t2) query pair.\n\n**Contributions:**\n\n- Handler and O'Connor (2018): Propose a two-stage process for extractively summarizing relationships and demonstrate its effectiveness.\n- Falke and Gurevych (2017): Provide an existing dataset for concept maps but with a different focus than the tailored supervision in this study.\n- Authors of the paper: Introduce a method for choosing the best summary statement and collect new supervision tailored for summarizing relationships on concept maps.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7844",
+               "Recall": "0.7443",
+               "F1-score": "0.7638"
+            },
+            "One-shot": {
+               "Precission": "0.7854",
+               "Recall": "0.7272",
+               "F1-score": "0.7552"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7615",
+               "Recall": "0.6565",
+               "F1-score": "0.7051"
+            },
+            "Few-shot expl": {
+               "Precission": "0.7887",
+               "Recall": "0.7185",
+               "F1-score": "0.7520"
+            }
+         }
+      },
+      "Copilot": {
+         "Rank": 2,
+         "Text": "\n**Summary of the Text**\n\nThe text discusses a study that builds upon previous work by Handler and O'Connor (2018) and introduces a new approach to summarizing relationships on concept maps. The study focuses on choosing the best summary statement from available candidates, a step not covered by Handler and O'Connor (2018). The supervision for this task is different from the existing concept map dataset by Falke and Gurevych (2017). Unlike Falke and Gurevych (2017), the dataset in this study includes labels for the most readable and informative statement describing the relationship between a (t1) - (t2) query pair.\n\n**Key Concepts and Contributions**\n\n- **Handler and O'Connor (2018)**: Proposed a two-stage process for extractively summarizing relationships. The first stage identifies well-formed spans from a corpus that start and end with (t1) and (t2). The second stage, which is the focus of this study, involves choosing the best summary statement from these well-formed candidates. They demonstrated that extracting well-formed spans can find many more readable candidates than traditional relation extraction techniques[^Handler and O'Connor (2018)^].\n\n- **Falke and Gurevych (2017)**: Created a concept map dataset with the goal of creating the best overall concept map for a given topic. This work differs from the current study, which seeks to find the best summary relationship for a given relationship[^Falke and Gurevych (2017)^].\n\n- **Authors of the Current Study**: Introduced a new task of choosing the best summary statement from available candidates by collecting new supervision, tailored to the particular problem of summarizing relationships on concept maps. Their dataset includes labels for the most readable and informative statement describing the relationship between a (t1) - (t2) query pair[^Current Study^].\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7570",
+               "Recall": "0.7201",
+               "F1-score": "0.7381"
+            },
+            "One-shot": {
+               "Precission": "0.7804",
+               "Recall": "0.7156",
+               "F1-score": "0.7466"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7582",
+               "Recall": "0.6392",
+               "F1-score": "0.6936"
+            },
+            "Few-shot expl": {
+               "Precission": "0.7522",
+               "Recall": "0.6876",
+               "F1-score": "0.7185"
+            }
+         }
+      },
+      "Gemini": {
+         "Rank": 1,
+         "Text": "\n## Summary of Scientific Text: Relational Summarization for Corpus Analysis\n\nThis text describes a novel approach to selecting the best summary statement for relationships between concepts in a corpus.\n\n**Key Concepts**\n\n* **Extractive Summarization of Relationships (Handler & O'Connor, 2018):**\n\t* Proposes a two-stage process for summarizing relationships:\n    \t1. Identify well-formed text spans mentioning the target concepts (t1 and t2).\n    \t2. Choose the best summary statement from the identified spans.\n\t* Advantage: Finds more readable summaries than traditional methods.\n\t* Limitation: Does not address selecting the optimal summary statement (addressed in current study).\n* **Relational Summarization with Focused Supervision (This Study):**\n\t* Introduces a new approach to select the best summary statement for relationships in concept maps.\n\t* Develops a new dataset with labels for the most readable and informative statements describing the relationship between concept pairs (t1 and t2).\n\t* Distinguishes itself from Falke & Gurevych (2017): Focuses on finding the best summary relation for a specific concept pair,  rather than creating the best overall concept map.",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.6870",
+               "Recall": "0.7122",
+               "F1-score": "0.6994"
+            },
+            "One-shot": {
+               "Precission": "0.7198",
+               "Recall": "0.7105",
+               "F1-score": "0.7151"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7472",
+               "Recall": "0.6733",
+               "F1-score": "0.7083"
+            },
+            "Few-shot expl": {
+               "Precission": "0.7041",
+               "Recall": "0.7057",
+               "F1-score": "0.7049"
+            }
+         }
+      },
+      "Phi-3": {
+         "Zero-shot": " Subsection 1: Introduction to Previous Work\n- Handler and O'Connor (2018): Proposed a two-stage process for extractively summarizing relationships, identifying wellformed spans in a corpus.\n\nSubsection 2: Limitations of Previous Work\n- Handler and O'Connor (2018): Did not provide a method for the second step of picking a summary statement.\n\nSubsection 3: Proposed Approach\n- Authors of the paper: Introduce a new task of choosing the best summary statement from available candidates by collecting new supervision tailored to summarizing relationships on concept maps.\n\nSubsection 4: Differences in Focus\n- Falke and Gurevych (2017): Created the best overall concept map for a given topic.\n- Authors of the paper: Focused on finding the best summary relationship for a given relationship on concept maps.\n\nSubsection 5: Dataset Differences\n- Falke and Gurevych (2017): Included labels for the most readable and informative statement describing the relationship between a (t) \\u2212 (t) query pair.\n- Authors of the paper: Dataset includes labels for the most readable and informative statement describing the relationship between a (t) \\u2212 (t) query pair, with a different focus than Falke and Gurevych (2017).",
+         "One-shot": " 1. **Building on Prior Efforts**:\n   - **Handler and O'Connor (2018)**: Proposed a two-stage process for extractively summarizing relationships, identifying wellformed spans and choosing the best summary statement from these candidates.\n\n2. **New Task of Choosing the Best Summary Statement**:\n   - **Authors of the paper**: Approach the task of selecting the best summary statement from available candidates by collecting new supervision tailored to summarizing relationships on concept maps.\n\n3. **Differentiation from Existing Concept Map Dataset**:\n   - **Authors of the paper**: Contrast their work with Falke and Gurevych (2017) by focusing on finding the best summary relationship for a given relationship, rather than creating the best overall concept map for a topic.\n\n   - **Falke and Gurevych (2017)**: Created a concept map dataset aiming to generate the best overall concept map for a given topic.\n\n   - **Authors of the paper**: Their dataset includes labels for the most readable and informative statement describing the relationship between a (t) \\u2212 (t) query pair, which differs from Falke and Gurevych's dataset.",
+         "Few-shot rank": " 1. **Extractive Relationship Summarization**:\n   - Handler and O'Connor (2018): Proposed a two-stage process for extracting wellformed spans and identifying the best summary statement.\n   - Contribution: Highlighted the importance of identifying readable candidates for summarizing relationships.\n\n2. **New Supervision Approach**:\n   - The authors of the current study:\n   - Contribution: Developed a new supervision method tailored to summarizing relationships on concept maps, differing from Falke and Gurevych (2017) by focusing on the most readable and informative statement for a given relationship.",
+         "Few-shot expl": " 1. **Relationship Extraction and Summarization**:\n   - Handler and O'Connor (2018): Proposed a two-stage process for extractively summarizing relationships, identifying wellformed spans between entities.\n   - Contribution: Demonstrated that this method finds more readable candidates than traditional techniques.\n   - Authors - Contribution:\n         - Handler and O'Connor (2018): Identified wellformed spans for summarizing relationships.\n\n2. **New Supervision for Summary Selection**:\n   - Authors - Contribution:\n         - Authors of the paper: Developed a new supervision method tailored for summarizing relationships on concept maps, differing from Falke and Gurevych (2017) dataset focus.\n   - Contribution:\n         - Authors of the paper: Created a dataset with labels for the most readable and informative summary statements for a given relationship.\n\n3. **Comparison with Previous Work**:\n   - Authors - Contribution:\n         - Authors of the paper: Contrasted their approach with Falke and Gurevych (2017), highlighting a different focus on finding the best summary relationship rather than the best overall concept map."
+      }
+   },
+   "8": {
+      "GPT-3.5": {
+         "Rank": 1,
+         "Text": "**Key Concepts:**\n\n**1. Pre-trained Language Models**\n   - Vaswani et al. (2017): Introduced Transformer architecture for machine translation, facilitating faster learning of complex text representations.\n   - Radford et al. (2018), Devlin et al. (2018), Liu et al. (2019), Yang et al. (2019): Developed GPT, BERT, RoBERTa, and XLNet respectively, leveraging Transformer architecture with statistical tokenizers for pre-trained language models.\n   - Clark et al. (2020): Presented ELECTRA, a generator-discriminator-based pre-training approach, offering competitive performance with lower computational requirements.\n   - Vaidhya and Kaushal (2020), Lee et al. (2019), Beltagy et al. (2019): Explored domain-specific language models, leading to significant performance gains.\n\n**2. Emotion Recognition**\n   - Tarnowski et al. (2017): Proposed a method for recognizing seven emotional states based on facial expressions.\n   - Yoon et al. (2018): Utilized a deep dual recurrent encoder model to understand speech data using text data and audio signals simultaneously.\n   - Deshmukh and Kirange (2012): Introduced an SVM-based approach for predicting opinions on news headlines.\n   - Acheampong et al. (2020): Analyzed the effectiveness of transformer encoders for detecting emotions.\n   - Kant et al. (2018): Demonstrated the practical efficiency of large pre-trained language models for Multi-Emotion sentiment classification.\n\n**3. Computation of Empathy**\n   - Lin et al. (2018), Loveys et al. (2018): Investigated variations of empathy and distress across different demographics.\n   - Guda et al. (2021): Proposed a demographic-aware empathy modeling framework utilizing BERT and demographic features.\n   - Sharma et al. (2020): Explored language models for identifying empathetic conversations in mental health support systems.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.8728",
+               "Recall": "0.8520",
+               "F1-score": "0.8623"
+            },
+            "One-shot": {
+               "Precission": "0.8733",
+               "Recall": "0.8633",
+               "F1-score": "0.8683"
+            },
+            "Few-shot rank": {
+               "Precission": "0.9092",
+               "Recall": "0.8831",
+               "F1-score": "0.8959"
+            },
+            "Few-shot expl": {
+               "Precission": "0.9114",
+               "Recall": "0.8881",
+               "F1-score": "0.8996"
+            }
+         }
+      },
+      "Copilot": {
+         "Rank": 2,
+         "Text": "\n**Summary:**\n\n1. **Pre-trained Language Models (LLMs)**:\n\t- **Contributions**:\n    \t- Over the past few years, pre-trained language models have made significant progress in learning contextualized representations.\n    \t- Transformer (Vaswani et al., 2017) was originally proposed for machine translation and has facilitated faster learning of complex text representations.\n    \t- GPT (Radford et al., 2018), BERT (Devlin et al., 2018), RoBERTa (Liu et al., 2019), and XLNet (Yang et al., 2019) leverage transformer architecture along with statistical tokenizers.\n    \t- ELECTRA (Clark et al., 2020), a recent generator-discriminator-based pre-training approach, offers competitive performance with reduced computational requirements.\n    \t- Domain-specific language models also lead to significant performance gains (Vaidhya and Kaushal, 2020; Lee et al., 2019; Beltagy et al., 2019).\n\n2. **Emotion Recognition**:\n\t- **Contributions**:\n    \t- Emotion recognition from facial expressions and speech data has been extensively studied.\n    \t- Tarnowski et al. (2017) present an approach for recognizing seven emotional states based on facial expressions.\n    \t- Yoon et al. (2018) utilize a novel deep dual recurrent encoder model to understand speech data using text and audio signals simultaneously.\n    \t- Deshmukh and Kirange (2012) propose an SVM-based approach for predicting opinions on news headlines.\n    \t- Acheampong et al. (2020) analyze the efficacy of using transformer encoders for detecting emotions.\n    \t- Kant et al. (2018) demonstrate the practical efficiency of large pre-trained language models for multi-emotion sentiment classification.\n\n3. **Computation of Empathy**:\n\t- **Contributions**:\n    \t- Empathy and distress are core components of a person's emotional state.\n    \t- Language variations across different regions impact empathy and distress.\n    \t- Guda et al. (2021) propose a demographic-aware empathy modeling framework using BERT and demographic features.\n    \t- Understanding empathy and distress is crucial for mental health analysis and support.\n    \t- Sharma et al. (2020) explore language models for identifying empathetic conversations in mental health support systems.\n\nPlease note that this summary is based on the information provided in the text and should not be used for clinical practice.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.8177",
+               "Recall": "0.7474",
+               "F1-score": "0.7810"
+            },
+            "One-shot": {
+               "Precission": "0.8284",
+               "Recall": "0.7745",
+               "F1-score": "0.8005"
+            },
+            "Few-shot rank": {
+               "Precission": "0.8487",
+               "Recall": "0.7753",
+               "F1-score": "0.8103"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8484",
+               "Recall": "0.7771",
+               "F1-score": "0.8112"
+            }
+         }
+      },
+      "Gemini": {
+         "Rank": 3,
+         "Text": "\n## Scientific Paper Summary: Analyzing Emotional State with Language Models\n\nThis paper explores the use of language models for analyzing a person's emotional state.\n\n### Key Concepts\n\n1. **Pre-trained Language Models (Section 2.1):**\n\t- Transformer architecture (Vaswani et al., 2017) enables learning complex textual representations.\n\t- GPT (Radford et al., 2018), BERT (Devlin et al., 2018), RoBERTa (Liu et al., 2019), XLNet (Yang et al., 2019) leverage transformers for this purpose.\n\t- ELECTRA (Clark et al., 2020) offers competitive performance with lower compute requirements.\n\t- Domain-specific models can further improve performance (Vaidhya and Kaushal, 2020; Lee et al., 2019; Beltagy et al., 2019).\n\n2. **Emotion Recognition (Section 2.2):**\n\t- Traditionally studied through facial expressions (Tarnowski et al., 2017) and speech data (Yoon et al., 2018).\n\t- Text-based approaches include:\n    \t- SVM for sentiment analysis (Deshmukh and Kirange, 2012)\n    \t- Transformer encoders for emotion detection (Acheampong et al., 2020)\n    \t- Large pre-trained models for multi-emotion sentiment analysis (Kant et al., 2018)\n\n3. **Computational Empathy (Section 2.3):**\n\t- Empathy and distress modeling is gaining interest.\n\t- Lin et al. (2018) and Loveys et al. (2018) consider demographic variations in empathy/distress.\n\t- Guda et al. (2021) propose a demographic-aware BERT-based framework for empathy modelling.\n\t- Sharma et al. (2020) explore language models for identifying empathetic conversations in mental health support.",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7670",
+               "Recall": "0.7477",
+               "F1-score": "0.7572"
+            },
+            "One-shot": {
+               "Precission": "0.7831",
+               "Recall": "0.7745",
+               "F1-score": "0.7788"
+            },
+            "Few-shot rank": {
+               "Precission": "0.8167",
+               "Recall": "0.7951",
+               "F1-score": "0.8058"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8131",
+               "Recall": "0.7939",
+               "F1-score": "0.8034"
+            }
+         }
+      },
+      "Phi-3": {
+         "Zero-shot": " Summary:\n\nI. Pre-trained Language Models\n   - Vaswani et al. (2017): Proposed Transformer for machine translation\n   - Radford et al. (2018): Introduced GPT\n   - Devlin et al. (2018): Presented BERT\n   - Liu et al. (2019): Introduced RoBERTa\n   - Yang et al. (2019): Presented XLNet\n   - Clark et al. (2020): Proposed ELECTRA, a generator-discriminator based pre-training approach\n   - Vaidhya and Kaushal (2020): Domain specific language models for performance gain\n   - Lee et al. (2019): Domain specific language models for performance gain\n   - Beltagy et al. (2019): Domain specific language models for performance gain\n\nII. Emotion Recognition\n   - Tarnowski et al. (2017): Approach for recognition of seven emotional states based on facial expressions\n   - Yoon et al. (2018): Utilized a novel deep dual recurrent encoder model for understanding speech data using text data and audio signals simultaneously\n   - Deshmukh and Kirange (2012): Proposed an SVM-based approach for predicting opinions on news headlines\n   - Acheampong et al. (2020): Analyzed the efficacy of utilizing transformer encoders for detecting emotions\n   - Kant et al. (2018): Demonstrated the practical efficiency of large pre-trained language models for Multi-Emotion sentiment classification\n   - Vaidhya and Kaushal (2020): Domain specific language models for performance gain\n   - Lee et al. (2019): Domain specific language models for performance gain\n\nIII. Computation of Empathy\n   - Lin et al. (2018): Language variations across different regions and demographics affect empathy and distress\n   - Loveys et al. (2018): Language variations across different regions and demographics affect empathy and distress\n   - Guda et al. (2021): Proposed a demographic-aware empathy modelling framework using BERT and demographics features\n   - Sharma et al. (2020): Explored language models for identifying empathetic conversations in the mental health support system",
+         "One-shot": " 1. **Pre-trained Language Models**:\n   - **Vaswani et al. (2017)**: Proposed the Transformer architecture for machine translation.\n   - **Radford et al. (2018)**: Introduced GPT.\n   - **Devlin et al. (2018)**: Presented BERT.\n   - **Liu et al. (2019)**: Introduced RoBERTa.\n   - **Yang et al. (2019)**: Proposed XLNet.\n   - **Clark et al. (2020)**: Introduced ELECTRA, a generator-discriminator based pre-training approach.\n   - **Authors of the paper**: Discussed the progress of pre-trained language models in learning contextualized representations.\n\n2. **Emotion Recognition**:\n   - **Tarnowski et al. (2017)**: Presented an approach for recognizing seven emotional states based on facial expressions.\n   - **Yoon et al. (2018)**: Utilized a deep dual recurrent encoder model for understanding speech data using text data and audio signals simultaneously.\n   - **Deshmukh and Kirange (2012)**: Proposed an SVM-based approach for predicting opinions on news headlines.\n   - **Acheampong et al. (2020)**: Analyzed the efficacy of utilizing transformer encoders for detecting emotions.\n   - **Kant et al. (2018)**: Demonstrated the practical efficiency of large pre-trained language models for Multi-Emotion sentiment classification.\n   - **Authors of the paper**: Discussed emotion recognition through facial expressions and speech data.\n\n3. **Computation of Empathy**:\n   - **Lin et al. (2018); Loveys et al. (2018)**: Discussed language variations across different regions and demographics affecting empathy and distress.\n   - **Guda et al. (2021)**: Proposed a demographic-aware empathy modelling framework using BERT and demographics features.\n   - **Sharma et al. (2020)**: Explored language models for identifying empathetic conversations in the mental health support system.\n   - **Authors of the paper**: Discussed computational approaches to model empathy and distress.",
+         "Few-shot rank": " 1. **Pre-trained Language Models**:\n   - Vaswani et al. (2017): Introduced the Transformer model, enhancing machine translation and text representation learning.\n   - Radford et al. (2018): Developed GPT, advancing language model capabilities.\n   - Devlin et al. (2018): Created BERT, improving contextualized text representations.\n   - Liu et al. (2019): Presented XLNet, a transformer-based model.\n   - Clark et al. (2020): Introduced ELECTRA, a generator-discriminator-based pre-training method with competitive performance.\n   - Vaidhya and Kaushal (2020); Lee et al. (2019); Beltagy et al. (2019): Proposed domain-specific language models for performance gains.\n\n2. **Emotion Recognition**:\n   - Tarnowski et al. (2017): Recognized seven emotional states from facial expressions.\n   - Yoon et al. (2018): Utilized a dual recurrent encoder model for speech data analysis.\n   - Deshmukh and Kirange (2012): Proposed an SVM-based approach for opinion prediction on news headlines.\n   - Acheampong et al. (2020): Analyzed the effectiveness of transformer encoders for emotion detection.\n   - Kant et al. (2018): Showed the efficiency of large pre-trained models for Multi-Emotion sentiment classification.\n\n3. **Computation of Empathy**:\n   - Lin et al. (2018); Loveys et al. (2018): Highlighted the variation of empathy and distress with demographics.\n   - Guda et al. (2021): Proposed a demographic-aware empathy modeling framework using BERT and demographic features.\n   - Sharma et al. (2020): Explored language models to identify empathetic conversations in mental health support systems.",
+         "Few-shot expl": " 1. **Pre-trained Language Models**:\n   - Vaswani et al. (2017): Introduced the Transformer model, enhancing machine translation and text representation learning.\n   - Radford et al. (2018): Developed GPT, advancing language model capabilities.\n   - Devlin et al. (2018): Created BERT, improving contextualized text representation.\n   - Liu et al. (2019): Presented XLNet, a transformer-based model.\n   - Clark et al. (2020): Introduced ELECTRA, a generator-discriminator-based pre-training method with competitive performance.\n   - Vaidhya and Kaushal (2020), Lee et al. (2019), Beltagy et al. (2019): Proposed domain-specific language models for performance gains.\n\n2. **Emotion Recognition**:\n   - Tarnowski et al. (2017): Recognized seven emotional states from facial expressions.\n   - Yoon et al. (2018): Utilized a dual recurrent encoder model for speech data analysis.\n   - Deshmukh and Kirange (2012): Proposed an SVM-based approach for opinion prediction on news headlines.\n   - Acheampong et al. (2020): Analyzed the effectiveness of transformer encoders for emotion detection.\n   - Kant et al. (2018): Showed the efficiency of large pre-trained models for Multi-Emotion sentiment classification.\n\n3. **Computation of Empathy**:\n   - Lin et al. (2018), Loveys et al. (2018): Highlighted the variation of empathy and distress across regions and demographics.\n   - Guda et al. (2021): Proposed a demographic-aware empathy modeling framework using BERT and demographic features.\n   - Sharma et al. (2020): Explored language models for identifying empathetic conversations in mental health support systems."
+      }
+   },
+   "9": {
+      "GPT-3.5": {
+         "Rank": 1,
+         "Text": "**Key Concepts:**\n\n1. **Domain Adaptation Strategies:**\n   - Chu and Wang (2018): Introduced four categories of domain adaptation strategies: data selection, data generation, instance weighting, and model interpolation.\n   \n2. **Data-centric Methods:**\n   - Language Models (Moore and Lewis, 2010; Axelrod et al., 2011; Duh et al., 2013): Used to score corpora for data selection.\n   - Convolutional Neural Networks (CNN) (Chen et al., 2016): Applied for scoring corpora in data selection.\n   - Information Retrieval (Utiyama and Isahara, 2003): Used for generating pseudo-parallel sentences.\n   - Self-enhancing (Lambert et al., 2011): Technique for generating pseudo-parallel sentences.\n   - Parallel word embeddings (Marie and Fujita, 2017): Used for generating pseudo-parallel sentences.\n   - Wang et al. (2014): Generated monolingual n-grams.\n   - Chu (2015): Generated parallel phrase pairs.\n\n3. **Model-centric Methods:**\n   - Instance Weighting (Wang et al., 2017b): Introduced from SMT to NMT, where in-domain language models measure sentence similarity and weights are integrated into training.\n   - Wang et al. (2018): Proposed generating sentence embeddings for in-domain sentences and measuring distance to the in-domain core.\n   - Chen et al. (2017): Incorporated domain classifier into NMT system, using features from the encoder to distinguish between in-domain and out-of-domain data.\n\n4. **Comparison and Improvement:**\n   - Wang et al. (2017a): Stated that data-centric methods only lead to minor improvements in NMT due to not being directly related to NMT's training criterion.\n   - Wang et al. (2018): Showed improvement over previous instance weighting techniques by using state-of-the-art neural classifiers instead of cross-entropy.\n   - Chen et al. (2017): Developed a method to weight sentences based on similarity to in-domain data using a domain classifier, trained simultaneously with NMT.\n\n5. **Unique Approach:**\n   - Current Study: Utilizes pretrained neural classifiers trained on small amounts of monolingual data for weighting classifier probabilities, focusing on effective use in NMT for translation quality improvements.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.8131",
+               "Recall": "0.7413",
+               "F1-score": "0.7755"
+            },
+            "One-shot": {
+               "Precission": "0.7803",
+               "Recall": "0.7725",
+               "F1-score": "0.7764"
+            },
+            "Few-shot rank": {
+               "Precission": "0.8234",
+               "Recall": "0.7675",
+               "F1-score": "0.7944"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8058",
+               "Recall": "0.7611",
+               "F1-score": "0.7828"
+            }
+         }
+      },
+      "Copilot": {
+         "Rank": 2,
+         "Text": "\n## **Domain Adaptation Strategies in NLP**\n\n### **1. Data-Centric Methods**\n\n#### **1.1 Data Selection**\n- **Chu and Wang (2018)** introduced data selection strategies. Models are trained using both in-domain and out-of-domain data. A similarity score is computed for each sentence based on its evaluation against out-of-domain data. By setting a threshold on these scores, relevant training data can be selected.\n\n#### **1.2 Language Models for Data Scoring**\n- Traditional language models, such as **Moore and Lewis (2010)**, **Axelrod et al. (2011)**, and **Duh et al. (2013)**, have been used to score corpora.\n- More recently, **convolutional neural networks (CNNs)**, as demonstrated by **Chen et al. (2016)**, have also been employed for scoring.\n\n#### **1.3 Instance Weighting vs. Data Selection**\n- While data selection focuses on choosing relevant training examples, the current work emphasizes **instance weighting**. Instead of discarding data, instance weights are assigned based on similarity to in-domain data.\n\n### **2. Data Generation**\n\n#### **2.1 Pseudo-Parallel Sentences**\n- When parallel training corpora are insufficient, pseudo-parallel sentences can be generated.\n- Techniques include:\n\t- **Information retrieval** (Utiyama and Isahara, 2003)\n\t- **Self-enhancing methods** (Lambert et al., 2011)\n\t- **Parallel word embeddings** (Marie and Fujita, 2017)\n\n### **3. Model-Centric Methods**\n\n#### **3.1 Instance Weighting in NMT**\n- **Wang et al. (2017b)** introduced instance weighting to NMT. An in-domain language model measures similarity between sentences and in-domain data using cross-entropy. These weights are integrated into the training objective.\n- The current work improves on this by using **state-of-the-art neural classifiers** instead of cross-entropy.\n\n#### **3.2 Related Approaches**\n- **Wang et al. (2018)** generate sentence embeddings for in-domain sentences and measure distance to the in-domain core. Assumes that the core of in-domain sentence embeddings is an atypical representative.\n- **Chen et al. (2017)** incorporate a domain classifier into NMT, distinguishing in-domain and out-of-domain data. Classifier probabilities are used to weight sentences during neural network training.\n- The current work differs by using pretrained neural classifiers trained on monolingual data without access to parallel in-domain data.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7501",
+               "Recall": "0.6609",
+               "F1-score": "0.7027"
+            },
+            "One-shot": {
+               "Precission": "0.7581",
+               "Recall": "0.7258",
+               "F1-score": "0.7416"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7593",
+               "Recall": "0.6903",
+               "F1-score": "0.7232"
+            },
+            "Few-shot expl": {
+               "Precission": "0.7490",
+               "Recall": "0.6896",
+               "F1-score": "0.7181"
+            }
+         }
+      },
+      "Gemini": {
+         "Rank": 3,
+         "Text": "\n## Key Concepts in Domain Adaptation for Neural Machine Translation (NMT)\n\nThis paper by the authors discusses domain adaptation strategies for NMT, focusing on data selection and instance weighting [authors].\n\n### Data-Centric Methods\n\n* **Goal:** Select or generate training data closer to the target domain.\n* **Selection Techniques:**\n\t* Language Models (LM) [Moore et al., 2010; Axelrod et al., 2011; Duh et al., 2013] or joint models [Cuong and Sima'an, 2014; Durrani et al., 2015] can be used to score corpora for domain similarity.\n\t* Convolutional Neural Networks (CNN) [Chen et al., 2016] offer a recent approach for data selection.\n* **Generation Techniques:**\n\t* Pseudo-parallel sentences can be generated for training using information retrieval [Utiyama and Isahara, 2003], self-enhancing methods [Lambert et al., 2011], or parallel word embeddings [Marie and Fujita, 2017].\n\t* Other approaches generate monolingual n-grams [Wang et al., 2014] or parallel phrase pairs [Chu, 2015].\n* **Limitations:**\n\t* Generally applicable to various machine translation techniques (not NMT-specific) [authors].\n\t* Lead to minor improvements in NMT due to indirect relation to NMT's training objective [Wang et al., 2017a].\n\n### Model-Centric Methods: Instance Weighting\n\n* **Technique:** Assigns weights to training sentences based on their similarity to the target domain [authors].\n* **Prior Work:**\n\t* Introduced for NMT from Statistical Machine Translation (SMT) [Wang et al., 2017b].\n\t* Used in-domain language models with cross-entropy for weighting [Wang et al., 2017b].\n\t* Employed sentence embeddings to measure distance from an \"in-domain core\" [Wang et al., 2018]. (Requires in-domain parallel text, not considered here).\n\t* Incorporated domain classifier with features from the encoder [Chen et al., 2017]. Used classifier probabilities for weighting.\n* **Our Improvement:**\n\t* Utilizes pre-trained state-of-the-art neural classifiers (more effective than cross-entropy) for weighting, especially beneficial with limited monolingual data [authors].\n\n**Note:** The authors emphasize the importance of considering classifier probability weighting for effective use in NMT with neural classifiers [authors].",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7552",
+               "Recall": "0.6828",
+               "F1-score": "0.7172"
+            },
+            "One-shot": {
+               "Precission": "0.7344",
+               "Recall": "0.7022",
+               "F1-score": "0.7179"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7474",
+               "Recall": "0.6860",
+               "F1-score": "0.7154"
+            },
+            "Few-shot expl": {
+               "Precission": "0.7586",
+               "Recall": "0.7017",
+               "F1-score": "0.7290"
+            }
+         }
+      },
+      "Phi-3": {
+         "Zero-shot": " **Subsection 1: Introduction to Domain Adaptation Strategies**\n\n- Chu and Wang (2018): Domain adaptation strategies are categorized into four types: data selection, data generation, instance weighting, and model interpolation.\n\n**Subsection 2: Data-Centric Methods**\n\n- Language Models:\n  - Moore and Lewis (2010)\n  - Axelrod et al. (2011)\n  - Duh et al. (2013)\n  - Cuong and Sima'an (2014)\n  - Durrani et al. (2015)\n- Convolutional Neural Networks (CNN):\n  - Chen et al. (2016)\n- Instance Weighting vs. Data Selection:\n  - Our work: Uses instance weighting, similar to the work of Chen et al. (2016).\n\n**Subsection 3: Data Generation Methods**\n\n- Information Retrieval:\n  - Utiyama and Isahara (2003)\n- Self-Enhancing Techniques:\n  - Lambert et al. (2011)\n- Parallel Word Embeddings:\n  - Marie and Fujita (2017)\n- Monolingual N-grams and Parallel Phrase Pairs:\n  - Wang et al. (2014)\n  - Chu (2015)\n\n**Subsection 4: Model-Centric Methods**\n\n- Instance Weighting:\n  - Introduced to NMT from SMT:\n    - Wang et al. (2017b)\n- Neural Classifiers:\n  - Improved on Wang et al. (2017b) by using state-of-the-art neural classifiers.\n- Domain Classifier Incorporation:\n  - Wang et al. (2018)\n  - Chen et al. (2017)\n\n**Subsection 5: Importance of Weighting Classifier Probabilities**\n\n- Our Contribution:\n  - Demonstrated the importance of effectively weighting classifier probabilities in NMT for translation quality improvements, especially when using neural classifiers.",
+         "One-shot": " 1. **Domain Adaptation Strategies**:\n   - Chu and Wang (2018) categorized domain adaptation strategies into four categories: data selection, data generation, instance weighting, and model interpolation.\n\n2. **Data-Centric Methods**:\n   - Models are trained using in-domain and out-of-domain data to evaluate out-of-domain data and compute a similarity score.\n   - Language Models:\n     - Moore and Lewis (2010)\n     - Axelrod et al. (2011)\n     - Duh et al. (2013)\n   - Joint Models:\n     - Cuong and Sima'an (2014)\n     - Durrani et al. (2015)\n   - Convolutional Neural Networks (CNN):\n     - Chen et al. (2016)\n   - The authors of the paper's work are similar to Chen et al. (2016) but use instance weighting rather than data selection.\n\n3. **Data Generation Methods**:\n   - Generating pseudo-parallel sentences by information retrieval:\n     - Utiyama and Isahara (2003)\n   - Self-enhancing monolingual n-grams:\n     - Lambert et al. (2011)\n   - Parallel word embeddings:\n     - Marie and Fujita (2017)\n   - Generating parallel phrase pairs:\n     - Chu (2015)\n\n4. **Model-Centric Methods**:\n   - Instance Weighting:\n     - Introduced to NMT from SMT by Wang et al. (2017b).\n   - Domain Classifier:\n     - Incorporated into the NMT system by Wang et al. (2018).\n   - The authors of the paper improved on the work of Wang et al. (2017b) by using state-of-the-art neural classifiers.\n   - The authors of the paper's work are similar to Wang et al. (2018) and Chen et al. (2017) in their approach to domain classification.\n\n5. **Contributions of the Authors**:\n   - Chu and Wang (2018): Domain adaptation strategies categorization.\n   - Moore and Lewis (2010), Axelrod et al. (2011), Duh et al. (2013), Cuong and Sima'an (2014), Durrani et al. (2015): Data-centric methods.\n   - Chen et al. (2016, 2017, 2018): Similarities to data-centric methods and model-centric methods, respectively.\n   - The authors of the paper: Improved on previous work by using state-of-the-art neural classifiers and showing the importance of weighting classifier probabilities for effective use in NMT.",
+         "Few-shot rank": " 1. **Domain Adaptation Strategies**:\n   - **Chu and Wang (2018)**: Identified four categories: data selection, data generation, instance weighting, and model interpolation.\n   - **Focus**: Discussion on data selection and instance weighting.\n\n2. **Data-centric Methods**:\n   - Traditional models use language models and parallel corpora for scoring (Moore and Lewis, 2010; Axelrod et al., 2011; Duh et al., 2013).\n   - Convolutional neural networks (CNN) by Chen et al. (2016) for scoring.\n   - Our work: Similar to traditional methods but uses instance weighting instead of data selection.\n\n3. **Model-centric Methods**:\n   - Instance weighting technique from SMT adapted for NMT (Wang et al., 2017b).\n   - Our work: Improves upon previous methods with state-of-the-art neural classifiers and integrates them into the training objective.\n   - **Comparison**:\n       - **Wang et al. (2018)**: Generated sentence embeddings and measured distances for in-domain sentences.\n       - **Chen et al. (2017)**: Incorporated a domain classifier into the NMT system.\n\n4. **Domain Classification and Weighting**:\n   - Previous works used domain classification to weight sentences during NMT training.\n   - Our study emphasizes the importance of effectively weighting classifier probabilities for translation quality improvements.",
+         "Few-shot expl": " 1. **Domain Adaptation Strategies**:\n   - **Chu and Wang (2018)**: Identified four categories of domain adaptation strategies: data selection, data generation, instance weighting, and model interpolation.\n   - **Focus**: The paper focuses on data selection and instance weighting.\n\n2. **Data-Centric Methods**:\n   - **Traditional Approaches**:\n      - Language Models (Moore and Lewis, 2010); Axelrod et al. (2011); Duh et al. (2013)\n      - Joint Models (Cuong and Sima'an, 2014); Durrani et al. (2015)\n   - **Recent Approaches**:\n      - Convolutional Neural Networks (CNN) (Chen et al., 2016)\n   - **Comparison**: The paper's approach uses instance weighting, differing from traditional data-centric methods that rely on data selection.\n\n3. **Model-Centric Methods**:\n   - **Instance Weighting**:\n      - Originated from SMT and applied to NMT (Wang et al., 2017b)\n   - **Contribution**:\n      - **Wang et al. (2018)**: Generated sentence embeddings and measured distances to determine domain similarity.\n      - **Chen et al. (2017)**: Incorporated a domain classifier into the NMT system.\n   - **Our Contribution**:\n      - Improved upon previous methods by using advanced neural classifiers and demonstrating their effectiveness over cross-entropy.\n   - **Our Approach**:\n      - Utilized pretrained neural classifiers and monolingual data to address scenarios without in-domain parallel text.\n   - **Contribution**:\n      - Showed the importance of weighting classifier probabilities for NMT, especially with neural classifiers."
+      }
+   },
+   "10": {
+      "GPT-3.5": {
+         "Rank": 2,
+         "Text": "**Key Concepts and Subsections:**\n\n1. **Topic Labelling Methods:**\n   - Mei et al. (2007): Introduced the concept of using noun chunks from a reference corpus for generating candidate labels for topics.\n   - Lau et al. (2011), Aletras and Stevenson (2014), Bhatia et al. (2016): Employed Wikipedia article titles as textual labels for topics.\n   - Cano Basave et al. (2014), Wan and Wang (2016): Utilized short text summaries for generating candidate labels.\n   - Aletras and Stevenson (2013), Aletras and Mittal (2017): Selected images from Wikipedia or the web using topic word queries.\n\n2. **Improvements in Topic Labelling:**\n   - Bhatia et al. (2016): Used word2vec and doc2vec to represent topics and candidate textual labels in the same latent semantic space, then ranked them based on cosine similarity.\n   - Aletras and Mittal (2017): Employed pre-computed dependency-based word embeddings and image embeddings from VGG-net to predict relevance scores using a deep neural network.\n\n3. **Multimodal Topic Labelling:**\n   - The paper introduces the first attempt at joint multimodal topic labelling, predicting continuous-valued ratings for both textual and image labels.\n\n**Contributions:**\n\n1. **Mei et al. (2007):**\n   - Introduced the use of noun chunks from a reference corpus for generating candidate labels for topics.\n\n2. **Lau et al. (2011), Aletras and Stevenson (2014), Bhatia et al. (2016):**\n   - Utilized Wikipedia article titles as textual labels for topics.\n\n3. **Cano Basave et al. (2014), Wan and Wang (2016):**\n   - Employed short text summaries for generating candidate labels for topics.\n\n4. **Aletras and Stevenson (2013), Aletras and Mittal (2017):**\n   - Selected images from Wikipedia or the web using topic word queries.\n\n5. **Bhatia et al. (2016):**\n   - Introduced the use of word2vec and doc2vec to represent topics and candidate textual labels, followed by ranking based on cosine similarity. Also re-ranked top labels in a supervised fashion using various features.\n\n6. **Aletras and Mittal (2017):**\n   - Employed pre-computed dependency-based word embeddings and image embeddings from VGG-net to predict relevance scores using a deep neural network.\n\n7. **Joint Multimodal Topic Labelling (Authors of the paper):**\n   - Introduced the first attempt at joint multimodal topic labelling, predicting continuous-valued ratings for both textual and image labels.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.8036",
+               "Recall": "0.8151",
+               "F1-score": "0.8093"
+            },
+            "One-shot": {
+               "Precission": "0.7848",
+               "Recall": "0.7633",
+               "F1-score": "0.7739"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7661",
+               "Recall": "0.7710",
+               "F1-score": "0.7685"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8008",
+               "Recall": "0.7799",
+               "F1-score": "0.7902"
+            }
+         }
+      },
+      "Copilot": {
+         "Rank": 3,
+         "Text": "\n**Key Concepts and Contributions in Multimodal Topic Labelling:**\n\n1. **Introduction to Topic Labelling**:\n\t- **Contributions**:\n    \t- **Ionut Sorodoc et al. (2017)**: Introduced the concept of **multimodal topic labelling**.\n    \t- Traditional topic label systems focus on a single label modality (e.g., textual labels).\n    \t- Proposed a **multimodal approach** using a simple feedforward neural network.\n    \t- Automatically generates a rating for a candidate image or textual label relative to the topic.\n    \t- Demonstrated that this multimodal approach outperforms single-modality topic labelling systems.\n\n2. **Automatic Topic Labelling Methods**:\n\t- **Contributions**:\n    \t- **Lau et al. (2011)**, **Bhatia et al. (2016)**: Proposed methods for topic interpretation based on **textual labels**.\n    \t- **Aletras and Stevenson (2013)**, **Aletras and Mittal (2017)**: Explored topic labelling using **images**.\n    \t- Recent work emphasized the use of **text or image embeddings** to improve candidate label generation and ranking.\n\n3. **Word Embeddings and Label Ranking**:\n\t- **Contributions**:\n    \t- **Bhatia et al. (2016)**: Used **word2vec** and **doc2vec** to represent topics and textual labels in a shared latent semantic space.\n    \t- Selected relevant textual labels from Wikipedia article titles using **cosine similarity** between topic and article title embeddings.\n    \t- Re-ranked top labels using features like **PageRank score**, **trigram letter ranking**, topic word overlap, and label length.\n\n4. **Image Representations and Neural Networks**:\n\t- **Contributions**:\n    \t- **Aletras and Mittal (2017)**: Utilized **dependency-based word embeddings** for topics and image captions.\n    \t- Extracted image embeddings using the output layer of **VGG-net** pretrained on **ImageNet**.\n    \t- Combined these vectors as input to a **deep neural network** for predicting relevance scores.\n\n5. **Joint Multimodal Topic Labelling**:\n\t- **Contributions**:\n    \t- **Ionut Sorodoc et al. (2017)**: Pioneered the first attempt at **joint multimodal topic labelling**.\n    \t- Predicted continuous-valued ratings for both **textual and image labels** using a joint model.\n\nIn summary, this work advances the field by integrating textual and visual modalities for topic labelling, providing a novel dataset, and proposing effective deep learning approaches for multimodal label rating.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7705",
+               "Recall": "0.7425",
+               "F1-score": "0.7562"
+            },
+            "One-shot": {
+               "Precission": "0.7777",
+               "Recall": "0.7129",
+               "F1-score": "0.7439"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7612",
+               "Recall": "0.7245",
+               "F1-score": "0.7424"
+            },
+            "Few-shot expl": {
+               "Precission": "0.7913",
+               "Recall": "0.7328",
+               "F1-score": "0.7609"
+            }
+         }
+      },
+      "Gemini": {
+         "Rank": 1,
+         "Text": "\n## Key Concepts in Topic Labelling Methods\n\nThis scientific paper discusses two main steps involved in topic labelling methods and reviews different techniques used for generating and ranking candidate labels.\n\n* **Two Main Steps in Topic Labelling**\n\t* Generating candidate labels (text or images) for a given topic.\n\t* Ranking candidate labels by their relevance to the topic.\n\n* **Textual Labels**\n\t* Sourced from noun chunks in a reference corpus (Mei et al., 2007).\n\t* Extracted from Wikipedia article titles (Lau et al., 2011; Aletras and Stevenson, 2014; Bhatia et al., 2016).\n\t* Obtained from short text summaries (Cano Basave et al., 2014; Wan and Wang, 2016).\n\n* **Image Labels**\n\t* Selected from Wikipedia or the web based on querying with topic words (Aletras and Stevenson, 2013; Aletras and Mittal, 2017).\n\n* **Recent Advancements**\n\t* Text or image embeddings to improve candidate label generation and ranking (Bhatia et al., 2016; Aletras and Mittal, 2017).\n    \t* Bhatia et al. (2016): Used word2vec and doc2vec to represent topics and candidate labels in the same latent semantic space. Selected the most relevant textual labels from Wikipedia article titles using cosine similarity. Re-ranked top labels using features like PageRank score, trigram letter ranking, topic word overlap, and word length.\n    \t* Aletras and Mittal (2017): Used pre-computed dependency-based word embeddings to represent topics and image captions. Used image embeddings from the output layer of VGG-net pre-trained on ImageNet. Combined these three vectors as input to a deep neural network to predict the relevance score for both textual and image labels.\n\n* **Our Work's Novelty**\n\t* This paper proposes a joint model to predict a continuous-valued rating for both textual and image labels, which is different from previous single-modality methods that focused on textual or visual labels independently.",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7752",
+               "Recall": "0.7562",
+               "F1-score": "0.7656"
+            },
+            "One-shot": {
+               "Precission": "0.8093",
+               "Recall": "0.7481",
+               "F1-score": "0.7775"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7613",
+               "Recall": "0.7243",
+               "F1-score": "0.7423"
+            },
+            "Few-shot expl": {
+               "Precission": "0.7837",
+               "Recall": "0.7250",
+               "F1-score": "0.7532"
+            }
+         }
+      },
+      "Phi-3": {
+         "Zero-shot": " Subsection 1: Introduction to Topic Labelling Methods\n- Authors: Not specified in the text\n\nSubsection 2: Steps in Topic Labelling Methods\n- Authors: Not specified in the text\n\nSubsection 3: Sourcing Textual Labels\n- Authors: Mei et al. (2007), Lau et al. (2011), Aletras and Stevenson (2014), Bhatia et al. (2016), Cano Basave et al. (2014), Wan and Wang (2016)\n  - Mei et al. (2007): Sourced noun chunks from a reference corpus for topic labelling.\n  - Lau et al. (2011): Used Wikipedia article titles for textual labels.\n  - Aletras and Stevenson (2014): Employed Wikipedia article titles for topic labelling.\n  - Bhatia et al. (2016): Utilized text or image embeddings to improve candidate label generation and ranking.\n  - Cano Basave et al. (2014): Selected short text summaries for textual labels.\n  - Wan and Wang (2016): Not specified in the text.\n\nSubsection 4: Sourcing Images for Topic Labelling\n- Authors: Aletras and Stevenson (2013), Aletras and Mittal (2017)\n  - Aletras and Stevenson (2013): Selected images from Wikipedia or the web based on querying with topic words.\n  - Aletras and Mittal (2017): Used pre-computed dependency-based word embeddings and image embeddings for image labelling.\n\nSubsection 5: Recent Advances in Topic Labelling\n- Authors: Bhatia et al. (2016), Aletras and Mittal (2017)\n  - Bhatia et al. (2016): Implemented word2vec and doc2vec to represent topics and candidate textual labels in the same latent semantic space. Used cosine similarity to select relevant textual labels from Wikipedia article titles. Re-ranked top labels using various features such as PageRank score, trigram letter ranking, topic word overlap, and word length of the label.\n  - Aletras and Mittal (2017): Represented topics and image captions using pre-computed dependency-based word embeddings and image embeddings. Inputted these vectors into a deep neural network to predict the relevance score.\n\nSubsection 6: Joint Multimodal Topic Labelling\n- Authors: Not specified in the text\n  - The authors' contribution: Introduced a joint model to predict continuous-valued ratings for both textual and image labels, marking the first attempt at joint multimodal topic labelling.",
+         "One-shot": " 1. **Topic Labelling Methods**:\n   - Generate candidate labels for a given topic (text or images).\n   - Rank candidate labels by relevance to the topic.\n   - Authors contributing to this topic:\n     - Mei et al., 2007: Sourced textual labels from noun chunks in a reference corpus.\n     - Lau et al., 2011; Aletras and Stevenson, 2014; Bhatia et al., 2016: Sourced textual labels from Wikipedia article titles.\n     - Cano Basave et al., 2014; Wan and Wang, 2016: Sourced textual labels from short text summaries.\n     - Aletras and Stevenson, 2013; Aletras and Mittal, 2017: Selected images based on querying with topic words.\n     - Bhatia et al., 2016; Aletras and Mittal, 2017: Used text or image embeddings to improve candidate label generation and ranking.\n     - Authors of the paper:\n       - Authors of the paper: Developed a joint model for multimodal topic labelling.\n\n2. **Recent Work on Topic Labelling**:\n   - Utilized text or image embeddings to enhance candidate label generation and ranking.\n   - Authors contributing to this topic:\n     - Bhatia et al., 2016: Used word2vec and doc2vec to represent topics and candidate textual labels in the same latent semantic space.\n     - Aletras and Mittal, 2017: Used pre-computed dependency-based word embeddings and image embeddings to represent topics and image captions.\n   - Authors of the paper:\n     - Authors of the paper: Introduced a joint model for multimodal topic labelling.",
+         "Few-shot rank": " 1. **Topic Labelling Methods**:\n   - Two main steps are involved: generating candidate labels and ranking them by relevance.\n   - Sources of textual labels:\n    \t* **Mei et al. (2007)**: Used noun chunks from a reference corpus.\n    \t* **Lau et al. (2011)**: Sourced labels from Wikipedia article titles.\n    \t* **Aletras and Stevenson (2014)**: Used Wikipedia article titles for label generation.\n    \t* **Bhatia et al. (2016)**: Employed word2vec and doc2vec for topic and label representation.\n    \t* **Aletras and Mittal (2017)**: Utilized pre-computed dependency-based word embeddings and image embeddings for topic and label representation.\n   - **Bhatia et al. (2016)**: Represented topics and labels in the same latent space using word2vec and doc2vec.\n   - **Aletras and Mittal (2017)**: Used dependency-based word embeddings and image embeddings for topic and label representation.\n   - Features for ranking labels:\n    \t* **Brin and Page (1998)**: Used PageRank score of the article.\n    \t* **Kou et al. (2015)**: Applied trigram letter ranking.\n    \t* **Topic word overlap**: Considered for label relevance.\n    \t* **Word length of the label**: A factor in label ranking.\n   - **Our Contribution**: Developed a joint model for multimodal topic labelling, predicting continuous values for both textual and image labels.\n\n2. **Joint Model for Multimodal Topic Labelling**:\n   - Our work is distinct from single-modality methods as it integrates both textual and visual modalities in a joint model.\n   - The model predicts a continuous rating for relevance, combining textual and image labels.\n   - This approach is claimed to be the first of its kind.",
+         "Few-shot expl": " 1. **Topic Labelling Methods**:\n   - Two main steps are involved: generating candidate labels and ranking them by relevance.\n   - Sources of textual labels:\n    \t* **Mei et al. (2007)**: Used noun chunks from a reference corpus for topic labelling.\n    \t* **Lau et al. (2011)**: Sourced labels from Wikipedia article titles.\n    \t* **Aletras and Stevenson (2014)**: Employed Wikipedia article titles for topic labelling.\n    \t* **Bhatia et al. (2016)**: Utilized word2vec and doc2vec for representing topics and candidate labels.\n    \t* **Aletras and Mittal (2017)**: Applied pre-computed dependency-based word embeddings and image embeddings for topic labelling.\n   - Selection of image labels:\n    \t* **Aletras and Stevenson (2013)**: Used Wikipedia queries with topic words for image selection.\n    \t* **Aletras and Mittal (2017)**: Leveraged pre-computed dependency-based word embeddings and VGG-net image embeddings for image labelling.\n   - Features for ranking labels:\n    \t* **Brin and Page (1998)**: Used PageRank score of Wikipedia articles.\n    \t* **Kou et al. (2015)**: Implemented trigram letter ranking.\n    \t* **Bhatia et al. (2016)**: Considered topic word overlap and label word length.\n   - **Bhatia et al. (2016)**: Represented topics and labels in the same latent space using word2vec and doc2vec.\n   - **Aletras and Mittal (2017)**: Used dependency-based word embeddings and VGG-net image embeddings for predicting relevance scores.\n   - **Unique Contribution**: Developed a joint model for multimodal topic labelling, a novel approach not previously attempted.\n\n2. **Contributions**:\n   - **Bhatia et al. (2016)**: Represented topics and labels in a shared latent space.\n   - **Aletras and Mittal (2017)**: Created a joint model for predicting relevance scores in multimodal labelling.\n   - **Authors of the paper**: Proposed a joint model for multimodal topic labelling, integrating textual and visual modalities."
+      }
+   },
+   "14": {
+      "GPT-3.5": {
+         "Rank": 2,
+         "Text": "**Key Concepts and Contributions:**\n\n1. **NER (Named Entity Recognition) in Legal Domain:**\n   - **Dozier et al. (2010):** Described five classes for taggers development based on dictionary lookup, pattern-based rules, and statistical models. Classes include jurisdiction, court, title, doctype, and judge.\n   - **Cardellino et al. (2017):** Developed an ontology of legal concepts utilizing NERC, LKIF, and YAGO. Identified entities under abstraction, act, document, organization, person, non-entity, company, corporation, contract, statute, etc.\n   - **Glaser et al. (2018):** Utilized GermaNER and DBpedia Spotlight for recognizing person, location, and organization entities. Established an evaluation dataset of 20 court decisions.\n\n2. **Challenges and Gaps in NER in Legal Domain:**\n   - Fragmented approaches and inconsistency in methods, datasets, and typologies.\n   - Lack of agreement on selecting relevant semantic categories.\n   - Absence of annotated named entity corpora or datasets for legal documents, hindering data-driven NER classifier development.\n\n3. **Methodologies and Tools:**\n   - Dozier et al. (2010) used dictionary lookup, pattern-based rules, and statistical models.\n   - Glaser et al. (2018) employed GermaNER and DBpedia Spotlight alongside rules described by Landthaler et al. (2016).\n\n4. **Datasets and Evaluation:**\n   - Glaser et al. (2018) created an evaluation dataset of 20 court decisions for their study.\n\nEach contribution addresses different aspects of NER in the legal domain, ranging from methodology development to addressing challenges and evaluating performance.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.8021",
+               "Recall": "0.7625",
+               "F1-score": "0.7818"
+            },
+            "One-shot": {
+               "Precission": "0.8364",
+               "Recall": "0.8030",
+               "F1-score": "0.8193"
+            },
+            "Few-shot rank": {
+               "Precission": "0.8029",
+               "Recall": "0.7427",
+               "F1-score": "0.7716"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8066",
+               "Recall": "0.7528",
+               "F1-score": "0.7787"
+            }
+         }
+      },
+      "Copilot": {
+         "Rank": 3,
+         "Text": "\n1. **NER in the Legal Domain**\n\t- **Authors**: The authors of the paper the text was taken from.\n\t- **Contribution**: Highlighting the lack of attention to Named Entity Recognition (NER) in the legal domain. Existing approaches are fragmented, inconsistent, and lack annotated legal datasets for developing data-driven NER classifiers.\n\n2. **Semantic Categories in Legal Domain**\n\t- **Authors**: Not explicitly mentioned.\n\t- **Contribution**: Pointing out the absence of agreement on relevant semantic categories for legal NER.\n\n3. **Dozier et al. (2010)**\n\t- **Authors**: Dozier et al.\n\t- **Contribution**: Describing five classes (jurisdiction, court, title, doctype, judge) for which taggers are developed using dictionary lookup, pattern-based rules, and statistical models. Testing these taggers with legal documents such as US case law, depositions, and pleadings.\n\n4. **Cardellino et al. (2017)**\n\t- **Authors**: Cardellino et al.\n\t- **Contribution**: Developing an ontology of legal concepts using NERC (6 classes), LKIF (69 classes), and YAGO (358 classes). Categorizing entities into levels (abstraction, act, document, organization, person, non-entity) without providing details on correlations between levels. Working with Wikipedia articles and European Court of Human Rights decisions.\n\n5. **Glaser et al. (2018)**\n\t- **Authors**: Glaser et al.\n\t- **Contribution**: Using GermaNER and DBpedia Spotlight for recognizing person, location, and organization entities. Identifying references based on rules described by Landthaler et al. (2016). Creating an evaluation dataset of 20 court decisions.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7863",
+               "Recall": "0.7244",
+               "F1-score": "0.7541"
+            },
+            "One-shot": {
+               "Precission": "0.7921",
+               "Recall": "0.7420",
+               "F1-score": "0.7662"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7717",
+               "Recall": "0.6956",
+               "F1-score": "0.7317"
+            },
+            "Few-shot expl": {
+               "Precission": "0.7991",
+               "Recall": "0.7361",
+               "F1-score": "0.7663"
+            }
+         }
+      },
+      "Gemini": {
+         "Rank": 1,
+         "Text": "\n## Key Concepts in Legal Named Entity Recognition (NER)\n\nThis scientific paper explores the challenges and current state of Named Entity Recognition (NER) in the legal domain. Here's a breakdown of the key concepts along with the contributions from cited authors:\n\n* **Challenges in Legal NER** (Authors: not specified in this excerpt)\n\t* Lack of standardized approaches: Different methods, datasets, and entity types are used across various legal NER systems.\n\t* Missing agreement on entity selection: There's no consensus on the specific legal concepts that should be recognized as named entities.\n\t* Absence of annotated corpora: The development of data-driven NER models is hindered by the lack of legal documents with labeled named entities.\n\n* **Existing Legal NER Approaches**\n\t* Dozier et al. (2010): Proposed five entity classes for legal documents: jurisdiction, court, title, doctype, and judge. Their NER system relied on dictionary lookup, rule-based patterns, and statistical models.\n\t* Cardellino et al. (2017): Developed a legal ontology using NERC (person, organization, location, abstraction, act, document, non-entity), LKIF (company, corporation, contract, statute, etc.), and YAGO classifications. However, details on entity categorization and correlation between the levels are missing in their work.\n\t* Glaser et al. (2018): Leveraged existing NER tools (GermaNER, DBpedia Spotlight) to recognize people, locations, and organizations. They also defined rules for reference recognition and created a dataset of 20 annotated court decisions for evaluation.",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7289",
+               "Recall": "0.6781",
+               "F1-score": "0.7026"
+            },
+            "One-shot": {
+               "Precission": "0.7477",
+               "Recall": "0.6929",
+               "F1-score": "0.7192"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7389",
+               "Recall": "0.6627",
+               "F1-score": "0.6987"
+            },
+            "Few-shot expl": {
+               "Precission": "0.7559",
+               "Recall": "0.6947",
+               "F1-score": "0.7240"
+            }
+         }
+      },
+      "Phi-3": {
+         "Zero-shot": " I. Introduction\n   - NER lacks attention in the legal domain, with fragmented and inconsistent approaches.\n   - Absence of consensus on semantic categories and lack of annotated legal document datasets.\n\n   Authors:\n   - Dozier et al. (2010)\n   - Cardellino et al. (2017)\n   - Glaser et al. (2018)\n\nII. Previous Approaches to NER in the Legal Domain\n   - Dozier et al. (2010) developed taggers for five classes using dictionary lookup, pattern-based rules, and statistical models.\n   - Cardellino et al. (2017) created an ontology of legal concepts using NERC, LKIF, and YAGO classes.\n   - Glaser et al. (2018) used GermaNER and DBpedia Spotlight for entity recognition, with evaluation based on Landthaler et al. (2016) rules.\n\n   Authors:\n   - Dozier et al. (2010)\n   - Cardellino et al. (2017)\n   - Glaser et al. (2018)\n\nIII. Challenges in NER for the Legal Domain\n   - Lack of agreement on semantic categories selection.\n   - Absence of annotated legal document datasets.\n\n   Authors:\n   - (No specific authors mentioned for this subsection)\n\nIV. Entity Recognition and Categorization\n   - Cardellino et al. (2017) divided entities into abstraction, act, document, organization, person, and non-entity.\n   - LKIF used for categorizing entities, with examples like company, contract, and statute.\n   - Glaser et al. (2018) created an evaluation dataset of court decisions.\n\n   Authors:\n   - Cardellino et al. (2017)\n   - Glaser et al. (2018)\n\nV. Entity Recognition Tools and Datasets\n   - Dozier et al. (2010) tested taggers with various legal documents.\n   - Glaser et al. (2018) used GermaNER and DBpedia Spotlight for entity recognition.\n\n   Authors:\n   - Dozier et al. (2010)\n   - Glaser et al. (2018)",
+         "One-shot": " 1. **Challenges in NER for the Legal Domain**:\n   - The development of NER approaches in the legal domain is fragmented and inconsistent.\n   - There is no consensus on selecting relevant semantic categories from the legal domain.\n   - Corpora or datasets of legal documents with annotated named entities are lacking.\n   - **Dozier et al. (2010)**: Described five classes for taggers based on dictionary lookup, pattern-based rules, and statistical models. These classes include jurisdiction, court, title, doctype, and judge.\n   - **Cardellino et al. (2017)**: Developed an ontology of legal concepts using NERC, LKIF, and YAGO classes. Entities were divided into abstraction, act, document, organization, person, and non-entity.\n   - **Glaser et al. (2018)**: Utilized GermaNER and DBpedia Spotlight for recognizing person, location, and organization entities. Created an evaluation dataset of 20 court decisions.\n\n2. **Contributions of Authors**:\n   - **Dozier et al. (2010)**: Developed taggers for five classes based on dictionary lookup, pattern-based rules, and statistical models.\n   - **Cardellino et al. (2017)**: Created an ontology of legal concepts using NERC, LKIF, and YAGO classes.\n   - **Glaser et al. (2018)**: Used GermaNER and DBpedia Spotlight for entity recognition and created an evaluation dataset of court decisions.\n   - **Authors of the paper**: Identified references based on rules described by Landthaler et al. (2016).",
+         "Few-shot rank": " 1. **Challenges in Legal NER**:\n   - Lack of attention and inconsistency in NER approaches for the legal domain.\n   - No consensus on semantic categories selection.\n   - Absence of annotated legal datasets for training NER classifiers.\n   - **Dozier et al. (2010)**: Identified five classes for tagging in legal texts using dictionary lookup, pattern-based rules, and statistical models.\n   - **Cardellino et al. (2017)**: Developed an ontology of legal concepts, utilizing NERC, LKIF, and YAGO classes.\n   - **Glaser et al. (2018)**: Employed GermaNER and DBpedia Spotlight for entity recognition in legal documents, guided by Landthaler et al. (2016) rules.\n\n2. **Dataset and Typologies**:\n   - The authors did not detail the categorization process or correlations between NERC, LKIF, and YAGO levels.\n   - They created an evaluation dataset from 20 court decisions.",
+         "Few-shot expl": " 1. **Challenges in NER for the Legal Domain**:\n   - Lack of attention and inconsistency in NER approaches for legal texts.\n   - No consensus on semantic categories for legal NER.\n   - Absence of annotated legal datasets for training NER classifiers.\n   - **Dozier et al. (2010)**: Identified five classes for NER tagging in legal texts.\n   - **Cardellino et al. (2017)**: Developed an ontology of legal concepts using NERC, LKIF, and YAGO classes.\n   - **Glaser et al. (2018)**: Created an evaluation dataset and used tools like GermaNER and DBpedia Spotlight for entity recognition.\n\n2. **Development of Legal NER Classifiers**:\n   - **Dozier et al. (2010)**: Proposed taggers for jurisdiction, court, title, doctype, and judge.\n   - **Cardellino et al. (2017)**: Categorized entities into abstraction, act, document, organization, person, and non-entity.\n   - **Glaser et al. (2018)**: Utilized external resources for recognizing entities in legal documents.\n\n3. **Datasets and Tools for Legal NER**:\n   - The authors did not specify categorization methods or correlations between entity levels.\n   - They used Wikipedia and European Court of Human Rights decisions for references.\n   - Developed an evaluation dataset from court decisions."
+      }
+   },
+   "15": {
+      "GPT-3.5": {
+         "Rank": 2,
+         "Text": "**Key Concepts:**\n\n1. Overview of Text Classification (TC) Tasks for Code-Mixed Texts\n2. OLI Shared Task on Code-Mixed Texts in Dravidian Languages\n3. Hope Speech Detection as a New Challenge\n4. Sentiment Analysis (SA) of Dravidian Languages in Code-Mixed Texts\n\n**1. Overview of Text Classification (TC) Tasks for Code-Mixed Texts**\n\n- Chakravarthi et al. (2020b): Provided an overview of the OLI shared task on code-mixed texts in Dravidian languages, consisting of subtasks A and B for classifying texts into \"offensive\" or \"not-offensive\" categories.\n- Renjit and Idicula (2020): Proposed two LSTM-based models for the OLI shared task, achieving a weighted F1-score of 0.53 for Romanized Malayalam text in Subtask B.\n\n**2. OLI Shared Task on Code-Mixed Texts in Dravidian Languages**\n\n- Chakravarthi et al. (2020b): Organized the OLI shared task on code-mixed texts in Dravidian languages, with Subtask A focusing on classifying code-mixed Ma-En YouTube comments, and Subtask B on classifying Romanized Malayalam and Romanized Tamil texts from YouTube or Twitter comments.\n- Arora (2020): Trained a Universal LM for Ma-En code-mixed texts and applied it to TC models, achieving weighted F1-scores of 0.91 and 0.74 for Subtask A and Romanized Malayalam text of Subtask B respectively.\n- Sun and Zhou (2020): Proposed the XLM-Roberta model, achieving a weighted F1-score of 0.65 and 0.74 for Ta-En and Ma-En language pairs respectively, using the extracted output of Convolutional Neural Networks (CNN).\n- Ou and Li (2020): Developed an XLM-Roberta model using pre-trained multi-language models and K-folding method, achieving weighted F1-scores of 0.63 and 0.74 for Ta-En and Ma-En language pairs respectively.\n\n**3. Hope Speech Detection as a New Challenge**\n\n- Not specifically attributed in the text.\n\n**4. Sentiment Analysis (SA) of Dravidian Languages in Code-Mixed Texts**\n\n- Chakravarthi et al. (2020d): Organized a shared task focusing on SA of code-mixed texts in Ta-En and Ma-En language pairs, using datasets with five categories for each language pair.\n- Sun and Zhou (2020): Achieved first rank in the shared task using the XLM-Roberta model with weighted F1-scores of 0.65 and 0.74 for\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.8134",
+               "Recall": "0.7890",
+               "F1-score": "0.8010"
+            },
+            "One-shot": {
+               "Precission": "0.8282",
+               "Recall": "0.8062",
+               "F1-score": "0.8171"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7993",
+               "Recall": "0.7799",
+               "F1-score": "0.7895"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8325",
+               "Recall": "0.7892",
+               "F1-score": "0.8103"
+            }
+         }
+      },
+      "Copilot": {
+         "Rank": 3,
+         "Text": "\n1. **OLI Shared Task on Code-Mixed Texts in Dravidian Languages**:\n\t- **Authors**: Chakravarthi et al. (2020b)\n\t- **Contribution**: Presented an overview of the OLI shared task, which involves classifying code-mixed texts in Dravidian languages into \"offensive\" or \"not-offensive\" categories. Subtask A focuses on Ma-En YouTube comments, while Subtask B deals with Romanized Malayalam and Romanized Tamil texts from YouTube or Twitter comments.\n\t- **Results**: Two LSTM-based models achieved a weighted F1-score of 0.53 for Romanized Malayalam text in Subtask B.\n\n2. **Universal Language Model for Ma-En Code-Mixed Texts**:\n\t- **Authors**: Arora (2020)\n\t- **Contribution**: Trained a universal language model (LM) for Ma-En code-mixed texts using Wikipedia articles in native script combined with translated and transliterated versions. Transferred this LM to a text classification (TC) model from the fastai library, achieving 0.91 and 0.74 weighted F1-scores for Subtask A and Romanized Malayalam text in Subtask B, respectively.\n\n3. **Sentiment Analysis of Dravidian Languages in Code-Mixed Text**:\n\t- **Authors**: Chakravarthi et al. (2020d)\n\t- **Contribution**: Focused on sentiment analysis (SA) of code-mixed texts in Ta-En and Ma-En language pairs. Used datasets from (Chakravarthi et al., 2020c) and (Chakravarthi et al., 2020a), including five categories: \"Positive,\" \"Negative,\" \"Unknown state,\" \"Mixed-Feelings,\" and \"Other languages.\"\n\t- **Results**: The XLM-Roberta model proposed by Sun and Zhou (2020) achieved a weighted F1-score of 0.65 for Ta-En and 0.74 for Ma-En, obtaining first rank in both subtasks. Another XLM-Roberta model by Ou and Li (2020) achieved third and first ranks for Ta-En and Ma-En, respectively, using pre-trained multi-language models and K-folding.\n\nIn summary, these studies address the challenges of code-mixed text classification and sentiment analysis in Dravidian languages, with various models achieving competitive results. The XLM-Roberta model stands out for its effective utilization of semantic information from texts. \n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7902",
+               "Recall": "0.7427",
+               "F1-score": "0.7657"
+            },
+            "One-shot": {
+               "Precission": "0.8079",
+               "Recall": "0.7571",
+               "F1-score": "0.7817"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7999",
+               "Recall": "0.7455",
+               "F1-score": "0.7717"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8157",
+               "Recall": "0.7526",
+               "F1-score": "0.7829"
+            }
+         }
+      },
+      "Gemini": {
+         "Rank": 1,
+         "Text": "\n## Text Classification (TC) for Code-Mixed Texts\n\n**Key Concepts**\n\n* **Challenges in TC for code-mixed texts:** Less work has been done on classification of code-mixed texts compared to standard TC, and existing literature focuses on Sentiment Analysis (SA) and Offensive Language Identification (OLI) tasks for specific language pairs [The authors of the paper].\n* **Hope Speech Detection as a new challenge:** Hope Speech Detection is a new research area with limited exploration in code-mixed text classification [The authors of the paper].\n\n**Recent Studies on TC tasks for Code-Mixed Texts**\n\n* **OLI Shared Task on Code-Mixed Texts in Dravidian Languages** (Chakravarthi et al., 2020b)\n\t* This task consists of two subtasks: classifying code-mixed Malayalam-English (Ma-En) YouTube comments and Romanized Malayalam/Tamil text from social media (Subtask A & B).\n\t* Datasets used are described in (Chakravarthi et al., 2020a) and (Chakravarthi et al., 2020c).\n* **Approaches for OLI task:**\n\t* Renjit and Idicula (2020) proposed LSTM based models achieving a weighted F1-score of 0.53 for Romanized Malayalam text (Subtask B).\n\t* Arora (2020) used a Universal Language Model trained on Ma-En code-mixed text and achieved a weighted F1-score of 0.91 and 0.74 for Subtask A and Romanized Malayalam text (Subtask B) respectively.\n* **Sentiment Analysis of Dravidian Languages in Code-Mixed Text (SA task)** (Chakravarthi et al., 2020d)\n\t* This shared task focuses on Sentiment Analysis (SA) of code-mixed Tamil-English (Ta-En) and Ma-En language pairs.\n\t* It uses the same datasets as the OLI task (described in Chakravarthi et al., 2020a & 2020c). The task defines five sentiment categories.\n* **Approaches for SA task:**\n\t* Sun and Zhou (2020) proposed an XLM-Roberta model with CNN features, achieving a weighted F1-score of 0.65 and 0.74 for Ta-En and Ma-En, respectively.\n\t* Ou and Li (2020) proposed an ensemble model using pre-trained XLM-Roberta and K-folding, achieving a weighted F1-score of 0.63 and 0.74 for Ta-En and Ma-En, respectively.",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7936",
+               "Recall": "0.7635",
+               "F1-score": "0.7783"
+            },
+            "One-shot": {
+               "Precission": "0.7890",
+               "Recall": "0.7605",
+               "F1-score": "0.7745"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7838",
+               "Recall": "0.7549",
+               "F1-score": "0.7691"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8027",
+               "Recall": "0.7615",
+               "F1-score": "0.7815"
+            }
+         }
+      },
+      "Phi-3": {
+         "Zero-shot": " I. Introduction\n   - Researchers have developed a vast range of datasets, tools, and models for Text Classification (TC).\n   - Comparatively very less work has been done on the classification of code-mixed texts.\n   - Hope Speech detection is an emerging challenge.\n\nII. Recent Studies on TC Tasks for Code-Mixed Texts\n   - Chakravarthi et al. (2020b): Overview of OLI shared task on code-mixed texts in Dravidian languages.\n     - Subtask A: Classify code-mixed Ma-En YouTube comments.\n     - Subtask B: Classify Romanized Malayalam and Romanized Tamil texts from YouTube or Twitter comments.\n   - Datasets used: (Chakravarthi et al., 2020c) and (Chakravarthi et al., 2020a).\n   - Renjit and Idicula (2020): Two models based on LSTM for OLI shared task.\n     - Weighted F1-score: 0.53 for Romanized Malayalam text in Subtask B.\n   - Arora (2020): Universal LM trained for Ma-En code-mixed texts.\n     - Transfer to TC model from fastai library.\n     - Weighted F1-score: 0.91 for Subtask A and 0.74 for Romanized Malayalam text of Subtask B.\n   - Chakravarthi et al. (2020d): Shared task on Sentiment Analysis of code-mixed texts in Ta-En and Ma-En.\n     - Datasets used: (Chakravarthi et al., 2020c) and (Chakravarthi et al., 2020a).\n     - XLM-Roberta model by Sun and Zhou (2020): Weighted F1-score: 0.65 and 0.74 for Ta-En and Ma-En language pairs.\n     - XLM-Roberta model by Ou and Li (2020): Ensembles pre-trained multi-language models and K-folding method.\n       - Weighted F1-score: 0.63 and 0.74 for Ta-En and Ma-En language pairs.\n\nAuthors and Contributions:\n- Chakravarthi et al. (2020b): Provided an overview of OLI shared task on code-mixed texts in Dravidian languages.\n- Renjit and Idicula (2020): Proposed two models based on LSTM for OLI shared task.\n- Arora (2020): Trained a Universal LM for Ma-En code-mixed texts.\n- Sun and Zhou (2020): Proposed XLM-Roberta model for Sentiment Analysis of code-mixed texts.\n- Ou and Li (2020): Proposed XLM-Roberta model that ensembles pre-trained multi-language models and K-folding method.",
+         "One-shot": " 1. **Research on Text Classification (TC)**:\n   - Researchers have developed datasets, tools, and models for TC.\n   - Contributions:\n     - **Chakravarthi et al. (2020b)**: Presented an overview of the OLI shared task on code-mixed texts in Dravidian languages, consisting of two subtasks A and B.\n     - **Chakravarthi et al. (2020c)**: Described the datasets used in the OLI shared tasks.\n     - **Chakravarthi et al. (2020a)**: Described the datasets used in the TC tasks for code-mixed texts.\n\n2. **Code-Mixed Text Classification**:\n   - Comparatively less work has been done on the classification of code-mixed texts.\n   - Contributions:\n     - **Renjit and Idicula (2020)**: Proposed two models based on different configurations of LSTM for the OLI shared task, achieving a weighted F1-score of 0.53 for Romanized Malayalam text in Subtask B.\n     - **Arora (2020)**: Trained a Universal Language Model (LM) for Ma-En code-mixed texts and transferred it to a TC model from the fastai library, obtaining 0.91 and 0.74 weighted F1-scores for Subtask A and Romanized Malayalam text of Subtask B respectively.\n\n3. **Sentiment Analysis of Code-Mixed Texts**:\n   - Focus on sentiment analysis of code-mixed texts in Ta-En and Ma-En language pairs.\n   - Contributions:\n     - **Sun and Zhou (2020)**: Proposed the XLM-Roberta model for sentiment analysis, achieving a weighted F1-score of 0.65 and 0.74 for Ta-En and Ma-En language pairs respectively.\n     - **Ou and Li (2020)**: Proposed another XLM-Roberta model that ensembles pre-trained multi-language models and K-folding method, obtaining 0.63 and 0.74 weighted F1-scores for Ta-En and Ma-En language pairs respectively.",
+         "Few-shot rank": " 1. **Text Classification (TC) Datasets, Tools, and Models**:\n   - Researchers have developed various resources for TC, with less focus on code-mixed text classification.\n   - **Chakravarthi et al. (2020b, 2020c, 2020a)**:\n      - Presented an OLI shared task for code-mixed texts in Dravidian languages.\n      - Described datasets for classification tasks.\n\n2. **Code-Mixed Text Classification**:\n   - **Chakravarthi et al. (2020b)**:\n      - Introduced a shared task for classifying code-mixed texts into offensive or non-offensive categories.\n      - Used datasets from (Chakravarthi et al., 2020c) and (Chakravarthi et al., 2020a).\n   - **Renjit and Idicula (2020)**:\n      - Proposed LSTM models for the OLI task, achieving a weighted F1-score of 0.53 for Romanized Malayalam text.\n   - **Arora (2020)**:\n      - Trained a Universal Language Model (LM) for Ma-En code-mixed texts.\n      - Transferred the LM to a TC model, achieving 0.91 and 0.74 F1-scores for Subtask A and B.\n   - **Sun and Zhou (2020)**:\n      - Proposed an XLM-Roberta model for sentiment analysis, scoring 0.65 and 0.74 on the leaderboard for Ta-En and Ma-En languages.\n   - **Ou and Li (2020)**:\n      - Proposed an XLM-Roberta model ensembled with pre-trained models, scoring 0.63 and 0.74 for Ta-En and Ma-En languages.\n\n3. **Sentiment Analysis of Code-Mixed Texts**:\n   - **Chakravarthi et al. (2020d)**:\n      - Conducted a shared task for sentiment analysis on code-mixed texts in Ta-En and Ma-En.\n      - Used datasets from (Chakravarthi et al., 2020c) and (Chakravarthi et al., 2020a).\n      - XLM-Roberta model by Sun and Zhou (2020) achieved the first rank in the leaderboard.\n      - The model leverages semantic information from texts using CNN outputs.",
+         "Few-shot expl": " 1. **Text Classification (TC) Datasets, Tools, and Models**\n   - Researchers have developed various resources for TC, with less focus on code-mixed text classification.\n   - **Chakravarthi et al. (2020b)**: Presented an OLI shared task for code-mixed texts in Dravidian languages with two subtasks.\n   - **Chakravarthi et al. (2020c), (2020a)**: Described datasets for the aforementioned shared tasks.\n\n2. **Code-Mixed Text Classification**\n   - **Renjit and Idicula (2020)**: Proposed two LSTM models for the OLI task, achieving a weighted F1-score of 0.53 for Romanized Malayalam text.\n   - **Arora (2020)**: Trained a Universal Language Model (LM) on Ma-En code-mixed texts, transferring it to a TC model for classification with scores of 0.91 and 0.74 for Subtask A and B respectively.\n   - **Sun and Zhou (2020)**: Proposed an XLM-Roberta model for sentiment analysis, achieving a weighted F1-score of 0.65 and 0.74 for Ta-En and Ma-En languages.\n   - **Ou and Li (2020)**: Proposed an XLM-Roberta model using pre-trained multi-language models and K-folding, scoring 0.63 and 0.74 for Ta-En and Ma-En languages respectively.\n\n3. **Sentiment Analysis of Code-Mixed Texts**\n   - **Chakravarthi et al. (2020d)**: Conducted a shared task on sentiment analysis of code-mixed texts in Dravidian languages, using datasets from (Chakravarthi et al., 2020c) and (2020a).\n   - **XLM-Roberta Model**:\n        - **Sun and Zhou (2020)**: Achieved first rank with a weighted F1-score of 0.65 and 0.74 for Ta-En and Ma-En languages.\n        - **Ou and Li (2020)**: Achieved third and first ranks with scores of 0.63 and 0.74 for Ta-En and Ma-En languages, respectively."
+      }
+   },
+   "17": {
+      "GPT-3.5": {
+         "Rank": 2,
+         "Text": "**Key Concepts:**\n\n1. **Catastrophic Forgetting in Lifelong Learning:**\n   - French (1999), McCloskey and Cohen (1989), McClell and et al. (1995), Ratcliff (1990): Highlighted the issue of catastrophic forgetting in lifelong learning, where knowledge of previous tasks is abruptly lost when learning new tasks.\n   - LopezPaz and Ranzato (2017), Anonymous (2019): Proposed memory-based approaches to mitigate catastrophic forgetting by saving previous samples and optimizing new tasks with a forgetting cost.\n   - Kirkpatrick et al. (2016), Liu et al. (2018), Ritter et al. (2018), Zenke et al. (2017): Introduced parameter consolidation methods like Elastic Weight Consolidation (EWC) to slow down learning on weights important to previous tasks.\n\n2. **Dynamic Model Architecture in Lifelong Learning:**\n   - Xiao et al. (2014), Rusu et al. (2016), Fernando et al. (2017): Explored dynamically changing the model structure by adding new modules to learn new tasks without interfering with previously learned knowledge.\n\n3. **Limitations of Dynamic Model Architecture:**\n   - Does not facilitate positive transfer between tasks.\n   - Results in a dramatic increase in model size with the number of observed tasks, rendering it impractical for real-world problems.\n\n4. **Alternate Lifelong Learning Approaches:**\n   - Chen et al. (2015), Chen (2015), Shu et al. (2016, 2017): Focused on representing, preserving, and extracting knowledge from previous tasks, which differ from the goal of overcoming catastrophic forgetting.\n\n**Contributions:**\n\n- **French (1999), McCloskey and Cohen (1989), McClell and et al. (1995), Ratcliff (1990):** Recognized catastrophic forgetting as a challenge in lifelong learning.\n- **LopezPaz and Ranzato (2017), Anonymous (2019):** Introduced memory-based approaches to alleviate catastrophic forgetting by saving previous samples and optimizing new tasks.\n- **Kirkpatrick et al. (2016), Liu et al. (2018), Ritter et al. (2018), Zenke et al. (2017):** Proposed parameter consolidation methods such as Elastic Weight Consolidation (EWC) to preserve knowledge of previous tasks.\n- **Xiao et al. (2014), Rusu et al. (2016), Fernando et al. (2017):** Explored dynamic model architectures by adding new modules to prevent interference with previous knowledge during new task learning.\n- **Chen et al. (2015), Chen (2015), Shu et al. (2016, 2017):** Focused on representing, preserving, and extracting knowledge from previous tasks in lifelong learning scenarios.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7933",
+               "Recall": "0.7933",
+               "F1-score": "0.7933"
+            },
+            "One-shot": {
+               "Precission": "0.7922",
+               "Recall": "0.7682",
+               "F1-score": "0.7800"
+            },
+            "Few-shot rank": {
+               "Precission": "0.8663",
+               "Recall": "0.7999",
+               "F1-score": "0.8318"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8552",
+               "Recall": "0.7720",
+               "F1-score": "0.8115"
+            }
+         }
+      },
+      "Copilot": {
+         "Rank": 3,
+         "Text": "\n1. **Catastrophic Forgetting Phenomenon**:\n\t- Authors: French (1999), McCloskey and Cohen (1989), McClelland et al. (1995), Ratcliff (1990)\n\t- Contribution: Catastrophic forgetting refers to the abrupt loss of knowledge from previous tasks when learning a new task. Existing research addresses this issue through memory-based approaches or parameter consolidation.\n\n2. **Memory-Based Approaches**:\n\t- Authors: Lopez-Paz and Ranzato (2017), Anonymous (2019)\n\t- Contribution: These methods save previous samples and optimize new tasks with a forgetting cost based on the saved samples. While effective in mitigating catastrophic forgetting, they become computationally expensive with more previous tasks.\n\n3. **Parameter Consolidation**:\n\t- Authors: Kirkpatrick et al. (2016), Liu et al. (2018), Ritter et al. (2018), Zenke et al. (2017)\n\t- Contribution: Methods like Elastic Weight Consolidation (EWC) slow down learning on weights important for previous tasks. They do not require saving previous data but have limitations in overcoming catastrophic forgetting.\n\n4. **Dynamic Model Architecture**:\n\t- Authors: Xiao et al. (2014), Rusu et al. (2016), Fernando et al. (2017)\n\t- Contribution: Dynamically changing the model structure (e.g., adding new modules) prevents forgetting while learning new tasks. However, this approach does not fully benefit from positive transfer between tasks and leads to model size growth.\n\n5. **Lifelong Learning in NLP**:\n\t- Authors: Chen et al. (2015), Chen (2015), Shu et al. (2016, 2017)\n\t- Contribution: These works focus on representing, reserving, and extracting knowledge from previous tasks. They differ from the research direction of lifelong learning without catastrophic forgetting.\n\nOverall, the paper discusses various strategies for lifelong learning, highlighting trade-offs between memory-based approaches, parameter consolidation, dynamic model architecture, and NLP-specific considerations.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.8115",
+               "Recall": "0.7714",
+               "F1-score": "0.7909"
+            },
+            "One-shot": {
+               "Precission": "0.7752",
+               "Recall": "0.7201",
+               "F1-score": "0.7466"
+            },
+            "Few-shot rank": {
+               "Precission": "0.8230",
+               "Recall": "0.7196",
+               "F1-score": "0.7678"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8279",
+               "Recall": "0.7043",
+               "F1-score": "0.7611"
+            }
+         }
+      },
+      "Gemini": {
+         "Rank": 1,
+         "Text": "\n## Lifelong Learning without Catastrophic Forgetting\n\nThis scientific paper discusses two main approaches to lifelong learning, where a model learns new tasks without forgetting previously learned ones.\n\n* **Overcoming Catastrophic Forgetting**\n\n  Catastrophic forgetting occurs when a model learning a new task forgets how to perform previous tasks. Two main approaches address this problem:\n\n\t* **Memory-Based Approach** (Lopez-Paz & Ranzato, 2017; Anonymous, 2019)\n    \t* Stores samples from previous tasks and uses them to define a forgetting cost during new task training.\n    \t* Effective but computationally expensive for many previous tasks.\n\n\t* **Parameter Consolidation** (Kirkpatrick et al., 2016; Liu et al., 2018; Ritter et al., 2018; Zenke et al., 2017)\n    \t* Protects parameters important to previous tasks by slowing down their updates during new task training (e.g., Elastic Weight Consolidation (EWC) by Kirkpatrick et al., 2016).\n    \t* Requires only one pass through each task data but may not completely prevent forgetting.\n\n* **Dynamic Model Architecture** (Xiao et al., 2014; Rusu et al., 2016; Fernando et al., 2017)\n\n  * A separate line of research focuses on dynamically changing the model architecture to learn new tasks.\n  * Effective in preventing forgetting but:\n  \t* Does not leverage positive transfer between tasks.\n  \t* Model size grows significantly with the number of tasks, making it impractical for real-world scenarios with many tasks.\n\n**Note:** The paper differentiates lifelong learning from a related field that focuses on knowledge representation and extraction from previous tasks (Chen et al., 2015; Chen, 2015; Shu et al., 2016, 2017).\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7003",
+               "Recall": "0.7114",
+               "F1-score": "0.7058"
+            },
+            "One-shot": {
+               "Precission": "0.6696",
+               "Recall": "0.6530",
+               "F1-score": "0.6612"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7307",
+               "Recall": "0.6740",
+               "F1-score": "0.7012"
+            },
+            "Few-shot expl": {
+               "Precission": "0.7206",
+               "Recall": "0.6436",
+               "F1-score": "0.6800"
+            }
+         }
+      },
+      "Phi-3": {
+         "Zero-shot": " I. Introduction\n   - Recent lifelong learning research focuses on overcoming catastrophic forgetting phenomenon.\n   - Authors: French (1999), McCloskey and Cohen (1989), McClell and et al. (1995), Ratcliff (1990)\n\nII. Memory-based Approach\n   - Existing research follows two directions: memory-based approach and consolidation of parameters.\n   - Authors: LopezPaz and Ranzato (2017), Anonymous (2019), Kirkpatrick et al. (2016), Liu et al. (2018), Ritter et al. (2018), Zenke et al. (2017)\n   - Memory-based approach saves previous samples and optimizes new tasks with a forgetting cost.\n   - Contribution: Saves some previous samples and optimizes new tasks with a forgetting cost defined on the saved samples.\n\nIII. Parameter Consolidation\n   - The second direction is to consolidate parameters important to previous tasks.\n   - Authors: Kirkpatrick et al. (2016), Liu et al. (2018), Ritter et al. (2018), Zenke et al. (2017)\n   - Examples: Elastic Weight Consolidation (EWC) (Kirkpatrick et al., 2016) slows down learning on weights important to previous tasks.\n   - Contribution: Slows down learning on weights important to previous tasks.\n\nIV. Dynamic Model Architecture\n   - Another related direction is dynamically changing the model structure to learn new tasks without interfering learned knowledge for previous tasks.\n   - Authors: Xiao et al. (2014), Rusu et al. (2016), Fernando et al. (2017)\n   - Contribution: Successfully prevents forgetting by adding new modules to the model structure.\n\nV. Limitations of Dynamic Model Architecture\n   - Limitations: Cannot benefit from positive transfer between tasks and the size of the model grows dramatically with the number of observed tasks.\n   - Authors: Xiao et al. (2014), Rusu et al. (2016), Fernando et al. (2017)\n\nVI. Remark\n   - The term lifelong learning is also widely used in other research directions.\n   - Authors: Chen et al. (2015), Chen (2015), Shu et al. (2016, 2017)\n   - Contribution: Focus on how to represent, reserve and extract knowledge of previous tasks.",
+         "One-shot": " 1. **Lifelong Learning without Catastrophic Forgetting**:\n   - **French (1999)** and **McCloskey and Cohen (1989)**: Focused on overcoming catastrophic forgetting phenomenon.\n   - **McClell and et al. (1995)**: Contributed to the understanding of catastrophic forgetting.\n   - **Ratcliff (1990)**: Added to the body of knowledge on catastrophic forgetting.\n   - **Existing Research Directions**:\n     - **Memory-based Approach**:\n       - **LopezPaz and Ranzato (2017)**: Introduced memory-based approach to alleviate catastrophic forgetting.\n       - **Anonymous (2019)**: Contributed to the memory-based approach.\n     - **Consolidation of Parameters**:\n       - **Kirkpatrick et al. (2016)**: Proposed Elastic Weight Consolidation (EWC) to slow down learning on important weights.\n       - **Liu et al. (2018)**: Contributed to the consolidation of parameters approach.\n       - **Ritter et al. (2018)**: Added to the consolidation of parameters approach.\n       - **Zenke et al. (2017)**: Contributed to the consolidation of parameters approach.\n   - **Lifelong Learning with Dynamic Model Architecture**:\n     - **Xiao et al. (2014)**: Introduced dynamic model architecture to prevent forgetting.\n     - **Rusu et al. (2016)**: Contributed to the dynamic model architecture approach.\n     - **Fernando et al. (2017)**: Added to the dynamic model architecture approach.\n\n2. **Lifelong Learning in NLP**:\n   - **Chen et al. (2015)** and **Chen, 2015**: Focused on representing, reserving, and extracting knowledge of previous tasks in NLP.\n   - **Shu et al. (2016, 2017)**: Contributed to the research direction on representing, reserving, and extracting knowledge in NLP.\n   - **Remark**: These works belong to a different research direction than lifelong learning without catastrophic forgetting.",
+         "Few-shot rank": " 1. **Lifelong Learning and Catastrophic Forgetting**:\n   - **French (1999)**, **McCloskey and Cohen (1989)**, **McClell and et al. (1995)**, **Ratcliff (1990)**: Identified the issue of catastrophic forgetting in lifelong learning.\n   - **LopezPaz and Ranzato (2017)**, **Anonymous (2019)**: Proposed memory-based approaches to mitigate catastrophic forgetting.\n   - **Kirkpatrick et al. (2016)**, **Liu et al. (2018)**, **Ritter et al. (2018)**, **Zenke et al. (2017)**: Introduced parameter consolidation methods to prevent forgetting.\n   - **Elastic Weight Consolidation (EWC) (Kirkpatrick et al., 2016)**: Slowed learning on important previous task weights.\n\n2. **Lifelong Learning with Dynamic Model Architecture**:\n   - **Xiao et al. (2014)**, **Rusu et al. (2016)**, **Fernando et al. (2017)**: Suggested dynamic model architecture to learn new tasks without interfering with previous knowledge.\n\n3. **Differentiation of Lifelong Learning Concepts**:\n   - **Chen et al. (2015)**, **Chen (2015)**, **Shu et al. (2016, 2017)**: Focused on knowledge representation, retention, and extraction for lifelong learning, differing from the main focus of lifelong learning without catastrophic forgetting.",
+         "Few-shot expl": " 1. **Lifelong Learning and Catastrophic Forgetting**:\n   - **French (1999)**, **McCloskey and Cohen (1989)**, **McClell and et al. (1995)**, **Ratcliff (1990)**: Identified the issue of catastrophic forgetting in lifelong learning.\n   - **LopezPaz and Ranzato (2017)**, **Anonymous (2019)**: Proposed memory-based approaches to mitigate catastrophic forgetting.\n   - **Kirkpatrick et al. (2016)**, **Liu et al. (2018)**, **Ritter et al. (2018)**, **Zenke et al. (2017)**: Introduced parameter consolidation methods to address catastrophic forgetting.\n\n2. **Lifelong Learning with Dynamic Model Architecture**:\n   - **Xiao et al. (2014)**, **Rusu et al. (2016)**, **Fernando et al. (2017)**: Suggested dynamic model architecture to learn new tasks without forgetting previous ones.\n\n3. **Differentiation of Lifelong Learning Concepts**:\n   - **Chen et al. (2015)**, **Chen (2015)**, **Shu et al. (2016, 2017)**: Focused on knowledge representation, retention, and extraction for lifelong learning, differing from the main focus of lifelong learning without catastrophic forgetting."
+      }
+   },
+   "20": {
+      "GPT-3.5": {
+         "Rank": 2,
+         "Text": "### Key Concepts and Contributions in Automatic Paraphrase Generation\n\n#### Early Approaches\n- **McKeown (1979)**: Developed rule-based approaches for paraphrase generation.\n- **Meteer and Shaked (1988)**: Further advanced rule-based methods for generating paraphrases.\n- **Madnani and Dorr (2010)**: Introduced data-driven methods to the task.\n\n#### Neural Network Advances\n- **Prakash et al. (2016)**: Proposed modifications to the network structure to enhance generation quality.\n- **Cao et al. (2017)**, **Wang et al. (2019)**, **Kazemnejad et al. (2020)**: Improved model performance by integrating external resources, such as:\n  - **Cao et al. (2017)**: Utilized a phrase dictionary.\n  - **Wang et al. (2019)**: Applied semantic annotations.\n  - **Kazemnejad et al. (2020)**: Used an off-the-shelf pre-trained neural retriever.\n\n#### Reinforcement and Unsupervised Learning Techniques\n- **Li et al. (2018)**: Applied reinforcement learning techniques to the paraphrase generation task.\n- **Roy and Grangier (2019)**: Employed unsupervised learning methods to improve paraphrase generation.\n\n#### Controllability in Generation Models\n- **Iyyer et al. (2018)**: Trained models to produce paraphrases with a given syntax.\n- **Li et al. (2019)**: Adopted an external word aligner to train models for generating paraphrases from different levels.\n- **Fu et al. (2019)**: Developed a model that generates paraphrases by planning the neighborhood of words and realizing the complete sentence.\n\nThese contributions highlight the evolution of paraphrase generation methods, from rule-based and data-driven approaches to sophisticated neural network models incorporating various external resources and learning techniques to enhance performance and control.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7538",
+               "Recall": "0.7036",
+               "F1-score": "0.7278"
+            },
+            "One-shot": {
+               "Precission": "0.8409",
+               "Recall": "0.8319",
+               "F1-score": "0.8364"
+            },
+            "Few-shot rank": {
+               "Precission": "0.8461",
+               "Recall": "0.8015",
+               "F1-score": "0.8232"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8367",
+               "Recall": "0.8080",
+               "F1-score": "0.8221"
+            }
+         }
+      },
+      "Copilot": {
+         "Rank": 1,
+         "Text": "\n**Summary of the Text**\n\nThe text discusses the evolution of approaches to the automatic generation of paraphrases, an important aspect of many downstream NLP applications. The approaches are divided into three main categories: early researches, recent approaches with neural networks, and methods incorporating controllability into the generation model.\n\n**Contributions by Authors**\n\n**Early Researches**\n- **McKeown (1979)**: Contributed to the development of rule-based approaches for paraphrase generation.\n- **Meteer and Shaked (1988)**: Also contributed to rule-based approaches.\n- **Madnani and Dorr (2010)**: Introduced data-driven methods for paraphrase generation.\n\n**Recent Approaches with Neural Networks**\n- **Prakash et al. (2016)**: Proposed modifications to the network structure to improve the quality of generated paraphrases.\n- **Cao et al. (2017), Wang et al. (2019), Kazemnejad et al. (2020)**: Proposed improvements to model performance by leveraging external resources, including phrase dictionaries, semantic annotations, and pre-trained neural retrievers.\n- **Li et al. (2018)**: Proposed the adoption of reinforcement learning techniques for paraphrase generation.\n- **Roy and Grangier (2019)**: Proposed the use of unsupervised learning for this task.\n\n**Incorporating Controllability into the Generation Model**\n- **Iyyer et al. (2018)**: Trained the model to produce paraphrased sentences with a given syntax.\n- **Li et al. (2019)**: Proposed the adoption of an external word aligner to train the model to generate paraphrases from different levels.\n- **Fu et al. (2019)**: The model generates paraphrases by planning the neighbor of words and realizing the complete sentence.\n\nEach of these contributions has played a significant role in advancing the field of automatic paraphrase generation. The text emphasizes the need for fine-grained control in the generation process, a feature not offered by many existing methods. Various approaches have been proposed to incorporate this controllability into the generation model.\n",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7613",
+               "Recall": "0.6660",
+               "F1-score": "0.7104"
+            },
+            "One-shot": {
+               "Precission": "0.8377",
+               "Recall": "0.7635",
+               "F1-score": "0.7989"
+            },
+            "Few-shot rank": {
+               "Precission": "0.8391",
+               "Recall": "0.7264",
+               "F1-score": "0.7787"
+            },
+            "Few-shot expl": {
+               "Precission": "0.8254",
+               "Recall": "0.7285",
+               "F1-score": "0.7739"
+            }
+         }
+      },
+      "Gemini": {
+         "Rank": 3,
+         "Text": "\n## Automatic Paraphrase Generation: Key Concepts\n\nThis scientific paper summarizes various approaches to automatic paraphrase generation, a crucial task for many natural language processing (NLP) applications.\n\n### Approaches\n\n**Early Techniques (**McKeown, 1979; Meteer and Shaked, 1988; Madnani and Dorr, 2010)**\n\n* **Rule-based approaches:** These rely on hand-crafted rules to identify and replace phrases with synonyms or similar grammatical structures. (**McKeown, 1979; Meteer and Shaked, 1988**)\n* **Data-driven methods:**  These leverage statistical models trained on existing paraphrase data. (**Madnani and Dorr, 2010**)\n\n**Neural Network-based Approaches**\n\n* **Sequence-to-sequence learning:** This recent approach frames paraphrase generation as a machine translation problem, where the model learns to convert a sentence into a paraphrased version. (**Prakash et al., 2016)    \n* **Enhancing model performance with external resources:** Several studies propose incorporating external resources like dictionaries, semantic annotations, or pre-trained retrievers to improve the model's ability to generate paraphrases. (**Cao et al., 2017; Wang et al., 2019; Kazemnejad et al., 2020**)\n* **Alternative learning techniques:** Other works explore alternative training methods like reinforcement learning (**Li et al., 2018**) and unsupervised learning (**Roy and Grangier, 2019**) for paraphrase generation.\n\n### Controllable Paraphrase Generation\n\nWhile the aforementioned methods achieve good results, they lack fine-grained control over the generation process. To address this, recent research focuses on controllable paraphrase generation:\n\n* **Syntactic control:** Iyyer et al. (2018) propose training a model to generate paraphrases with a specific desired syntax. (**Iyyer et al., 2018)\n* **Multi-level control:** Li et al. (2019) introduce an external word aligner to enable paraphrase generation at different granularities. (**Li et al., 2019)\n* **Planning-based approach:** Fu et al. (2019) present a method where the model plans word substitutions and builds the complete paraphrased sentence incrementally. (**Fu et al., 2019)",
+         "BertScore": {
+            "Zero-shot": {
+               "Precission": "0.7045",
+               "Recall": "0.6351",
+               "F1-score": "0.6680"
+            },
+            "One-shot": {
+               "Precission": "0.7577",
+               "Recall": "0.7036",
+               "F1-score": "0.7296"
+            },
+            "Few-shot rank": {
+               "Precission": "0.7772",
+               "Recall": "0.6945",
+               "F1-score": "0.7335"
+            },
+            "Few-shot expl": {
+               "Precission": "0.7656",
+               "Recall": "0.6948",
+               "F1-score": "0.7285"
+            }
+         }
+      },
+      "Phi-3": {
+         "Zero-shot": " I. Introduction\n   - The importance of automatic paraphrase generation for NLP applications\n   - Early approaches: rule-based and data-driven methods\n   - Contributors:\n     - McKeown (1979)\n     - Meteer and Shaked (1988)\n     - Madnani and Dorr (2010)\n\nII. Recent Approaches with Neural Networks\n   - Treating paraphrase generation as a sequence-to-sequence task\n   - Contributors:\n     - Prakash et al. (2016)\n   - Improvements using external resources\n     - Cao et al. (2017)\n     - Wang et al. (2019)\n     - Kazemnejad et al. (2020)\n\nIII. Incorporating Controllability into Generation Models\n   - Different approaches to include user control\n     - Iyyer et al. (2018)\n     - Li et al. (2019)\n   - Fu et al. (2019)'s approach to planning and realizing sentences\n\nIV. Conclusion\n   - Overview of the evolution of paraphrase generation methods\n   - The significance of controllability in generation models",
+         "One-shot": " 1. **Early Approaches to Paraphrase Generation**:\n   - **McKeown (1979)** and **Meteer and Shaked (1988)**: Early research included rule-based approaches.\n   - **Madnani and Dorr (2010)**: Introduced data-driven methods for paraphrase generation.\n\n2. **Neural Networks for Paraphrase Generation**:\n   - Recent approaches treat paraphrase generation as a sequence-to-sequence language generation task.\n   - **Prakash et al. (2016)**: Modified network structure to improve generation quality.\n\n3. **Improving Model Performance**:\n   - **Cao et al. (2017)**, **Wang et al. (2019)**, and **Kazemnejad et al. (2020)**: Proposed leveraging external resources to enhance model performance.\n\n4. **Incorporating Reinforcement and Unsupervised Learning**:\n   - **Li et al. (2018)**: Adopted reinforcement learning techniques.\n   - **Roy and Grangier (2019)**: Proposed unsupervised learning methods for paraphrase generation.\n\n5. **Incorporating Controllability into Generation Model**:\n   - Different approaches have been proposed to incorporate controllability.\n   - **Iyyer et al. (2018)**: Trained the model to produce paraphrased sentences with a given syntax.\n   - **Li et al. (2019)**: Adopted an external word aligner to train the model for paraphrasing at different levels.\n   - **Fu et al. (2019)**: The model generates paraphrases by planning the neighbour of words and realizing the complete sentence.",
+         "Few-shot rank": " 1. **Paraphrase Generation in NLP**:\n   - **McKeown (1979); Meteer and Shaked (1988)**: Early rule-based and data-driven methods for paraphrase generation.\n   - **Madnani and Dorr (2010)**: Early data-driven methods for paraphrase generation.\n   - **Prakash et al. (2016)**: Modified neural networks for improved paraphrase generation.\n   - **Cao et al. (2017); Wang et al. (2019); Kazemnejad et al. (2020)**: Utilized external resources to enhance paraphrase generation.\n   - **Li et al. (2018); Roy and Grangier (2019)**: Introduced reinforcement learning and unsupervised learning for paraphrasing.\n   - **Iyyer et al. (2018)**: Trained models to produce paraphrases with a given syntax.\n   - **Li et al. (2019)**: Adopted an external word aligner for paraphrase generation.\n   - **Fu et al. (2019)**: Model generates paraphrases by planning word neighbors and realizing complete sentences.\n\n2. **Incorporating Controllability**:\n   - To allow user control over the generation process, various approaches have been proposed:\n      - **Iyyer et al. (2018)**: Trained models for paraphrases with specific syntax.\n      - **Li et al. (2019)**: Used an external word aligner for fine-grained paraphrase generation.\n      - **Fu et al. (2019)**: Model generates paraphrases by planning and realizing sentences.",
+         "Few-shot expl": " 1. **Paraphrase Generation in NLP**:\n   - **McKeown (1979); Meteer and Shaked (1988)**: Early rule-based and data-driven methods for paraphrase generation.\n   - **Madnani and Dorr (2010)**: Early neural network approaches to paraphrase generation.\n   - **Prakash et al. (2016)**: Modified networks structure for improved generation quality.\n   - **Cao et al. (2017); Wang et al. (2019); Kazemnejad et al. (2020)**: Utilized external resources to enhance model performance.\n   - **Li et al. (2018); Roy and Grangier (2019)**: Proposed reinforcement learning and unsupervised learning methods.\n   - **Iyyer et al. (2018)**: Trained models to produce paraphrases with a given syntax.\n   - **Li et al. (2019)**: Adopted an external word aligner for varied paraphrase generation.\n   - **Fu et al. (2019)**: Model generates paraphrases by planning word neighbors and realizing sentences.\n\n2. **Incorporating Controllability**:\n   - Different approaches have been proposed to allow user control over the paraphrase generation process:\n      - **Iyyer et al. (2018)**: Trained models for controlled syntax-based paraphrasing.\n      - **Li et al. (2019)**: Used an external word aligner for fine-grained paraphrasing control.\n      - **Fu et al. (2019)**: Generated paraphrases by planning and realizing sentences with controlled word neighbors."
+      }
+   }
+}
