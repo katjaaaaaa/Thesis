@@ -1,9 +1,15 @@
-# Paper: Dataset Construction for Scientific-Document Writing Support by Extracting Related Work Section and Citations from PDF Papers
-# Link: https://github.com/citation-minami-lab/acl-citation-dataset
+# Name: extract_section.py
+# Author: Katja Kamyshanova
+# Date: 04/06/2024
+# This program takes n of entries as argument, loops through 
+# the dataset, randomly chooses n entries, pre-processes them
+# and returns as a .json file
+
+# Usage: python3 extract_section.py <required amound of sections in output>
+# Example usage: python3 extract_section.py 20
 
 import sys
 import json
-import numpy as np
 import regex as re
 import random
 import os
@@ -16,13 +22,13 @@ def main(argv):
     for file in os.listdir(data_dir):
         with open(os.path.join(data_dir, file)) as f1:
             data = f1.read()
-        
+
         data_json = json.loads(data)
 
         for item in data_json:
             title = item['Title'] # Title
             data_new[title] = dict()
-        
+
             # Pattern for subsection()
             pattern = r"%subsection\{(.*?)\}%"
 
@@ -34,32 +40,22 @@ def main(argv):
             section_text = section_text.replace('}%', '')
             data_new[title]['Sentences'] = section_text
 
+        # The structure of the dataset: 
         # ['Title', 'Author', 'Url', 'Sentences', 
         # 'AnswersCitationWorthiness', 'CitedNumberList',
         # 'CollectedCitedNumberList', 'CitationAnchorList',
         # 'CitedPaperIndexList', 'CitedPaperTitle', 'CitedPaperText']
 
-    output_path = str(os.getcwd()) + '/aclDataset_short.json'
-    if not os.path.isfile(output_path):
-        # Creating data for closed-source LLMs
-        samples = random.sample(data_new.items(), 25)
-        with open('aclDataset_short.json', 'w') as fp:
-            json.dump(samples, fp, indent=2)
-    else:
-        # Loading data if exsists
-        with open('aclDataset_short.json') as fr:
-            samples = json.load(fr)
-
-    # Removing samples from the dataset to avoid dublicates in the test data
+    samples = random.sample(data_new.items(), int(argv[1]))
+    # Remove samples from the dataset to avoid dublicates in the test data
     for text in samples:
         del data_new[text[0]]
 
-    # Creating data for open-source LLMs
-    samples = random.sample(data_new.items(), 25)
+    # Dump the data for open-source LLMs in a json file
     with open('aclDataset_short_test.json', 'w') as fp:
         json.dump(samples, fp, indent=2)
 
-    
+    # Print the resulted entries
     for i in samples:
         print(i)
 
