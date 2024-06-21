@@ -1,7 +1,9 @@
-#
-#
-#
-#
+# Name: phi3_model_prompting.py
+# Author: Katja Kamyshanova
+# Date: 21/06/2024
+# This program receives a selection of four prompts in as .txt files, defined by the input arguments,
+# loads a Phi-3-mini-128k model, inserts the prompts in the model, receives four outputs and
+# saves them as a .json file
  
 # If used for dev prompts: python3 phi3_model_prompting.py dev <xml/phi3> <v number>
 # If used for eval prompts: python3 phi3_model_prompting.py eval <short/long> <doc number> eval_data_<short/long>.json
@@ -13,18 +15,48 @@ import sys
 import os
 from transformers import (AutoTokenizer,
                           AutoModelForCausalLM,
-                          # BitsAndBytesConfig,
                           pipeline)
 
 def main(argv):
 
-    # TODO: ADD ARGV CHECK FOR eval_data_<short/long>.json AND short/long
-    # TODO: ADD ARGV CHECK FOR xml AND v number 1,2,3,3_5 SO THEY MATCH
+    dev_prompt_v = ["2", "3", "3_5", "4", "5", "6", "7", "8", "9", "10", "11"]
+    doc_numbers = ["1", "5", "7", "8", "9", "10", "14", "15", "17", "20"]
+
+    # define the potential errors in the arguments
+    if len(argv) == 1:
+        print("Error: no additional arguments are defined. Please refer to the GitHub guidelines for the necessary arguments")
+        exit()
+    if argv[1] == 'dev': 
+        if argv[2] == 'xml' and argv[3] not in dev_prompt_v[:3]:
+            print("Error: the requested version of the XML prompt does not exist. Try one of the following prompt versions:")
+            print("2, 3, 3_5")
+            exit()
+
+        elif argv[2] == 'phi3' and argv[3] not in dev_prompt_v:
+            print("Error: the requested version of the XML prompt does not exist. Try one of the following prompts:")
+            print("2, 3, 4, 5, 6, 7, 8, 9, 10, 11")
+            exit()
+
+        elif len(argv) != 4:
+            print("Error: One of the arguments is missing, please check if every argument is defined: ")
+            print("python3 phi3_model_prompting.py dev <xml/phi3> <v number>")
+            exit()
+
+    elif argv[1] == 'eval':
+        if len(argv) != 5:
+            print("Error: One of the arguments is missing, please check if every argument is defined: ")
+            print("Expected input: python3 phi3_model_prompting.py eval <short/long> <doc number> eval_data_<short/long>.json")
+            exit()
+    
+        elif argv[3] not in doc_numbers:
+            print("Error: The chosen document does not exist in the evaluation set. Please try one of the following dodcuments:")
+            print("1, 5, 7, 8, 9, 10, 14, 15, 17, 20")
+            exit()
 
     # define the model
     model_phi = AutoModelForCausalLM.from_pretrained(
         "microsoft/Phi-3-mini-128k-instruct",
-        # device_map="cuda",
+        #device_map="cuda",
         torch_dtype="auto",
         trust_remote_code=True,
     )
@@ -96,21 +128,23 @@ def main(argv):
     # store the summaries in the eval_data file
     if argv[1] == 'eval':
 
-        with open(argv[4]) as fp:
-            eval_dict = json.load(fp)
+        file_path = str(os.getcwd()) + f'/results_eval'
+
+        if os.path.exists(f"{file_path}/{argv[4]}"):
+            with open(f"{file_path}/{argv[4]}") as fp:
+                eval_dict = json.load(fp)
 
         eval_dict[argv[3]]["Phi-3"] = data_dict
-
-        with open(argv[4], 'w') as fp:
+        with open(f"{file_path}/{argv[4]}", 'w') as fp:
             json.dump(eval_dict, fp, indent=3)
 
     # in case of dev summaries, save them in the current directory
     elif argv[1] == 'dev' and argv[2] == 'xml':
-        with open(f'phi3_results_xml_{argv[2]}.json', 'w') as fp:
+        with open(f'phi3_results_xml_v{argv[3]}.json', 'w') as fp:
             json.dump(data_dict, fp, indent=1)
 
     elif argv[1] == 'dev' and argv[2] == 'phi3':
-        with open(f'phi3_results_phi3_{argv[2]}.json', 'w') as fp:
+        with open(f'phi3_results_phi3_v{argv[3]}.json', 'w') as fp:
             json.dump(data_dict, fp, indent=1)
 
 if __name__ == "__main__":
