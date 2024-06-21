@@ -1,0 +1,65 @@
+**Key Concepts:**
+
+1. **Role of Emojis in Communication:**
+   - Emojis serve as visual expressions in informal communication on social networks.
+   - Hogenboom et al. (2013, 2015) explored the meaning of emoticons for tasks like sentiment analysis.
+
+2. **Emojis for Sentiment Analysis:**
+   - Emojis can aid sentiment analysis tasks by labeling text excerpts where they appear.
+   - Go et al. (2009) and Castellucci et al. (2015) used distant supervision to build sentiment classifiers and construct polarity lexicons.
+   - Novak et al. (2015) created lexicons and mapped sentiments of 751 frequently used emojis.
+
+3. **Relationship Between Words and Emojis:**
+   - Barbieri et al. (2017) investigated the correlation between words and emojis, focusing on predicting emojis from text-based tweets using LSTM-based models.
+   - Barbieri et al. (2016) studied the meaning and usage of emojis across languages, comparing semantic variations and general semantic models of frequent emojis.
+
+4. **Language Variations in Emoji Semantics:**
+   - Barbieri et al. (2016) conducted experiments across American English, British English, Peninsular Spanish, and Italian to compare emoji semantics across languages.
+
+5. **Model Proposal for Emoji Prediction:**
+   - A model is proposed for predicting emojis corresponding to tweets, particularly relevant in the context of the Semeval 2018 challenge (task 2, subtask 1).
+
+**Contributions:**
+
+- **Hogenboom et al. (2013, 2015):** Explored the meaning of emoticons for sentiment analysis tasks.
+ 
+- **Go et al. (2009) and Castellucci et al. (2015):** Used distant supervision to build sentiment classifiers and construct polarity lexicons based on emotionally marked textual contents.
+
+- **Novak et al. (2015):** Created lexicons and mapped sentiments of the 751 most used emojis.
+
+- **Barbieri et al. (2017):** Investigated the relationship between words and emojis, proposing models for predicting emojis from tweet messages using Long Memory Short-Term networks (LSTMs).
+
+- **Barbieri et al. (2016):** Explored the meaning and usage of emojis across languages, comparing semantic variations and general semantic models of frequent emojis.
+<split>
+1. **Emojis in Sentiment Analysis:**
+	- **Hogenboom et al. (2013, 2015)** explored using emojis to improve sentiment analysis tasks.
+	- **Go et al. (2009)** and **Castellucci et al. (2015)** used distant supervision over emotionally marked textual content to create a sentiment classifier and construct a polarity lexicon.
+	- **Novak et al. (2015)** constructed lexicons and mapped sentiments of the 751 most frequently used emojis.
+
+2. **Relationship Between Words and Emojis:**
+	- **Barbieri et al. (2017)** investigated predicting which emojis are evoked by text-based tweet messages.
+	- They trained models based on Long Memory Short-Term networks (LSTMs).
+
+3. **Semantics of Emojis Across Languages:**
+	- **Barbieri et al. (2016)** explored the meaning and use of emojis in four languages: American English, British English, Peninsular Spanish, and Italian.
+	- They conducted experiments to compare the semantics of emojis across languages.
+	- In the first experiment, they checked if the meaning of a single emoji is preserved in all language variations.
+	- In the second experiment, they compared general semantic models of the 150 most frequent emojis across languages.
+	- The study found that the general semantics of the most frequent emojis are similar.
+
+4. **Model for Predicting Emojis in Tweets:**
+	- Given the context of the Semeval 2018 challenge (task 2, subtask 1), the authors propose a model capable of predicting emojis corresponding to tweets.
+<split>
+## Key Concepts in Emoji Sentiment Analysis
+
+This scientific paper explores the role of emojis in sentiment analysis tasks. Here's a breakdown of the key findings based on the cited works:
+
+* **Emoji sentiment lexicons:**
+	* Emojis can be assigned sentiment polarity (positive, negative, or neutral) to aid sentiment analysis. ([Novak et al., 2015]) constructed a lexicon for 751 most used emojis.
+	* Distantly supervised sentiment classification can be achieved using emotionally labeled text data. ([Go et al., 2009], [Castellucci et al., 2015])
+
+* **Emoji and text relationships:**
+	* Long Short-Term Memory (LSTM) networks can be used to predict emojis evoked by textual messages. ([Barbieri et al., 2017])
+
+* **Emoji semantics across languages:**
+	* Emoji meanings can vary across languages. ([Barbieri et al., 2016]) studied emojis in American English, British English, Peninsular Spanish, and Italian. They found that the general semantics of frequent emojis are similar across these languages, but there can be variations in meaning for individual emojis.

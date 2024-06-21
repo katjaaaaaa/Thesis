@@ -1,0 +1,65 @@
+**Subsection 2.1: Style transfer: not too far from paraphrasing**
+
+- Prakash et al. (2016): Introduced a deep learning model for paraphrase generation, particularly a residual LSTM, and compared it to previous LSTM-derived seq2seq models.
+- Li et al. (2018b): Implemented paraphrase generation using deep reinforcement learning, demonstrating better performance than previous seq2seq results on Twitter and Quora datasets.
+- Roy and Grangier (2019): Proposed a monolingual system for paraphrasing, comparing it to unsupervised and translation methods, and presenting various linguistic characteristics for each approach.
+
+**Subsection 2.2: Style transfer methods**
+
+- Xu et al. (2012): Utilized a phrase-based MT method on the Shakespeare M2A corpus.
+- Jhamtani et al. (2017): Improved results with a DNN seq2seq approach using a copy mechanism.
+- Rao and Tetreault (2018): Adapted phrase-based and neural MT models for formality transfer using the GYAFC corpus.
+- Niu et al. (2018): Enhanced results on GYAFC by creating a multi-task system for both formality transfer and English-French MT.
+- Dryjanski et al. (2018): Employed DNNs for generating ST phrases and their positions related to the input sentence.
+- Wubben et al. (2012); Wang et al. (2016): Studied text simplification tasks with the matched WikipediaSimple Wikipedia parallel data.
+- Wieting and Gimpel (2018): Demonstrated the effectiveness of using pretrained embeddings from a large parallel paraphrase corpus to achieve state-of-the-art results on several SemEval semantic textual similarity competitions.
+- Johnson et al. (2017): Used a multi-task model on a single language with paraphrases and a small neutral-to-style dataset for text ST, presenting it as a universal method.
+<split>
+**2.1 Style transfer: not too far from paraphrasing**
+
+- **Xu et al. (2012)**: Viewed language style transfer as a task composed of two linked subtasks: paraphrasing and style adjustment.
+- **McKeown (1983), Bolshakov and Gelbukh (2004), Kauchak and Barzilay (2006)**: Developed rule and dictionary-based approaches for the paraphrasing task.
+- **Quirk et al. (2004), Wan et al. (2005), Zhao et al. (2009)**: Used statistical paraphrase generation that recombined words probabilistically to create new sentences.
+- **Sutskever et al. (2014)**: Utilized DNNs for automatic paraphrasing, specifically sequence-to-sequence (seq2seq) models.
+- **Prakash et al. (2016)**: Presented a deep learning model for the paraphrase task and compared their residual LSTM to previous LSTM-derived seq2seq models.
+- **Hochreiter and Schmidhuber (1997), Schuster and Paliwal (1997), Bahdanau et al. (2014), Vaswani et al. (2017)**: Developed LSTM-derived seq2seq models.
+- **Chung et al. (2015), Bowman et al. (2016), Gupta et al. (2018)**: Conducted research on variational autoencoders (VAEs) and developed other approaches to paraphrasing.
+- **Li et al. (2018b)**: Implemented paraphrase generation with deep reinforcement learning that showed better performance than previous seq2seq results on Twitter and Quora datasets.
+- **Artetxe et al. (2018), Conneau and Lample (2019)**: Motivated by insufficient corpora for paraphrase generation, conducted practical studies on unsupervised approach.
+- **Roy and Grangier (2019)**: Proposed a monolingual system for paraphrasing (without translation) and compared it to the unsupervised and translation methods.
+
+**2.2 Style transfer methods**
+
+- **Xu et al. (2012)**: Used a phrase-based MT method on Shakespeare M2A corpus.
+- **Jhamtani et al. (2017)**: Improved the results with the DNN seq2seq approach using a copy mechanism.
+- **Rao and Tetreault (2018)**: Adapted phrased-based and neural MT models for formality transfer using GYAFC corpus.
+- **Niu et al. (2018)**: Improved results on GYAFC by creating a multi-task system for both formality transfer and English-French MT.
+- **Dryjanski et al. (2018)**: Used DNNs for both elements: generation of style transfer phrases and their positions related to the input sentence.
+- **Wubben et al. (2012), Wang et al. (2016)**: Conducted a distinctive study for text simplification (TS) task with the matched Wikipedia-Simple Wikipedia parallel data.
+- **Xu et al. (2016), Alva-Manchego et al. (2019)**: Significant for TS are the results for automatic measures.
+- **Wieting and Gimpel (2018)**: Demonstrated that using pretrained embeddings from a large parallel paraphrase corpus and out-of-the-box models, it was possible to reach state-of-the-art results on several SemEval semantic textual similarity competitions.
+- **Johnson et al. (2017)**: Trained the multi-task model on a single language, but with paraphrases and a small neutral-to-style dataset. This approach can be seen as a universal method to tackle text style transfer.
+<split>
+## Summary of Scientific Paper on Text Style Transfer
+
+This paper explores two subtasks of style transfer (ST): paraphrasing and style adjustment. It analyzes prior research on paraphrasing techniques and highlights the shift from rule-based methods to deep learning models like LSTMs and VAEs (Prakash et al. (2016), Bowman et al. (2016), Li et al. (2018b)). The paper also mentions the limitations of supervised paraphrasing models due to limited corpora and the emergence of unsupervised approaches (Artetxe et al. (2018), Conneau and Lample (2019), Roy and Grangier (2019)).
+
+**Key Concepts**
+
+* **Paraphrasing Techniques**
+	* Traditional rule and dictionary-based approaches (McKeown, 1983; Bolshakov and Gelbukh, 2004; Kauchak and Barzilay, 2006)
+	* Statistical paraphrase generation (Quirk et al., 2004; Wan et al., 2005; Zhao et al., 2009)
+	* Deep learning models with seq2seq (Sutskever et al., 2014) including LSTMs (Prakash et al. (2016)) and VAEs (Bowman et al. (2016), Gupta et al. (2018))
+	* Deep reinforcement learning (Li et al. (2018b))
+	* Unsupervised approaches (Artetxe et al. (2018), Conneau and Lample (2019), Roy and Grangier (2019))
+* **Style Transfer Methods**
+	* Phrase-based machine translation (MT) (Xu et al., 2012; Jhamtani et al., 2017)
+	* Neural MT with seq2seq and copy mechanism (Jhamtani et al., 2017)
+	* Adapting phrased-based and neural MT for formality transfer (Rao and Tetreault, 2018)
+	* Multi-task learning for formality transfer and machine translation (Niu et al., 2018)
+	* DNNs for generation of style transfer phrases and their positions (Dryjanski et al., 2018)
+	* Text simplification with parallel data (Wubben et al., 2012; Wang et al., 2016)
+	* Using pre-trained embeddings from a large paraphrase corpus (Wieting and Gimpel, 2018)
+	* Multi-task learning on a single language with paraphrases and a small neutral-to-style dataset (This work)
+
+**Note:** The authors of the summarized paper do not introduce themselves.

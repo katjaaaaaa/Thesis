@@ -1,0 +1,47 @@
+**Event Detection Methods:**
+- Chen et al. (2015), Sha et al. (2016), Nguyen et al. (2016), Lou et al. (2021): Utilized neural networks to construct context features of trigger words for event classification.
+- Yang et al. (2019), Wadden et al. (2019), Shen et al. (2020): Demonstrated the importance of pre-trained language models like BERT in event detection.
+- Lai et al. (2020b): Introduced basic metric-based few-shot learning for event detection.
+- Deng et al. (2020): Developed a dynamic memory network approach for few-shot learning in event classification.
+- Deng et al. (2021): Used ontology embedding to enhance background knowledge in event detection.
+
+**Limitations in Few-shot Learning:**
+- Various approaches proposed, categorized into metric-based, optimization-based, and model-based methods.
+- Poor robustness due to insufficient sample diversity in the support set.
+
+**Bayesian Meta-learning:**
+- Ravi and Larochelle (2016), Yoon et al. (2018): Constructed posterior distribution of prototype vector through external information, addressing insufficient sample diversity.
+- Qu et al. (2020): Demonstrated effectiveness in few-shot relation extraction task.
+
+**Challenges in External Knowledge Integration:**
+- External knowledge, such as a knowledge base, may have incomplete coverage of target types, leading to inaccurate matching between target types and knowledge.
+<split>
+**Summary of Key Concepts and Contributions**
+
+**1. Event Detection**
+- **Chen et al. (2015)**, **Sha et al. (2016)**, **Nguyen et al. (2016)**, **Lou et al. (2021)**: Contributed to the development of recent event detection methods based on neural networks that have achieved good performance. These methods use neural networks to construct the context features of candidate trigger words to classify events.
+- **Devlin et al. (2019)**: Developed BERT, a pre-trained language model that has become an indispensable component of event detection models.
+- **Yang et al. (2019)**, **Wadden et al. (2019)**, **Shen et al. (2020)**: Utilized BERT in their event detection models.
+- **Lai et al. (2020b)**: Utilized the basic metric-based few-shot learning method for event detection.
+- **Deng et al. (2020)**: Tackled few-shot learning for event classification with a dynamic memory network.
+- **Deng et al. (2021)**: Used ontology embedding to enhance background knowledge in Event Detection (ED).
+
+**2. Few-shot Learning and Meta-learning**
+- **Vinyals et al. (2016)**, **Snell et al. (2017)**, **Garcia and Bruna (2012)**, **Sung et al. (2018)**: Proposed metric-based methods to solve the few-shot learning problem.
+- **Finn et al. (2017)**, **Nichol et al. (2018)**, **Ravi and Larochelle (2016)**: Proposed optimization-based methods to solve the few-shot learning problem.
+- **Yan et al. (2015)**, **Zhang et al. (2018b)**, **Sukhbaatar et al. (2015)**, **Zhang et al. (2018a)**: Proposed model-based methods to solve the few-shot learning problem.
+- **Ravi and Larochelle (2016)**, **Yoon et al. (2018)**: Developed Bayesian meta-learning which can construct the posterior distribution of the prototype vector through external information outside the support set.
+- **Qu et al. (2020)**: Demonstrated the effectiveness of Bayesian meta-learning in the few-shot relation extraction task.
+
+**3. Authors of the Paper**
+- **Authors of the Paper**: Proposed a method that leverages the knowledge in FrameNet to augment the support set for event detection. They also identified the problem of semantic deviation between knowledge and target types in Bayesian meta-learning and proposed to solve the problem of insufficient sample diversity in the task of few-shot event detection by introducing external knowledge.
+<split>
+## Event Detection with Few-Shot Learning
+
+This passage discusses event detection methods in the context of few-shot learning.
+
+* **Neural Network-based Event Detection:** Recent studies leverage neural networks to capture contextual features around potential trigger words to classify events [Chen et al., 2015; Sha et al., 2016; Nguyen et al., 2016; Lou et al., 2021]. Pre-trained language models like BERT further enhance these models [Yang et al., 2019; Wadden et al., 2019; Shen et al., 2020]. However, these methods require large amounts of labeled data and struggle with new event types.
+
+* **Few-Shot Learning for Event Detection:** Few-shot learning aims to train models with limited labeled data (support set) and predict labels for unseen data (query set). Existing approaches include metric-based [Vinyals et al., 2016; Snell et al., 2017; Garcia and Bruna, 2012; Sung et al., 2018], optimization-based [Finn et al., 2017; Nichol et al., 2018; Ravi and Larochelle, 2016], and model-based methods [Yan et al., 2015; Zhang et al., 2018b; Sukhbaatar et al., 2015; Zhang et al., 2018a]. A key challenge is limited sample diversity within the support set, leading to poor model robustness.
+
+* **Addressing Sample Diversity with External Knowledge:** Borrowing from Bayesian meta-learning [Ravi and Larochelle, 2016; Yoon et al., 2018], the authors propose incorporating external knowledge (FrameNet) to augment the support set for event detection. This approach addresses the issue of insufficient sample diversity but needs to consider potential semantic gaps between the knowledge base and target event types.

@@ -1,0 +1,65 @@
+**Key Concepts and Contributions:**
+1. **Utterance-level Multimodal Feature Fusion:**
+   - Techniques involve extracting overall utterance features and applying fusion methods.
+   - Zadeh et al. (2017): Proposed Tensor Fusion method explicitly capturing unimodal, bimodal, and trimodal interactions.
+   - Liu et al. (2018): Introduced Efficient Low-rank Multimodal Fusion using low-rank tensors for faster fusion process.
+   - Mai et al. (2020): Proposed a graph fusion network for modeling unimodal, bimodal, and trimodal interactions successively.
+2. **Word-level Multimodal Feature Fusion:**
+   - Recent focus due to limitations of utterance-level features.
+   - Process involves force alignment for word timestamps and averaging frame-level features of video clips.
+   - Zadeh et al. (2018a): Introduced Memory Fusion Network (MFN) capturing interactions across modalities and timesteps.
+   - Wang et al. (2019): Developed Recurrent Attended Variation Embedding Network (RAVEN) using Attention Gating module for dynamic fusion.
+   - Tsai et al. (2019): Presented Multimodal transformer (Mult) using cross-modal attention to capture bimodal interactions.
+
+3. **Comparison with Related Work:**
+   - Pham et al. (2019): Proposed Multimodal Cyclic Translation Network model (MCTN) for joint multimodal representations through translation.
+   - Authors emphasized the use of crossmodal prediction task instead of training as an auxiliary task, aiming for deeper insights into shared and private non-textual features.
+This summary provides an overview of the main concepts and contributions in the scientific paper regarding multimodal sentiment analysis, as well as the advancements proposed by various researchers.
+<split>
+**Summary of the Text**
+
+The text discusses two main lines of work in multimodal sentiment analysis: utterance-level multimodal feature fusion and word-level multimodal feature fusion.
+
+**Utterance-Level Multimodal Feature Fusion**
+
+- **Zadeh et al. (2017)**: Proposed Tensor Fusion to capture unimodal, bimodal, and trimodal interactions. However, this method uses the three-fold Cartesian product to fuse the multimodal features, which results in high time cost.
+- **Liu et al. (2018)**: Presented the Efficient Low-rank Multimodal Fusion, which applies multimodal fusion using low-rank tensors to accelerate the fusion process.
+- **Mai et al. (2020)**: Proposed a graph fusion network to model unimodal, bimodal, and trimodal interactions successively.
+
+**Word-Level Multimodal Feature Fusion**
+
+- **Zadeh et al. (2018a)**: Proposed the Memory Fusion Network (MFN) to capture the interactions across both different modalities and timesteps.
+- **Wang et al. (2019)**: Proposed the Recurrent Attended Variation Embedding Network (RAVEN). This model applies the Attention Gating module to fuse the word-level features, which can dynamically use the non-verbal features to shift the word embeddings.
+- **Tsai et al. (2019)**: Presented multimodal transformer (Mult), which uses the cross-modal attention to capture the bimodal interactions, motivated by the great success of transformer in NLP (Vaswani et al., 2017).
+- **Pham et al. (2019)**: Proposed that translation from a source to a target modality provides a way to learn joint representations and proposed the Multimodal Cyclic Translation Network model (MCTN) to learn joint multimodal representations.
+
+**Authors of the Paper**
+
+- **Authors of the Paper**: Their work is based on word-level features. They use the crossmodal prediction task to distinguish the shared and private non-textual features instead of training the model as an auxiliary task. This approach allows them to obtain more useful information by deeply probing the cross-modal prediction model.
+<split>
+## Multimodal sentiment analysis: Utterance-level vs. word-level features
+This passage discusses two main approaches for multimodal sentiment analysis: utterance-level and word-level feature fusion.
+**Utterance-level multimodal feature fusion**
+* Focuses on capturing sentiment of the entire utterance (e.g., sentence)
+* Methods:
+* Average frame-level visual/acoustic features to create utterance-level features (the authors of the paper being summarized)
+* Apply RNNs on words to get utterance-level textual features (the authors of the paper being summarized)
+* Fusion models:
+* Tensor Fusion (Zadeh et al., 2017) - captures unimodal, bimodal and trimodal interactions (expensive to compute)
+* Efficient Low-rank Multimodal Fusion (Liu et al., 2018) - faster alternative to Tensor Fusion using low-rank tensors
+* Graph fusion network (Mai et al., 2020) - models interactions sequentially
+
+**Word-level multimodal feature fusion**
+* Aims to capture sentiment variations within an utterance by focusing on individual words
+* Requires force alignment to identify timestamps for each word
+* Methods to extract word-level features:
+* Split utterance into video clips based on word timestamps (the authors of the paper being summarized)
+* Average frame-level features within each clip (the authors of the paper being summarized)
+* Fusion models:
+* Memory Fusion Network (MFN) (Zadeh et al., 2018a) - captures interactions between modalities and time steps
+* Recurrent Attended Variation Embedding Network (RAVEN) (Wang et al., 2019) - dynamically shifts word embeddings based on non-verbal cues using Attention Gating
+* Multimodal Transformer (Mult) (Tsai et al., 2019) - employs cross-modal attention to capture interactions between modalities
+
+**Additionally mentioned work:**
+* Multimodal Cyclic Translation Network (MCTN) (Pham et al., 2019) - learns joint representations by translating between modalities (the authors of the paper being summarized)
+* This work differs from the approach proposed in the current paper by using a cross-modal prediction task instead of an auxiliary translation task.

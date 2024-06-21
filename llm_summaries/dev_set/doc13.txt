@@ -1,0 +1,74 @@
+**Key Concepts:**
+
+1. HappyDB: A crowdsourced corpus of happy moments used for analyzing language describing happiness.
+2. Mental Health Datasets: Recent interest in creating datasets for mental health studies.
+3. Counseling Conversational Logs: Analyzed by Althoff et al. (2016) to understand linguistic aspects correlated with conversation outcomes.
+4. Blog Post Analysis: Conducted by Mihalcea and Liu (2006) on LiveJournal posts, categorizing them into happy/sad tags.
+5. Stress Measurement from Short Texts: Lin et al. (2016) identified stressors and stress levels in tweets, classifying them into stress categories.
+6. Crowdsourced Datasets: Various research efforts obtained datasets via crowdsourcing and applied natural language techniques.
+7. SQuAD: Rajpurkar et al. (2016) created a large-scale question-answering dataset based on Wikipedia paragraphs, utilizing experienced MTurk workers.
+8. Worker Selection for HappyDB: Workers were not selected based on qualification to avoid bias, unlike SQuAD's approach.
+9. HappyDB vs. SQuAD: HappyDB is similar in scale but differs in its open-ended nature compared to SQuAD's specific question-answering focus.
+
+**Contributions:**
+
+1. Althoff et al. (2016): Analyzed counseling conversational logs to understand linguistic aspects correlated with conversation outcomes.
+2. Mihalcea and Liu (2006): Conducted text analysis on LiveJournal posts, categorizing them into happy/sad tags.
+3. Lin et al. (2016): Identified stressors and stress levels in tweets, classifying them into stress categories.
+4. Rajpurkar et al. (2016): Created a large-scale question-answering dataset (SQuAD) from Wikipedia paragraphs using experienced MTurk workers.
+5. Authors of the paper: Workers were not selected based on qualification to avoid bias in HappyDB's creation.
+6. Authors of the paper: HappyDB, similar in scale to SQuAD, offers more open-ended applications compared to SQuAD's specific question-answering purpose.
+<split>
+1. **HappyDB: Crowdsourced Corpus of Happy Moments**
+	- **Authors**: The authors of the paper the text was taken from.
+	- **Contribution**: Creating the first crowdsourced corpus of happy moments, which can be used to understand the language people use to describe happy events.
+
+2. **Interest in Mental Health Datasets**
+	- **Authors**: Not explicitly mentioned.
+	- **Contribution**: Highlighting recent interest in creating datasets related to mental health.
+
+3. **Althoff et al. (2016)**
+	- **Authors**: Althoff et al.
+	- **Contribution**: Conducting a large-scale analysis on counseling conversational logs collected from SMS for mental illness study. Studying how linguistic aspects of conversations correlate with conversation outcomes.
+
+4. **Mihalcea et al. (2006)**
+	- **Authors**: Mihalcea and Liu
+	- **Contribution**: Performing text analysis on blog posts from LiveJournal, where posts can be assigned happy/sad tags by their authors.
+
+5. **Lin et al. (2016)**
+	- **Authors**: Lin et al.
+	- **Contribution**: Measuring stress from short texts by identifying stressors and stress levels. Classifying tweets into 12 stress categories based on the stress scale from (Holmes and Rahe, 1967).
+
+6. **SQuAD (Rajpurkar et al., 2016)**
+	- **Authors**: Rajpurkar et al.
+	- **Contribution**: Creating a large-scale dataset for question-answering. Crowdsourced workers were asked to create questions based on paragraphs from Wikipedia. Ensuring dataset quality by employing experienced MTurk workers.
+
+7. **HappyDB vs. SQuAD**
+	- **Authors**: The authors of the paper the text was taken from.
+	- **Contribution**: Comparing HappyDB to SQuAD. While both have large-scale crowdsourced datasets, HappyDB is more open-ended and not specifically designed for question answering.
+<split>
+## Key Concepts in HappyDB: A Crowdsourced Corpus of Happy Moments
+
+**1. Motivation**
+
+* Authors: Not mentioned in the excerpt
+* Contribution: The paper describes the creation of HappyDB, a novel crowdsourced corpus of happy moments. This corpus aims to improve understanding of the language people use to describe positive experiences.
+
+**2. Related Work**
+
+* Authors: Althoff et al. (2016)
+* Contribution: Analyzed counseling conversation logs to study how linguistic aspects of conversations correlate with mental health outcomes.
+
+* Authors: Mihalcea and Liu (2006)
+* Contribution: Performed text analysis on blog posts with assigned happy/sad tags to understand language use related to emotions.
+
+* Authors: Lin et al. (2016)
+* Contribution: Measured stress from short texts by identifying stressors and stress levels in tweets.
+
+**3. Comparison with SQuAD Dataset**
+
+* Authors: Rajpurkar et al. (2016)
+* Contribution: Created a large-scale crowdsourced dataset (SQuAD) for question answering, where workers create questions based on Wikipedia passages.
+
+* Authors: Not mentioned in the excerpt
+* Contribution: HappyDB is similar to SQuAD in size but focuses on open ended exploration of happy moments through language, rather than a specific task like question answering.

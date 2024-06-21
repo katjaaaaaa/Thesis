@@ -1,0 +1,82 @@
+**Approaches to Disfluency Detection Task:**
+- **Noisy Channel Models (NCMs):**
+  - Johnson and Charniak (2004); Johnson et al. (2004) utilize complex tree adjoining grammar (TAG) based channel models for detecting "rough copy" dependencies between words.
+  - The NCM combines TAG channel model probabilities with a bigram language model (LM) to generate n-best disfluency analyses, reranked using a syntactic parser-based LM.
+  - External n-gram and deep learning LMs, along with other features, are incorporated into a MaxEnt reranker to enhance baseline NCM performance (Zwarts and Johnson, 2011; Jamshid Lou and Johnson, 2017).
+
+- **Parsing-Based Approaches:**
+  - Rasooli and Tetreault (2013); Honnibal and Johnson (2014); Yoshikawa et al. (2016) employ transition-based dependency parsers augmented with disfluency detection actions to simultaneously parse sentences and detect disfluencies.
+  - Joint parsing and disfluency detection require large annotated treebanks containing both disfluent and syntactic structures for training.
+
+- **Sequence Tagging Approaches:**
+  - Liu et al. (2006); Ostendorf and Hahn (2013); Zayats et al. (2014, 2016); Ferguson et al. (2015); Schuler et al. (2010); Hough and Schlangen (2015) use classification techniques such as conditional random fields, hidden Markov models, and deep learning models to label individual words as fluent or disfluent.
+  - Improved performance often involves increasingly complicated labeling schemes, such as begin-inside-outside (BIO) style states and explicit repair states to handle repetition and correction disfluencies.
+  - Post-processing techniques like integer linear programming (ILP) constraints are applied to avoid inconsistencies between neighboring labels (Georgila, 2009; Georgila et al., 2010; Zayats et al., 2016).
+
+**Comparison with Proposed Approach:**
+- The proposed approach, based on an autocorrelational neural network (ACNN), directly labels words as fluent or disfluent without requiring manually engineered features or representations derived from other models like dependency parsers, language models, or tree adjoining grammar transducers.
+
+**Comparison with Related Work:**
+- Zayats et al. (2016) investigated a bidirectional long-short term memory network (BLSTM) for disfluency detection, reporting that BLSTM operating solely on words underperformed when augmented with hand-crafted pattern match features and POS tags.
+- Some works incorporate prosodic information extracted from speech (Kahn et al., 2005; Ferguson et al., 2015; Tran et al., 2018) in addition to lexical features.
+
+**Primary Motivation of the Proposed Approach:**
+- The primary motivation of the proposed approach is to overcome architectural limitations preventing deep neural networks from automatically learning appropriate features from words alone, aiming to capture dependencies automatically.
+<split>
+1. **Noisy Channel Models (NCMs)**:
+	- **Authors**: Johnson and Charniak (2004), Johnson et al. (2004)
+	- **Contribution**:
+    	- NCMs use complex tree adjoining grammar (TAG)-based channel models to identify "rough copy" dependencies between words.
+    	- The channel model assigns higher probabilities to exact copy reparandum words based on similarity between the reparandum and the repair.
+    	- NCMs generate n-best disfluency analyses for each sentence at test time using TAG channel model probabilities and a bigram language model (LM).
+    	- Reranking of analyses is performed using a language model sensitive to global sentence properties (e.g., syntactic parser-based LM).
+
+2. **Parsing-Based Approaches**:
+	- **Authors**: Rasooli and Tetreault (2013), Honnibal and Johnson (2014), Yoshikawa et al. (2016)
+	- **Contribution**:
+    	- Augment transition-based dependency parsers with an action to detect and remove disfluent parts of the sentence and their dependencies.
+    	- Joint parsing and disfluency detection can outperform pipelined approaches but requires annotated treebanks with both disfluent and syntactic structures.
+
+3. **Sequence Tagging Approaches**:
+	- **Authors**: Liu et al. (2006), Ostendorf and Hahn (2013), Zayats et al. (2014, 2016), Hough and Schlangen (2015)
+	- **Contribution**:
+    	- Use classification techniques (e.g., conditional random fields, hidden Markov models, deep learning models) to label individual words as fluent or disfluent.
+    	- Baseline sequence tagging models often use begin-inside-outside (BIO) style states.
+    	- Some works propose more complex labeling schemes to capture repetition and correction disfluencies.
+    	- Our proposed approach directly labels words as fluent or disfluent without post-processing or annotation modifications.
+
+4. **Similar Work**:
+	- **Authors**: Zayats et al. (2016)
+	- **Contribution**:
+    	- Investigated the performance of a bidirectional long-short term memory network (BLSTM) for disfluency detection.
+    	- BLSTM operating only on words underperformed when compared to the same model augmented with hand-crafted features and POS tags.
+    	- Our approach aims to automatically capture dependencies without manually engineered features or representations derived from other sources.
+
+In summary, the text discusses various approaches to disfluency detection, including NCMs, parsing-based methods, and sequence tagging approaches. Our proposed model focuses on capturing dependencies automatically without relying on manual feature engineering. 
+<split>
+## Disfluency Detection Approaches
+
+This scientific paper explores three main categories of disfluency detection approaches:
+
+* **Noisy Channel Models (NCMs)** (Johnson and Charniak, 2004; Johnson et al., 2004)
+	* Use complex Tree Adjoining Grammar (TAG) (Shieber and Schabes, 1990) based channel models to find "rough copy" dependencies between words.
+	* Employ language models (LMs) to improve performance (Johnson and Charniak, 2004; Johnson et al., 2004). Later works explore rescoring with external n-grams (Zwarts and Johnson, 2011) and deep learning LMs (Jamshid Lou and Johnson, 2017).
+
+* **Parsing-based Approaches** (Rasooli and Tetreault, 2013; Honnibal and Johnson, 2014; Yoshikawa et al., 2016)
+	* Detect disfluencies while simultaneously identifying syntactic structure.
+	* Achieved by augmenting a dependency parser with a new action to remove disfluent parts.
+	* Require large annotated treebanks for training.
+
+* **Sequence Tagging Approaches** (Liu et al., 2006; Ostendorf and Hahn, 2013; Zayats et al., 2014; Ferguson et al., 2015)
+	* Use classification techniques to label individual words as fluent or disfluent.
+	* Often utilize Conditional Random Fields (CRFs) (Liu et al., 2006; Ostendorf and Hahn, 2013; Zayats et al., 2014; Ferguson et al., 2015) or Hidden Markov Models (HMMs) (Liu et al., 2006; Schuler et al., 2010).
+	* Recent work explores deep learning based models (Hough and Schlangen, 2015; Zayats et al., 2016).
+	* Prior work relies on complex labeling schemes and post-processing to avoid inconsistencies (Ostendorf and Hahn, 2013; Zayats et al., 2014, 2016).
+
+## Proposed Approach (Authors of the paper)
+
+This paper introduces a novel disfluency detection approach based on an autocorrelational neural network (ACNN) which belongs to the class of sequence tagging approaches.
+
+* Their approach directly labels words as fluent or disfluent, avoiding complex labeling schemes and post-processing.
+* Inspired by prior work by Zayats et al. (2016) who investigated bidirectional long-short term memory networks (BLSTM) for disfluency detection.
+* This work aims to address limitations that prevent deep neural networks from automatically learning features from words alone. It avoids  manually engineered features and focuses on the network's ability to capture these dependencies automatically.

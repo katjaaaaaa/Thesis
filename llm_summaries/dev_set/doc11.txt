@@ -1,0 +1,64 @@
+### Question Generation
+Question Generation is a key natural language generation task that has attracted attention from researchers.
+
+- **Traditional Methods**:
+	- Rule-based approaches rely on manual rules or templates and rank questions by human-designed features (Heilman and Smith, 2010; Mazidi and Nielsen, 2014).
+- **Neural QG Models**:
+	- Variants of the encoder-decoder framework have been proposed (Du et al., 2017; Zhou et al., 2017; Sun et al., 2018; Pan et al., 2019; Wang et al., 2019).
+    	- Zhou et al. (2017) propose a feature-rich encoder.
+    	- Zhao et al. (2018) process paragraph-level inputs with maxout pointer and gated self-attention.
+	- Reinforcement learning models address the "exposure bias" problem (Zhang and Bansal, 2019; Chen et al., 2020).
+
+### Deep Question Generation
+Deep Question Generation aims at generating complex questions requiring multi-hop reasoning over document-level contexts.
+
+- **Background**:
+	- Inspired by multi-hop question answering (Song et al., 2018; Chen and Durrett, 2019; Tu et al., 2020).
+- **Framework**:
+	- Pan et al. (2020) introduce a framework incorporating semantic graphs to enhance document representations and jointly train content selection and question decoding tasks.
+- **Limitation**:
+	- The framework lacks attention to answer information.
+- **Contributions of the Current Work**:
+	- Utilization of target answer as guidance for question generation.
+	- Introduction of answer-aware initialization module and semantic-rich fusion attention mechanism.
+	- Application of reinforcement learning integrating syntactic and semantic metrics for enhanced training (authors' contribution).
+<split>
+**Summary:**
+
+1. **Question Generation (QG) Overview**:
+	- **Authors**: Reiter and Dale (2000), Saggion and Poibeau (2013), Balakrishnan et al. (2019)
+	- **Contribution**: Question Generation is a natural language generation task that involves generating valid and fluent questions from various sources such as texts, search queries, knowledge bases, and images. Traditional rule-based methods lack diversity and are costly. Neural QG models, including variants of the encoder-decoder framework, have been explored.
+
+2. **Challenges in Existing QG Methods**:
+	- **Authors**: Heilman and Smith (2010), Mazidi and Nielsen (2014)
+	- **Contribution**: Existing methods rely on manual rules or templates and rank generated questions based on human-designed features. However, they often generate questions related to only one fact from a single sentence or article without deep comprehension and reasoning.
+
+3. **Deep Question Generation (DQG)**:
+	- **Authors**: Song et al. (2018), Chen and Durrett (2019), Tu et al. (2020)
+	- **Contribution**: DQG aims to generate complex questions that require reasoning over multiple pieces of information. Inspired by multi-hop question answering, DQG aggregates evidence fragments from multiple documents to predict correct answers. Pan et al. (2020) introduced a framework for DQG using semantic graphs but did not fully consider answer information. Our work enhances question generation by leveraging the target answer as guidance through an answer-aware initialization module and semantic-rich fusion attention mechanism. Reinforcement learning with both syntactic and semantic metrics further improves training.
+<split>
+## Key Concepts in Question Generation
+
+**1. Traditional Rule-Based Question Generation**
+
+* **Authors:** Heilman and Smith (2010), Mazidi and Nielsen (2014)
+* **Contribution:** These methods rely on manually crafted rules or templates to generate questions. The quality of questions depends on the features designed and can be expensive and lack variety.
+
+**2. Neural Question Generation with Encoder-Decoder Framework**
+
+* **Authors:** Du et al. (2017), Zhou et al. (2017), Sun et al. (2018), Pan et al. (2019), Wang et al. (2019)
+* **Contribution:** This approach utilizes a neural network architecture with separate encoder and decoder components. The encoder processes the input text, and the decoder generates questions based on the encoded representation.
+	* Zhou et al. (2017) propose a method to enrich the encoder representation for the Seq2Seq model.
+	* Zhao et al. (2018) address question generation at the paragraph level using specific attention mechanisms.
+
+**3. Reinforcement Learning for Question Generation**
+
+* **Authors:** Zhang and Bansal (2019), Chen et al. (2020)
+* **Contribution:** This method incorporates reinforcement learning to address the "exposure bias" issue. The model receives rewards based on specific metrics to improve question generation during training.
+
+**4. Deep Question Generation**
+
+* **Authors:** Pan et al. (2020) (proposed the task), This work (focuses on answer-aware improvements)
+* **Contribution:** Deep Question Generation (DQG) aims to create complex questions that necessitate reasoning across multiple pieces of information within a document.
+	* Pan et al. (2020) introduced the first DQG framework using semantic graphs to enhance document representation and jointly train content selection and question generation. However, their approach did not fully utilize the target answer for question guidance.
+* **Our work (contribution not mentioned in the excerpt):** This paper proposes a novel approach that leverages the target answer more effectively to guide question generation through an answer-aware initialization module and a semantic-rich fusion attention mechanism. Additionally, reinforcement learning with combined syntactic and semantic metrics is implemented to enhance the training process.

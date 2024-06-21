@@ -1,0 +1,79 @@
+**Key Concepts:**
+
+1. **Eye-tracking for NLP:**
+   - Rayner (1998), Henderson and Ferreira (1993): Associated eye-tracking data with language comprehension activity.
+   - Barrett et al. (2016): Used eye-tracking data in machine learning approaches for part-of-speech tagging.
+   - Rohanian et al. (2017): Applied eye-tracking data in multiword expression extraction.
+   - Barrett and Sgaard (2015): Utilized eye-tracking data for syntactic category prediction.
+   - Mishra et al. (2017): Combined eye-tracking data with word embeddings to enhance sentiment analysis.
+   - Hollenstein and Zhang (2019): Incorporated eye-tracking data into named entity recognition (NER).
+   - Barrett et al. (2018), Sood et al. (2020), Takmaz et al. (2020): Employed eye-tracking data to enhance or constrain neural attention.
+
+2. **EEG for NLP:**
+   - Chen et al. (2012): Improved automatic speech recognition (ASR) using EEG signals to classify the speaker's mental state.
+   - Hollenstein et al. (2019a): Integrated EEG signals into various NLP tasks including NER, relation extraction, and sentiment analysis.
+   - Muttenthaler et al. (2020): Leveraged EEG features to regulate attention in relation extraction.
+
+3. **Adversarial Learning in NLP:**
+   - Goodfellow et al. (2014): Originated the concept of adversarial training in Generative Adversarial Nets (GAN) in computer vision.
+   - Denton et al. (2015), Ganin et al. (2016): Applied adversarial training in NLP tasks.
+   - Cao et al. (2018): Introduced adversarial training in multi-task learning for Chinese NER.
+   - Yang et al. (2018): Applied adversarial training in crowdsourcing learning.
+   - Chen et al. (2018), Kim et al. (2017): Employed adversarial training in cross-lingual transfer learning.
+   - Authors of the paper: Proposed the use of adversarial learning to align cognitive modality with textual modality at the sentence level.
+<split>
+1. **Eye-Tracking for NLP**:
+   - **Rayner (1998)** and **Henderson and Ferreira (1993)** associated eye-tracking data with language comprehension activity in human brains.
+   - In early works, eye-tracking signals were used in machine learning approaches for NLP tasks:
+ 	- **Barrett et al. (2016)** applied eye-tracking data to part-of-speech tagging.
+ 	- **Rohanian et al. (2017)** used eye-tracking data for multiword expression extraction.
+ 	- **Barrett and Sgaard (2015)** explored eye-tracking data in syntactic category prediction.
+   - Neural models combined eye-tracking data with word embeddings to improve NLP tasks:
+ 	- **Mishra et al. (2017)** used eye-tracking data for sentiment analysis.
+ 	- **Hollenstein and Zhang (2019)** incorporated eye-tracking data into named entity recognition (NER).
+   - Eye-tracking data also influenced neural attention:
+ 	- **Barrett et al. (2018)** and **Sood et al. (2020b,a)** explored enhancing or constraining neural attention using eye-tracking data.
+ 	- **Takmaz et al. (2020)** investigated similar approaches.
+
+2. **EEG for NLP**:
+   - Electroencephalography (EEG) measures neuronal activity in the cerebral cortex.
+   - Limited exploration of EEG data in NLP tasks:
+ 	- **Chen et al. (2012)** improved automatic speech recognition (ASR) by classifying speaker mental states using EEG signals.
+ 	- **Hollenstein et al. (2019a)** incorporated EEG signals into NLP tasks, including NER, relation extraction, and sentiment analysis.
+ 	- **Muttenthaler et al. (2020)** used EEG features to regularize attention in relation extraction.
+
+3. **Adversarial Learning in NLP**:
+   - Adversarial training, originating from Generative Adversarial Nets (GANs) in computer vision, has been applied in NLP:
+ 	- **Denton et al. (2015)** and **Ganin et al. (2016)** explored adversarial training.
+ 	- Recent studies introduced adversarial training into multi-task NLP learning:
+   	- **Cao et al. (2018)** applied adversarial training to Chinese named entity recognition (NER).
+   	- **Yang et al. (2018)** used adversarial training for crowdsourcing learning.
+   	- **Chen et al. (2018)** and **Kim et al. (2017)** explored cross-lingual transfer learning using adversarial techniques.
+ 	- The current study focuses on using adversarial learning to align cognitive modality with textual modality at the sentence level.
+<split>
+## Scientific Paper Summary: Utilizing Cognitive Information in NLP Tasks
+
+This paper explores how incorporating cognitive information, specifically through eye-tracking and EEG data, can improve various NLP tasks.
+
+**Key Concepts**
+
+1. **Eye-tracking for NLP**
+	* **Contribution**: Eye-tracking data can be used to enhance NLP tasks through machine learning and neural network approaches.
+    	* Examples:
+        	* Part-of-speech tagging (Barrett et al., 2016)
+        	* Multiword expression extraction (Rohanian et al., 2017)
+        	* Syntactic category prediction (Barrett and Sgaard, 2015)
+        	* Sentiment analysis (Mishra et al., 2017)
+        	* Named Entity Recognition (NER) (Hollenstein and Zhang, 2019)
+	* **Contribution**: Eye-tracking data can improve neural attention mechanisms in NLP models (Barrett et al., 2018; Sood et al., 2020b, 2020a; Takmaz et al., 2020).
+
+2. **EEG for NLP**
+	* **Contribution**: EEG data holds promise for improving NLP tasks, though research is limited.
+    	* Examples:
+        	* Automatic speech recognition (ASR) (Chen et al., 2012)
+        	* NER, relation extraction, sentiment analysis (Hollenstein et al., 2019a)
+        	* Regularizing attention on relation extraction (Muttenthaler et al., 2020)
+
+3. **Adversarial Learning for NLP**
+	* **Background**: Adversarial training has been successfully applied in NLP tasks (Denton et al., 2015; Ganin et al., 2016).
+	* **This paper**: Proposes a novel application of adversarial learning to align cognitive and textual modalities at the sentence level (not mentioned in cited works).

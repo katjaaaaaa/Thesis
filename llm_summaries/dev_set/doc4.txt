@@ -1,0 +1,68 @@
+**1. Coverage Modeling**
+- **Tu et al. (2016) and Mi et al. (2016):** Introduced the concept of coverage vectors to indicate translated and untranslated source words. Accumulated attention probabilities at each decoding step to update coverage vectors.
+- **Wang et al. (2016):** Proposed a memory-enhanced decoder for semantic-level coverage.
+- **Meng et al. (2016):** Proposed a memory-enhanced attention model.
+- **Graves et al. (2014):** Introduced Neural Turing Machine which inspired memory-enhanced models. However, lacked an explicit objective for guiding intuition.
+- **Authors of the paper:** Modeled translated and untranslated source contents by directly manipulating the attention vector instead of attention probability. Introduced PAST-RNN and FUTURE-RNN to model translated and untranslated contents separately.
+
+**2. Future Modeling**
+- **Li et al. (2017) and Bahdanau et al. (2017):** Employed actor-critic algorithms to predict future properties in sequence generation models.
+- **Weng et al. (2017):** Guided decoder's hidden states to predict untranslated target words. Introduced a FUTURE layer to maintain untranslated source contents.
+
+**3. Functionality Separation**
+- **Reed and Freitas (2015), Ba et al. (2016), Miller et al. (2016), Gulcehre et al. (2016), Rocktaschel et al. (2017):** Explored separating functions in model architectures to alleviate training difficulties.
+- **Sukhbaatar et al. (2015):** Developed memory networks.
+- **Rocktaschel et al. (2017):** Proposed a key-value-predict attention model, separating functions for prediction, decoding, and attention.
+- **Authors of the paper:** Separated PAST and FUTURE functionalities from the decoder's hidden representations.
+<split>
+**1. Attention-Based Sequence-to-Sequence Model**
+- Bahdanau et al. (2015): Introduced the attention-based sequence-to-sequence model which forms the basis of the research.
+
+**2. Coverage Modeling**
+- Tu et al. (2016): Maintained a coverage vector to indicate which source words have been translated and which have not. The vectors are updated by accumulating attention probabilities at each decoding step.
+- Mi et al. (2016): Similar to Tu et al., they also maintained a coverage vector for tracking translated source words.
+- Wang et al. (2016): Proposed a memory-enhanced decoder for semantic-level coverage.
+- Meng et al. (2016): Proposed a memory-enhanced attention model for semantic-level coverage. Both Wang et al. and Meng et al. implemented the memory with a Neural Turing Machine (Graves et al., 2014), but lacked an explicit objective to guide such intuition.
+
+**3. Future Modeling**
+- Li et al. (2017); Bahdanau et al. (2017): Employed actor-critic algorithms to predict future properties. An interpolation of the actor (the standard generation policy) and the critic (a value function that estimates the future values) is used for decision making.
+- Weng et al. (2017): Guided the decoder's hidden states to not only generate the current target word, but also predict the target words that remain untranslated.
+
+**4. Functionality Separation**
+- Reed and Freitas (2015); Ba et al. (2016); Miller et al. (2016); Gulcehre et al. (2016); Rocktaschel et al. (2017): Revealed that the overloaded use of representations makes model training difficult, and such problems can be alleviated by explicitly separating these functions. For example, Miller et al. separated the functionality of look-up keys and memory contents in memory networks (Sukhbaatar et al., 2015). Rocktaschel et al. proposed a key-value-predict attention model, which outputs three vectors at each step: the first is used to predict the next-word distribution; the second serves as the key for decoding; and the third is used for the attention mechanism.
+
+**5. Authors of the Paper**
+- The authors of the paper took one step further in coverage modeling by directly manipulating the attention vector instead of attention probability. They explicitly modeled both translated (with PAST-RNN) and untranslated (with FUTURE-RNN) instead of using a single coverage vector. They introduced a FUTURE layer to maintain the untranslated source contents, which is updated at each decoding step by subtracting the source content being translated (i.e., attention vector) from the last state (i.e., the untranslated source content so far). They further separated PAST and FUTURE functionalities from the decoder's hidden representations.
+<split>
+## Key Concepts in Attention-Based Sequence-to-Sequence Model with Additional Techniques
+
+This paper builds upon an attention-based sequence-to-sequence model (Bahdanau et al., 2015) and introduces three additional techniques: coverage modeling, future modeling, and functionality separation.
+
+### Coverage Modeling
+
+* **Traditional Coverage (Tu et al., 2016; Mi et al., 2016):**
+	* Maintain a coverage vector to track translated source words.
+	* Update the vector by accumulating attention probabilities during decoding.
+* **This work's approach:**
+	* Directly manipulate the attention vector (source content being translated) instead of attention probability.
+	* Explicitly model translated content (PAST-RNN) and untranslated content (FUTURE-RNN) with separate layers.
+	* Feed PAST and FUTURE contents to both attention mechanism and decoder states.
+* **Semantic-level Coverage (not used in this work):**
+	* Wang et al. (2016) use a memory-enhanced decoder with a Neural Turing Machine (Graves et al., 2014) to erase translated content.
+	* Meng et al. (2016) use a memory-enhanced attention model with a Neural Turing Machine.
+	* Both lack an explicit objective to guide this process.
+
+### Future Modeling
+
+* **Standard decoders:** Generate target sentences left-to-right, failing to consider future properties like target sentence length.
+* **Addressing the issue:**
+	* Actor-critic algorithms (Li et al., 2017; Bahdanau et al., 2017) use an interpolation of generation policy and a value function for future value estimation.
+	* Weng et al. (2017) use decoder hidden states to predict untranslated target words.
+* **This work's approach:** Introduces a FUTURE layer to maintain untranslated source contents. This layer is updated at each decoding step.
+
+### Functionality Separation
+
+* **Overloaded representations make model training difficult.**
+* **Separating functionalities can improve training.** (Reed and Freitas, 2015; Ba et al., 2016; Miller et al., 2016; Gulcehre et al., 2016; Rocktaschel et al., 2017)
+	* Example: Miller et al. (2016) separate look-up keys from memory contents in memory networks.
+* **This work:** Separates PAST and FUTURE functionalities from the decoder's hidden representations.

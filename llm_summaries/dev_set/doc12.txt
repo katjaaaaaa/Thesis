@@ -1,0 +1,45 @@
+**Key Concepts:**
+
+1. **Division of Computational Humor:**
+   - Hossain (2019): Introduced dataset for humor classification.
+   - Cattle and Ma (2018), Chen and Soo (2018), Bertero and Fung (2016), Weller and Seppi (2019), Purandare and Litman (2006): Utilized binary classification approach for humor recognition.
+
+2. **Approaches to Humor Recognition:**
+   - Hossain (2019): Employed binary classification for determining if an edited title is humorous.
+   - Various authors: Utilized models like LSTM, CNN, and BERT for humor recognition tasks.
+
+3. **CNN Model for Humor Recognition:**
+   - Zhang and Wallace (2015): Presented a compact CNN architecture for sentence classification tasks.
+   - Hossain (2019): Implemented a CNN model inspired by Zhang and Wallace (2015) for humor recognition, achieving promising results.
+ 
+**Contributions:**
+
+1. **Hossain (2019):**
+   - Introduced a dataset for humor classification.
+   - Applied binary classification to determine the humor of edited titles.
+
+2. **Various Authors:**
+   - Utilized different models such as LSTM, CNN, and BERT for humor recognition tasks, focusing on binary classification.
+
+3. **Zhang and Wallace (2015):**
+   - Presented a compact CNN architecture for sentence classification tasks.
+   - Inspired the CNN model utilized by Hossain (2019) for humor recognition, offering efficiency in computational resources while achieving promising results.
+<split>
+**Key Concepts and Contributions:**
+
+1. **Humor Recognition and Generation**:
+	- **Chen and Soo (2018)**: Constructed and collected four datasets with distinct joke types in both English and Chinese. Conducted learning experiments on humor recognition using a **Convolutional Neural Network (CNN)** with extensive filter size, number, and Highway Networks. Outperformed previous works in recognizing different types of humor in both languages..
+	- **Hossain (2019)**: Focused on binary classification (funny or not) for edited titles. Trained binary classifiers, contrasting with the regression approach used in this work.
+	- **Cattle and Ma (2018)**, **Bertero and Fung (2016)**, **Weller and Seppi (2019)**, and **Purandare and Litman (2006)**: Also employed binary approaches for humor recognition.
+	- Various models like **LSTM**, **CNN**, and **BERT** were used to tackle this task.
+
+2. **CNN Model for Sentence Classification**:
+	- **Zhang and Wallace (2015)**: Inspired the architecture of the CNN model used in this work. Their compact one-layer CNN allowed achieving promising results for sentence classification while using fewer computational resources compared to larger models like BERT.
+<split>
+## Summary of Scientific Text on Computational Humor Recognition
+
+This scientific paper discusses two main areas of research in computational humor: recognition and generation.
+
+* **Humor Recognition:** This section focuses on computational methods to automatically identify humor in text.
+	* **Binary Classification:** The most common approach classifies humor as funny or not funny (Hossain, 2019; Cattle and Ma, 2018; Chen and Soo, 2018; Bertero and Fung, 2016; Weller and Seppi, 2019; Purandare and Litman, 2006). Various models are used for this purpose, including LSTM (Hochreiter and Schmidhuber, 1997), CNN, and BERT (Devlin et al., 2019).
+	* **Regression Approach (This work):** This paper proposes a different approach that goes beyond binary classification. It aims to rate humor on a scale within a specific range, providing a more nuanced evaluation (Authors). This method utilizes a Convolutional Neural Network (CNN) inspired by Zhang and Wallace (2015). The chosen CNN architecture is compact (one layer) and requires fewer computational resources compared to larger models like BERT, while achieving similar performance for humor classification (Authors). This compactness allows for better interpretability of the model's decision-making process (Authors).
