@@ -187,14 +187,14 @@
                "F1-score": "0.7552"
             },
             "Few-shot rank": {
-               "Precission": "0.7615",
-               "Recall": "0.6565",
-               "F1-score": "0.7051"
+               "Precission": "0.7490",
+               "Recall": "0.6916",
+               "F1-score": "0.7192"
             },
             "Few-shot expl": {
-               "Precission": "0.7887",
-               "Recall": "0.7185",
-               "F1-score": "0.7520"
+               "Precission": "0.0000",
+               "Recall": "0.0000",
+               "F1-score": "0.0000"
             }
          }
       },
@@ -213,14 +213,14 @@
                "F1-score": "0.7466"
             },
             "Few-shot rank": {
-               "Precission": "0.7582",
-               "Recall": "0.6392",
-               "F1-score": "0.6936"
+               "Precission": "0.7427",
+               "Recall": "0.6663",
+               "F1-score": "0.7025"
             },
             "Few-shot expl": {
-               "Precission": "0.7522",
-               "Recall": "0.6876",
-               "F1-score": "0.7185"
+               "Precission": "0.0000",
+               "Recall": "0.0000",
+               "F1-score": "0.0000"
             }
          }
       },
@@ -239,22 +239,22 @@
                "F1-score": "0.7151"
             },
             "Few-shot rank": {
-               "Precission": "0.7472",
-               "Recall": "0.6733",
-               "F1-score": "0.7083"
+               "Precission": "0.7201",
+               "Recall": "0.6974",
+               "F1-score": "0.7086"
             },
             "Few-shot expl": {
-               "Precission": "0.7041",
-               "Recall": "0.7057",
-               "F1-score": "0.7049"
+               "Precission": "0.0000",
+               "Recall": "0.0000",
+               "F1-score": "0.0000"
             }
          }
       },
       "Phi-3": {
          "Zero-shot": " Subsection 1: Introduction to Previous Work\n- Handler and O'Connor (2018): Proposed a two-stage process for extractively summarizing relationships, identifying wellformed spans in a corpus.\n\nSubsection 2: Limitations of Previous Work\n- Handler and O'Connor (2018): Did not provide a method for the second step of picking a summary statement.\n\nSubsection 3: Proposed Approach\n- Authors of the paper: Introduce a new task of choosing the best summary statement from available candidates by collecting new supervision tailored to summarizing relationships on concept maps.\n\nSubsection 4: Differences in Focus\n- Falke and Gurevych (2017): Created the best overall concept map for a given topic.\n- Authors of the paper: Focused on finding the best summary relationship for a given relationship on concept maps.\n\nSubsection 5: Dataset Differences\n- Falke and Gurevych (2017): Included labels for the most readable and informative statement describing the relationship between a (t) \\u2212 (t) query pair.\n- Authors of the paper: Dataset includes labels for the most readable and informative statement describing the relationship between a (t) \\u2212 (t) query pair, with a different focus than Falke and Gurevych (2017).",
          "One-shot": " 1. **Building on Prior Efforts**:\n   - **Handler and O'Connor (2018)**: Proposed a two-stage process for extractively summarizing relationships, identifying wellformed spans and choosing the best summary statement from these candidates.\n\n2. **New Task of Choosing the Best Summary Statement**:\n   - **Authors of the paper**: Approach the task of selecting the best summary statement from available candidates by collecting new supervision tailored to summarizing relationships on concept maps.\n\n3. **Differentiation from Existing Concept Map Dataset**:\n   - **Authors of the paper**: Contrast their work with Falke and Gurevych (2017) by focusing on finding the best summary relationship for a given relationship, rather than creating the best overall concept map for a topic.\n\n   - **Falke and Gurevych (2017)**: Created a concept map dataset aiming to generate the best overall concept map for a given topic.\n\n   - **Authors of the paper**: Their dataset includes labels for the most readable and informative statement describing the relationship between a (t) \\u2212 (t) query pair, which differs from Falke and Gurevych's dataset.",
-         "Few-shot rank": " 1. **Extractive Relationship Summarization**:\n   - Handler and O'Connor (2018): Proposed a two-stage process for extracting wellformed spans and identifying the best summary statement.\n   - Contribution: Highlighted the importance of identifying readable candidates for summarizing relationships.\n\n2. **New Supervision Approach**:\n   - The authors of the current study:\n   - Contribution: Developed a new supervision method tailored to summarizing relationships on concept maps, differing from Falke and Gurevych (2017) by focusing on the most readable and informative statement for a given relationship.",
-         "Few-shot expl": " 1. **Relationship Extraction and Summarization**:\n   - Handler and O'Connor (2018): Proposed a two-stage process for extractively summarizing relationships, identifying wellformed spans between entities.\n   - Contribution: Demonstrated that this method finds more readable candidates than traditional techniques.\n   - Authors - Contribution:\n         - Handler and O'Connor (2018): Identified wellformed spans for summarizing relationships.\n\n2. **New Supervision for Summary Selection**:\n   - Authors - Contribution:\n         - Authors of the paper: Developed a new supervision method tailored for summarizing relationships on concept maps, differing from Falke and Gurevych (2017) dataset focus.\n   - Contribution:\n         - Authors of the paper: Created a dataset with labels for the most readable and informative summary statements for a given relationship.\n\n3. **Comparison with Previous Work**:\n   - Authors - Contribution:\n         - Authors of the paper: Contrasted their approach with Falke and Gurevych (2017), highlighting a different focus on finding the best summary relationship rather than the best overall concept map."
+         "Few-shot rank": " 1. **Relationship Extraction and Summarization**:\n   - Handler and O'Connor (2018) proposed a two-stage process for extracting readable relationship spans.\n   - Contribution: Identified spans starting and ending with specific markers and collected new supervision for summarizing relationships.\n\n2. **Methodology for Summary Statement Selection**:\n   - Authors of the paper: Developed a method for selecting the best summary statement from available candidates, focusing on readability and informativeness.\n   - Contribution: Introduced a tailored supervision approach for summarizing relationships on concept maps, differing from Falke and Gurevych (2017) dataset.\n\n3. **Dataset Differences**:\n   - Authors of the paper: Created a dataset with labels for the most readable and informative relationship descriptions.\n   - Contribution: Distinguished their dataset from Falke and Gurevych (2017) by focusing on the quality of individual summary statements rather than the overall concept map.",
+         "Few-shot expl": " 1. **Relationship Extraction via Eye-Tracking**:\n   - **Rayner (1998)** and **Henderson and Ferreira (1993)**: Associated eye-tracking data with language comprehension.\n   - **Barrett et al. (2016)**: Used eye-tracking for part-of-speech tagging.\n   - **Rohanian et al. (2017)**: Applied eye-tracking to multiword expression extraction.\n   - **Barrett and Sgaard (2015)**: Explored eye-tracking for syntactic category prediction.\n   - **Mishra et al. (2017)**: Improved NLP tasks using eye-tracking and word embeddings for sentiment analysis and NER.\n   - **Hollenstein and Zhang (2019)**: Incorporated eye-tracking data into NLP tasks.\n   - **Barrett et al. (2018); Sood et al. (2020); Takmaz et al. (2020)**: Used eye-tracking to influence neural attention.\n   - **Chen et al. (2012)**: Improved ASR using EEG.\n   - **Hollenstein et al. (2019a)**: Used EEG in NLP tasks.\n   - **Muttenthaler et al. (2020)**: Used EEG to regularize attention in relation extraction.\n   - **Goodfellow et al. (2014)**: Introduced adversarial training in computer vision, influencing NLP.\n   - **Denton et al. (2015); Ganin et al. (2016)**: Applied adversarial training in NLP.\n   - **Cao et al. (2018); Yang et al. (2018); Chen et al. (2018); Kim et al. (2017)**: Explored adversarial learning in NLP tasks.\n   - **Authors of the paper**: Proposed using adversarial learning to align cognitive modality with textual modality at the sentence level.\n\n2. **EEG in NLP**:\n   - **Chen et al. (2012)**: Used EEG to improve ASR.\n   - **Hollenstein et al. (2019a)**: Incorporated EEG into NLP tasks.\n   - **Muttenthaler et al. (2020)**: Used EEG features for attention regularization in relation extraction.\n\n3. **Adversarial Learning in NLP**:\n   - **Goodfellow et al. (2014)**: Originated adversarial training in GANs for computer vision, influencing NLP.\n   - **Denton et al. (2015); Ganin et al. (2016)**: Applied adversarial training in NLP.\n   - **Cao et al. (2018); Yang et al. (2018); Chen et al. (2018); Kim et al. (2017)**: Applied adversarial learning in NLP tasks.\n   - **Authors of the paper**: Focused on aligning cognitive modality with textual modality in NLP using adversarial learning.\n\n**Reasoning for High Ratings**:\n- Each subsection is clearly defined and follows the chronological order of the research.\n- Authors and their contributions are listed in bullet points, adhering to the specified structures.\n- The summary is concise, precise, and includes all authors and their contributions without hallucinations.\n\n**Reasoning for Low Ratings**:\n- Not applicable as the provided summaries received high ratings."
       }
    },
    "8": {
