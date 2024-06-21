@@ -1,12 +1,18 @@
-# The code was adapted from https://medium.com/@abonia/bertscore-explained-in-5-minutes-0b98553bfb71
-#
-#
-# Usage: python3 bertscore_calculate.py <doc number> eval_data_<short/long>.json <rank_f1_scores>.json <llm_f1_scores>.json <prompt name of a summary to not include in the evaluation>
-# Example usage: python3 bertscore_calculate.py 1 <short/long> One-shot
+# Name: bertscore_calculate.py
+# Author: Katja Kamyshanova
+# Date: 21/06/2024
+# This program takes a .json file with four summaries of a document, 
+# loads the LLM comparison summaries of the same document, calculates the
+# BertScore F1 per input summary, saves the scores in the eva_data file and
+# returns mean F1 scores per rank of LLM summary and per LLM as a .json files
+
+# The BertScore F1 code was partially adapted from https://medium.com/@abonia/bertscore-explained-in-5-minutes-0b98553bfb71
+
+# Usage: python3 bertscore_calculate.py <doc number> <short/long> <prompt type that must be ignored in the F1 calculation if exists>
+# Example usage: python3 bertscore_calculate.py 7 long "Few-shot Expl"
 
 
 from bert_score import BERTScorer
-#import torch
 from sys import argv
 import json
 import os
